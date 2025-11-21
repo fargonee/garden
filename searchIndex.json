@@ -1,1 +1,33 @@
-[]
+[
+{
+		"title": "Obsidian tutorial.en",
+		"date":"Fri Nov 21 2025 20:05:04 GMT+0000 (Coordinated Universal Time)",
+		"url":"/education/obsidian-tutorial/obsidian-tutorial-en/",
+		"content": "Sorry for that, the obsidian tutorial series were recorded in <a class=\"internal-link\" target=\"\" data-note-icon=\"\" href=\"/education/obsidian-tutorial/obsidian-tutorial-uz/\">uzbek</a>.",
+		"tags": [ "note"]
+},
+
+{
+		"title": "Obsidian tutorial.uz",
+		"date":"Fri Nov 21 2025 20:05:04 GMT+0000 (Coordinated Universal Time)",
+		"url":"/education/obsidian-tutorial/obsidian-tutorial-uz/",
+		"content": "Bu yerda obsidan darslari kontenti menu si bo'ladi",
+		"tags": [ "note"]
+},
+
+{
+		"title": "Home Page.en",
+		"date":"Fri Nov 21 2025 20:05:04 GMT+0000 (Coordinated Universal Time)",
+		"url":"/",
+		"content": "This is home page",
+		"tags": [ "note","gardenEntry"]
+},
+
+{
+		"title": "Home Page.uz",
+		"date":"Fri Nov 21 2025 20:05:04 GMT+0000 (Coordinated Universal Time)",
+		"url":"/home-page-uz/",
+		"content": "Bu bosh sahifa",
+		"tags": [ "note"]
+}
+]
