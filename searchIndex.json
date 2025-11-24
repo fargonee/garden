@@ -1,7 +1,7 @@
 [
 {
 		"title": "Overview.en",
-		"date":"Mon Nov 24 2025 04:55:14 GMT+0000 (Coordinated Universal Time)",
+		"date":"Mon Nov 24 2025 08:02:28 GMT+0000 (Coordinated Universal Time)",
 		"url":"/education/obsidian-tutorial/overview-en/",
 		"content": "Sorry for that, the obsidian tutorial series were recorded in <a class=\"internal-link\" target=\"\" data-note-icon=\"\" href=\"/education/obsidian-tutorial/overview-uz/\">uzbek</a>.",
 		"tags": [ "note"]
@@ -9,7 +9,7 @@
 
 {
 		"title": "Overview.uz",
-		"date":"Mon Nov 24 2025 04:55:14 GMT+0000 (Coordinated Universal Time)",
+		"date":"Mon Nov 24 2025 08:02:28 GMT+0000 (Coordinated Universal Time)",
 		"url":"/education/obsidian-tutorial/overview-uz/",
 		"content": "Bu yerda obsidan darslari kontenti menu si bo'ladi",
 		"tags": [ "note"]
@@ -17,7 +17,7 @@
 
 {
 		"title": "Home Page.en",
-		"date":"Mon Nov 24 2025 04:55:14 GMT+0000 (Coordinated Universal Time)",
+		"date":"Mon Nov 24 2025 08:02:28 GMT+0000 (Coordinated Universal Time)",
 		"url":"/",
 		"content": "This is home page",
 		"tags": [ "note","gardenEntry"]
@@ -25,9 +25,25 @@
 
 {
 		"title": "Home Page.uz",
-		"date":"Mon Nov 24 2025 04:55:14 GMT+0000 (Coordinated Universal Time)",
+		"date":"Mon Nov 24 2025 08:02:28 GMT+0000 (Coordinated Universal Time)",
 		"url":"/home-page-uz/",
 		"content": "Bu bosh sahifa",
+		"tags": [ "note"]
+},
+
+{
+		"title": "Welcome to online!.en",
+		"date":"Mon Nov 24 2025 08:02:28 GMT+0000 (Coordinated Universal Time)",
+		"url":"/service/obsidian-powered-website/welcome-to-online-en/",
+		"content": "<a class=\"internal-link\" target=\"\" data-note-icon=\"\" href=\"/service/obsidian-powered-website/why-you-should-choose-me-en/\">See why you should choose me?</a>",
+		"tags": [ "note"]
+},
+
+{
+		"title": "Why you should choose me?.en",
+		"date":"Mon Nov 24 2025 08:02:28 GMT+0000 (Coordinated Universal Time)",
+		"url":"/service/obsidian-powered-website/why-you-should-choose-me-en/",
+		"content": "Why Clients Will Choose ME Over Any Other Web Developer\n\nYou wake up tomorrow with a real, live, public website already online – no waiting weeks, no back-and-forth, no “learning curve”. I deliver it 100 % ready in 24–48 hours.\nZero recurring costs forever: no hosting bills, no WordPress updates, no plugin subscriptions. GitHub Pages = free for life.\nYou keep 100 % ownership and control – everything lives in your own GitHub account (not mine, not some shady agency server).\nI set it up so you never touch code again if you don’t want to. You just open Obsidian (the app you probably already love) → write or drag-and-drop → save → your site updates automatically in seconds.\n\nWhy Obsidian Is the Perfect Brain for Your Website\n\nYou already think in notes and links – Obsidian is the best tool on earth for that.\nWrite once, publish everywhere: the same vault becomes your personal knowledge base AND your public website.\nBeautiful typography, instant search, tags, backlinks, graph view – all work on the live site with zero extra plugins.\nWorks offline, syncs with your phone, supports folders, images, PDFs, embeds, everything you already use.\nFuture-proof: if you ever outgrow it, your content is just Markdown files – you can move anywhere tomorrow.\n\nWhy GitHub + GitHub Pages Beats Every Other Option\n\nWhat People Usually Pay For\nMonthly Cost\nYour Cost With My Service\n\nShared hosting + WordPress\n$5–30/mo\n$0 forever\n\nNetlify / Vercel (free tier)\n$0–20/mo\n$0 forever\n\nCustom domain (you bring it)\n$12/year\nSame $12/year\n\nSecurity updates, backups, plugins\nHours of work\nHandled automatically\n\nGitHub Pages is powered by the same infrastructure that runs millions of sites – rock-solid, globally fast, HTTPS by default.\nAutomatic HTTPS certificate, automatic scaling, 99.99 % uptime – better than most paid hosts.\nBuilt-in version history: break something? Just click “revert” in GitHub. No backups to manage.\n\nWhy So Incredibly Cheap ($5–10 range)\nBecause I’m not selling you hosting, servers, or my time forever.\nI’m selling you one afternoon of my expertise to save you 50+ hours of frustration and hundreds of dollars per year.\nMost freelancers charge $300–$1500 for a custom static site.\nI charge less than a dinner for two because:\n\nThe entire stack is free (GitHub + Obsidian + open-source themes)\nI reuse the same bulletproof template (customized for you in minutes)\nMy mission is to get as many people as possible publishing this way – the lower the price, the more lives I change.\n\nWho This Is Perfect For (make them see themselves)\n\nWriters who are tired of Medium taking their traffic\nResearchers &amp; students who want a beautiful public vault\nIndie hackers needing a landing page or documentation site\nConsultants wanting a clean portfolio without the bloat\nAnyone who believes their notes deserve to be seen by the world\n\nIf you’ve ever thought “I wish my Obsidian notes could just be my website” – this gig turns that wish into reality tomorrow morning.\nReady? Send me your GitHub username (or say “create one for me”) and the site name you want.\nI’ll handle everything else and hand you the keys to your new permanent corner of the internet.\nClick “Order Now” and tomorrow you’ll have a real website that updates every time you click a button in Obsidian.",
 		"tags": [ "note"]
 }
 ]
