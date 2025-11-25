@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:50:13.353+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:56:34.575+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -416,11 +416,11 @@ Shows page 5 directly.
 
 
 - [ ] *Syntax*:
-<code>
-![[photo.jpg\|photo.jpg]]
-![[photo.jpg\|400x300]]
-![[photo.jpg\|right]]
-</code>
+```code
+![ [photo.jpg] ]
+![ [photo.jpg|400x300] ]
+![ [photo.jpg|right|250] ]
+```
 Aligns right with width 250px.
 - [x] *Result*:
 
@@ -510,7 +510,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:50:13.353+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:56:34.575+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -927,11 +927,11 @@ Shows page 5 directly.
 
 
 - [ ] *Syntax*:
-<code>
-![[photo.jpg]]
-![[photo.jpg|400x300]]
-![[photo.jpg|right|250]]
-</code>
+```code
+![ [photo.jpg] ]
+![ [photo.jpg|400x300] ]
+![ [photo.jpg|right|250] ]
+```
 Aligns right with width 250px.
 - [x] *Result*:
 
