@@ -1,1024 +1,229 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-25T19:44:04.684+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-25T19:53:15.149+05:00"}
 ---
 
-# ==Obsidian Beginner’s Guide (English) – Clean & Visual==
-> [!warning] Reminder:
-> #### Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
 
+# Obsidian — Boshlovchilar uchun qo'llanma (O'zbek tilida)
 
+## 001. Yangi hamyon ochish (Yangi Vault yaratish)
+1. Obsidian-ni oching  
+2. “Create new vault” tugmasini bosing  
+3. Vault nomini kiriting (masalan: «Mening Bilimlarim»)  
+4. Kompyuteringizda kerakli joyni tanlang → “Create”  
+5. Tayyor! Endi bu papka ichidagi barcha .md fayllar Obsidian bilan ochiladi.
 
+## 002. O'zbek Tiliga O'tish
+- Sozlamalar → Appearance → Language  
+- “Uzbek (Ўзбек)” ni tanlang  
+- Dasturni qayta ishga tushiring → hammasi o‘zbekcha bo‘ladi.
 
+## 003. Yangi Eslatma Yaratish
+- Ctrl + N → yangi bo‘sh eslatma  
+- Yoki chap paneldagi “+” belgini bosing  
+- Fayl nomini darhol lotin yoki kirillda yozishingiz mumkin.
 
----
-# 001. Install Obsidian in 1 Minute
-
-1. Go to [obsidian.md](https://obsidian.md)
-2. Download the installer for your OS (Windows/Mac/Linux)
-3. Run the installer → Follow prompts
-4. Launch Obsidian → Done! It's free and open-source.
-
-
-
----
-# 002. Switch to Uzbek Language Fast
-
-1. Settings → Appearance → Language
-2. Select “Uzbek (Ўзбек)”
-3. Restart the app → Everything switches to Uzbek.
-
-
----
-# 003. Create New Note in One Click
-
-1. Press Ctrl + N → New blank note
-2. Or click “+” in the left sidebar
-3. Name the file right away (supports Latin or Cyrillic).
-
-
-
----
-# 004. Headings with Hash Levels
-
-
-- [ ] *Syntax*:
+## 004. Sarlavhalar Bilan Ishlash
 ```markdown
-# H1 Heading
-## H2 Heading
-### H3 Heading
-#### H4 Heading
-##### H5 Heading
-###### H6 Heading (smallest)
+# H1 — Eng katta sarlavha
+## H2
+### H3
+#### H4
+##### H5
+###### H6 — eng kichik
 ```
-- [>] *Result*:
 
-# H1 Heading
-## H2 Heading
-### H3 Heading
-#### H4 Heading
-##### H5 Heading
-###### H6 Heading (smallest)
-
-
-
----
-# 005. How to Make Text Bold in Obsidian
-
-
-- [ ] *Syntax*:
+## 005. Qalin Matn Yozish
 ```markdown
-**bold** or __bold__
+**qalin matn** yoki __qalin matn__
+→ ko‘rinishi: **qalin matn**
 ```
-- [>] *Result*: → **bold**
 
-
-
-
-
----
-# 006. How to Write Italic Text Fast
-
-
-- [ ] *Syntax*:
+## 006. Qiya Matn Yozish
 ```markdown
-*italic* or _italic_
+* qiya matn * yoki _qiya matn_
+→ ko‘rinishi: *qiya matn*
 ```
-- [>] *Result*: → *italic*
 
-
-
-
-
----
-# 007. Strikethrough Text Tutorial
-
-
-- [ ] *Syntax*:
+## 007. Ustiga Chizilgan Matn
 ```markdown
-~~strikethrough~~
+~~ustiga chizilgan~~
+→ ko‘rinishi: ~~ustiga chizilgan~~
 ```
-- [>] *Result*: → ~~strikethrough~~
 
-
-
-
-
----
-# 008. Highlight Important Text Easily
-
-
-- [ ] *Syntax*:
+## 008. Matnni Belgilash (Highlight)
 ```markdown
-==highlight==
+==belgilangan matn==
+yoki
+`bitta backtick ichida` → bitta backtick ichida
 ```
-- [>] *Result*: → ==highlight==
 
+## 009. Tez Formatlash
+Tanlangan matn ustida:
+- Ctrl + B → **qalin**
+- Ctrl + I → *qiya*
+- Ctrl + D → ~~ustiga chizish~~
+- Alt + H → ==belgilash==
 
-
-
-
----
-# 009. Toolbar Quick Formatting Tips
-Select text → use:
-- `Ctrl+B` → **bold**
-- `Ctrl+I` → *italic*
-- `Ctrl+D` → ~~strikethrough~~
-- `Alt+H` → ==highlight==
-
-
-
-
-
----
-# 010. Horizontal Divider Line in Obsidian
-
-
-- [ ] *Syntax*:
+## 010. Gorizontal Chiziq
 ```markdown
 ---
+yoki
 ***
+yoki
 ___
 ```
-- [>] *Result*:
 
----
-
-
-
-
-
----
-# 011. Block Quotes for Better Notes
-
-
-- [ ] *Syntax*:
+## 011. Blok Iqtibos Yaratish
 ```markdown
-> Single level quote
->> Nested quote
+> Oddiy iqtibos
+> 
+> > Ichma-ich iqtibos
 ```
-- [>] *Result*:
 
-> Single level quote
->> Nested quote
-
-
-
-
-
----
-# 012. Bulleted Lists in Obsidian
-
-
-- [ ] *Syntax*:
+## 012. Tartiblanmagan Ro'yxat
 ```markdown
-- Item 1
-- Item 2
-  - Sub-item
+- Birinchi band
+- Ikkinchi band
+  - Ichki band (2 bo‘sh joy yoki Tab)
 ```
-- [>] *Result*:
-- Item 1
-- Item 2
-  - Sub-item
 
-
-
-
-
----
-# 013. Numbered Lists Step by Step
-
-
-- [ ] *Syntax*:
+## 013. Tartiblangan Ro'yxat
 ```markdown
-1. First
-2. Second
-   3. Sub 1
-   4. Sub 2
+1. Birinchi
+2. Ikkinchi
+   3. Ichki 1
+   4. Ichki 2
 ```
-- [>] *Result*:
-1. First
-2. Second
-   3. Sub 1
-   4. Sub 2
 
+## 014. Ro'yxat Sathini O'zgartirish
+- Tab → o‘ngga surish (sathni oshirish)
+- Shift + Tab → chapga surish (sathni kamaytirish)
 
-
-
-
----
-# 014. Indent and Outdent Lists
-`Tab` → indent  `Shift+Tab` → outdent
-
-
-
-
-
----
-# 015. Task Checkboxes in Obsidian
-
-
-- [ ] *Syntax*:
+## 015. Checkbox Vazifalar (Task)
 ```markdown
-- [ ] Not done
-- [x] Done
-- [>] Deferred
-- [?] Question
+- [ ] Bajarilmagan vazifa
+- [x] Bajarilgan vazifa
+- [>] Keyinga qoldirilgan
+- [?] Savol
 ```
-- [>] *Result*:
 
-- [ ] Not done
-- [x] Done
-- [>] Deferred
-- [?] Question
-
-
-
-
-
----
-# 016. Add External Links Correctly
-
-
-- [ ] *Syntax*:
+## 016. Tashqi Havola Qo'yish
 ```markdown
-[Obsidian](https://obsidian.md)
+[Google](https://google.com)
 ```
-- [>] *Result*: → [Obsidian](https://obsidian.md)
 
-
-
-
-
----
-# 017. Simple Internal Links Wiki Style
-
-
-- [ ] *Syntax*:
+## 017. Oddiy Ichki Link
 ```markdown
-[[031. Math in Obsidian\|031. Math in Obsidian]]
+[[001. Yangi hamyon ochish]]
 ```
-- [>] *Result*: → [[031. Math in Obsidian\|031. Math in Obsidian]]
 
-
-
-
-
----
-# 018. Aliased Internal Links
-
-
-- [ ] *Syntax*:
+## 018. Nomlangan Ichki Link
 ```markdown
-[[031. Math in Obsidian\|LaTeX Guide]]
+[[001. Yangi hamyon ochish|Yangi vault qanday ochiladi?]]
 ```
-- [>] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
 
-
-
-
-
----
-# 019. Link to Headings Inside Note
-
-
-- [ ] *Syntax*:
+## 019. Sarlavhaga Link Berish
 ```markdown
-[[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Bold Text]]
+[[Obsidian qo‘llanma#005. Qalin Matn Yozish|Qalin matn haqida]]
 ```
-- [>] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])
 
-
-
-
-
----
-# 020. Embed Notes with Exclamation
-
-
-- [ ] *Syntax*:
-<b>```here put following script```</b>
+## 020. Eslatmani Biriktirish (Embed)
 ```markdown
-![[001. Install Obsidian in 1 Minute]]
+![[001. Yangi hamyon ochish]]
+yoki kichikroq ko‘rsatish uchun:
+![[foto.jpg|300]] ← rasmni 300px ga qisqartiradi
 ```
-- [>] *Result*: → (embeds the whole note here)
 
-Resize example:  
+## 021. Kod Bloklari Yaratish
+\`\`\`python
+print("Salom dunyo!")
+\`\`\`
+
+## 022. Jadval Qo'shish
 ```markdown
-![[photo.jpg|300]]
+| Ism        | Yosh | Shahar     |
+|------------|:----:|-----------|
+| Ali        | 25   | Toshkent  |
+| Vali       | 30   | Samarqand |
 ```
 
+## 023. Media Uchun Papka Tayyorlash
+Vault ichida papka yarating → masalan: `00-Attachments` yoki `Fayllar`  
+Keyin media fayllarni shu yerga tashlang.
 
-
-
-
----
-# 021. Code Blocks and Syntax Highlight
-
-
-- [ ] *Syntax*:
-    ```python
-    print("Hello Obsidian!")
-    ```
-- [>] *Result*:  
-```python
-print("Hello Obsidian!")
-```
-
-
-
-
-
----
-# 022. Create Tables in Obsidian Fast
-
-
-- [ ] *Syntax*:
+## 024. Musiqa Biriktirish
 ```markdown
-| Name   | Age | City       |
-|:-------|:---:|-----------:|
-| Ali    | 25  | Tashkent   |
-| Vali   | 30  | Samarkand  |
+![[music.mp3]]
+yoki to‘g‘ridan hyperlink:
+[audio](music.mp3)
 ```
-- [>] *Result*:
 
-| Name   | Age | City       |
-|:-------|:---:|-----------:|
-| Ali    | 25  | Tashkent   |
-| Vali   | 30  | Samarkand  |
-
-
-
-
-
----
-# 023. Assets Folder Setup
-
-
-- [ ] *Syntax*:
-Create folder → `Assets` or `Attachments` → drop all media there.
-
-
-
-
-
----
-# 024. Embed Audio Files in Notes
-
-
-- [ ] *Syntax*:
-```markdown
-![[song.mp3]]
-```
-Plays inline.
-- [>] *Result*:
-
-
-
-
----
-# 025. Embed Local Video Files Easily
-
-
-- [ ] *Syntax*:
+## 025. Video Biriktirish
 ```markdown
 ![[video.mp4]]
+yoki YouTube:
+![[https://youtu.be/dQw4w9WgXcQ]]
 ```
-Plays inside the note.
-- [>] *Result*:
 
-
-
-
----
-# 026. Embed PDF Documents in Obsidian
-
-
-- [ ] *Syntax*:
+## 026. PDF Biriktirish
 ```markdown
-![[paper.pdf]]
-![[paper.pdf#page=5]]
+![[kitob.pdf]]
+yoki faqat sahifani ko‘rsatish:
+![[kitob.pdf#page=15]]
 ```
-Shows page 5 directly.
-- [>] *Result*:
 
-
-
-
----
-# 027. Add and Embed Images Properly
-
-
-- [ ] *Syntax*:
+## 027. Rasm Biriktirish
 ```markdown
-![[photo.jpg]]
-![[photo.jpg|400x300]]
-![[photo.jpg|right|250]]
+![[rasm.jpg]]
+![[rasm.png|300x400]] ← kenglik va balandlik
+![[rasm.webp|right|300]] ← o‘ng tomonda
 ```
-Aligns right with width 250px.
-- [>] *Result*:
 
-
-
-
----
-# 028. Embed Maps
-
-
-- [ ] *Syntax*:
+## 028. Xarita Biriktirish (Obsidian Maps yoki oddiy)
 ```markdown
-![[map-screenshot.jpg]]
+![[xarita.png]]
+yoki onlayn xarita:
+[Google Maps](https://maps.app.goo.gl/...)
 ```
-- [>] *Result*:
 
-or link:  
-[Google Maps Location](https://goo.gl/maps/...)
-- [>] *Result*:
-
-
-
-
----
-# 029. Callouts for Beautiful Notes
-
-
-- [ ] *Syntax*:
+## 029. Konvert Bloklari (Callouts)
 ```markdown
-> [!info] Title
-> Useful information
+> [!info] Ma’lumot
+> Bu yerda muhim ma’lumotlar
+
+> [!tip] Maslahat
+> Foydali maslahat
+
+> [!warning] Ehtiyot bo‘ling
+> Xavfli harakat
+
+> [!question] Savol
+> Nimani aniqlashtirish kerak?
 ```
-- [>] *Result*:
-> [!info] Title
-> Useful information
 
+Boshqa turlari: `note`, `abstract`, `success`, `error`, `example`, `quote`
 
-- [ ] *Syntax*:
-```markdown
-> [!tip] Quick Tip
-> Save time with this!
-```
-- [>] *Result*:
-> [!tip] Quick Tip
-> Save time with this!
-
-
-- [ ] *Syntax*:
-```markdown
-> [!warning] Careful
-> This might break something
-```
-- [>] *Result*:
-> [!warning] Careful
-> This might break something
-
-Other types: `note`, `abstract`, `success`, `error`, `example`, `quote`
-
-
-
-
-
----
-# 030. Flowcharts and Diagrams Fast (Mermaid)
-
-
-- [ ] *Syntax*:
-``` code
-mermaid
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Good]
-    B -->|No| D[Try Again]
-```
-- [>] *Result*:
+## 030. Mermaid Diagrammalar
 ```mermaid
 graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Good]
-    B -->|No| D[Try Again]
+    A[Obsidian] --> B[Yangi eslatma]
+    A --> C[Linklar]
+    A --> D[Pluginlar]
 ```
 
+Yana misollar: flowchart, sequence, gantt, pie chart va boshqalar.
 
-
-
-
----
-# 031. Math in Obsidian | LaTeX
-### Inline:  
-
-
-- [ ] *Syntax*
-`$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-25T19:44:04.684+05:00"}
----
-
-# ==Obsidian Beginner’s Guide (English) – Clean & Visual==
-> [!warning] Reminder:
-> #### Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
-
-
-
-
-
----
-# 001. Install Obsidian in 1 Minute
-
-1. Go to [obsidian.md](https://obsidian.md)
-2. Download the installer for your OS (Windows/Mac/Linux)
-3. Run the installer → Follow prompts
-4. Launch Obsidian → Done! It's free and open-source.
-
-
-
----
-# 002. Switch to Uzbek Language Fast
-
-1. Settings → Appearance → Language
-2. Select “Uzbek (Ўзбек)”
-3. Restart the app → Everything switches to Uzbek.
-
-
----
-# 003. Create New Note in One Click
-
-1. Press Ctrl + N → New blank note
-2. Or click “+” in the left sidebar
-3. Name the file right away (supports Latin or Cyrillic).
-
-
-
----
-# 004. Headings with Hash Levels
-
-
-- [ ] *Syntax*:
+## 031. Matematik Ifodalar | LaTeX
+Bir qatorli:
 ```markdown
-# H1 Heading
-## H2 Heading
-### H3 Heading
-#### H4 Heading
-##### H5 Heading
-###### H6 Heading (smallest)
+$ E = mc^2 $
 ```
-- [>] *Result*:
 
-# H1 Heading
-## H2 Heading
-### H3 Heading
-#### H4 Heading
-##### H5 Heading
-###### H6 Heading (smallest)
-
-
-
----
-# 005. How to Make Text Bold in Obsidian
-
-
-- [ ] *Syntax*:
+Blok ichida:
 ```markdown
-**bold** or __bold__
+$ \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2} $
 ```
-- [>] *Result*: → **bold**
+Ko'rinishi:
+$$ \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2} $$
 
-
-
-
-
----
-# 006. How to Write Italic Text Fast
-
-
-- [ ] *Syntax*:
-```markdown
-*italic* or _italic_
-```
-- [>] *Result*: → *italic*
-
-
-
-
-
----
-# 007. Strikethrough Text Tutorial
-
-
-- [ ] *Syntax*:
-```markdown
-~~strikethrough~~
-```
-- [>] *Result*: → ~~strikethrough~~
-
-
-
-
-
----
-# 008. Highlight Important Text Easily
-
-
-- [ ] *Syntax*:
-```markdown
-==highlight==
-```
-- [>] *Result*: → ==highlight==
-
-
-
-
-
----
-# 009. Toolbar Quick Formatting Tips
-Select text → use:
-- `Ctrl+B` → **bold**
-- `Ctrl+I` → *italic*
-- `Ctrl+D` → ~~strikethrough~~
-- `Alt+H` → ==highlight==
-
-
-
-
-
----
-# 010. Horizontal Divider Line in Obsidian
-
-
-- [ ] *Syntax*:
-```markdown
----
-***
-___
-```
-- [>] *Result*:
-
----
-
-
-
-
-
----
-# 011. Block Quotes for Better Notes
-
-
-- [ ] *Syntax*:
-```markdown
-> Single level quote
->> Nested quote
-```
-- [>] *Result*:
-
-> Single level quote
->> Nested quote
-
-
-
-
-
----
-# 012. Bulleted Lists in Obsidian
-
-
-- [ ] *Syntax*:
-```markdown
-- Item 1
-- Item 2
-  - Sub-item
-```
-- [>] *Result*:
-- Item 1
-- Item 2
-  - Sub-item
-
-
-
-
-
----
-# 013. Numbered Lists Step by Step
-
-
-- [ ] *Syntax*:
-```markdown
-1. First
-2. Second
-   3. Sub 1
-   4. Sub 2
-```
-- [>] *Result*:
-1. First
-2. Second
-   3. Sub 1
-   4. Sub 2
-
-
-
-
-
----
-# 014. Indent and Outdent Lists
-`Tab` → indent  `Shift+Tab` → outdent
-
-
-
-
-
----
-# 015. Task Checkboxes in Obsidian
-
-
-- [ ] *Syntax*:
-```markdown
-- [ ] Not done
-- [x] Done
-- [>] Deferred
-- [?] Question
-```
-- [>] *Result*:
-
-- [ ] Not done
-- [x] Done
-- [>] Deferred
-- [?] Question
-
-
-
-
-
----
-# 016. Add External Links Correctly
-
-
-- [ ] *Syntax*:
-```markdown
-[Obsidian](https://obsidian.md)
-```
-- [>] *Result*: → [Obsidian](https://obsidian.md)
-
-
-
-
-
----
-# 017. Simple Internal Links Wiki Style
-
-
-- [ ] *Syntax*:
-```markdown
-[[031. Math in Obsidian]]
-```
-- [>] *Result*: → [[031. Math in Obsidian]]
-
-
-
-
-
----
-# 018. Aliased Internal Links
-
-
-- [ ] *Syntax*:
-```markdown
-[[031. Math in Obsidian\|LaTeX Guide]]
-```
-- [>] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
-
-
-
-
-
----
-# 019. Link to Headings Inside Note
-
-
-- [ ] *Syntax*:
-```markdown
-[[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Bold Text]]
-```
-- [>] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])
-
-
-
-
-
----
-# 020. Embed Notes with Exclamation
-
-
-- [ ] *Syntax*:
-<b>```here put following script```</b>
-```markdown
-![[001. Install Obsidian in 1 Minute]]
-```
-- [>] *Result*: → (embeds the whole note here)
-
-Resize example:  
-```markdown
-![[photo.jpg|300]]
-```
-
-
-
-
-
----
-# 021. Code Blocks and Syntax Highlight
-
-
-- [ ] *Syntax*:
-    ```python
-    print("Hello Obsidian!")
-    ```
-- [>] *Result*:  
-```python
-print("Hello Obsidian!")
-```
-
-
-
-
-
----
-# 022. Create Tables in Obsidian Fast
-
-
-- [ ] *Syntax*:
-```markdown
-| Name   | Age | City       |
-|:-------|:---:|-----------:|
-| Ali    | 25  | Tashkent   |
-| Vali   | 30  | Samarkand  |
-```
-- [>] *Result*:
-
-| Name   | Age | City       |
-|:-------|:---:|-----------:|
-| Ali    | 25  | Tashkent   |
-| Vali   | 30  | Samarkand  |
-
-
-
-
-
----
-# 023. Assets Folder Setup
-
-
-- [ ] *Syntax*:
-Create folder → `Assets` or `Attachments` → drop all media there.
-
-
-
-
-
----
-# 024. Embed Audio Files in Notes
-
-
-- [ ] *Syntax*:
-```markdown
-![[song.mp3]]
-```
-Plays inline.
-- [>] *Result*:
-
-
-
-
----
-# 025. Embed Local Video Files Easily
-
-
-- [ ] *Syntax*:
-```markdown
-![[video.mp4]]
-```
-Plays inside the note.
-- [>] *Result*:
-
-
-
-
----
-# 026. Embed PDF Documents in Obsidian
-
-
-- [ ] *Syntax*:
-```markdown
-![[paper.pdf]]
-![[paper.pdf#page=5]]
-```
-Shows page 5 directly.
-- [>] *Result*:
-
-
-
-
----
-# 027. Add and Embed Images Properly
-
-
-- [ ] *Syntax*:
-```markdown
-![[photo.jpg]]
-![[photo.jpg|400x300]]
-![[photo.jpg|right|250]]
-```
-Aligns right with width 250px.
-- [>] *Result*:
-
-
-
-
----
-# 028. Embed Maps
-
-
-- [ ] *Syntax*:
-```markdown
-![[map-screenshot.jpg]]
-```
-- [>] *Result*:
-
-or link:  
-[Google Maps Location](https://goo.gl/maps/...)
-- [>] *Result*:
-
-
-
-
----
-# 029. Callouts for Beautiful Notes
-
-
-- [ ] *Syntax*:
-```markdown
-> [!info] Title
-> Useful information
-```
-- [>] *Result*:
-> [!info] Title
-> Useful information
-
-
-- [ ] *Syntax*:
-```markdown
-> [!tip] Quick Tip
-> Save time with this!
-```
-- [>] *Result*:
-> [!tip] Quick Tip
-> Save time with this!
-
-
-- [ ] *Syntax*:
-```markdown
-> [!warning] Careful
-> This might break something
-```
-- [>] *Result*:
-> [!warning] Careful
-> This might break something
-
-Other types: `note`, `abstract`, `success`, `error`, `example`, `quote`
-
-
-
-
-
----
-# 030. Flowcharts and Diagrams Fast (Mermaid)
-
-
-- [ ] *Syntax*:
-``` code
-mermaid
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Good]
-    B -->|No| D[Try Again]
-```
-- [>] *Result*:
-```mermaid
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Good]
-    B -->|No| D[Try Again]
-
-- [>] *Result*:
-$E = mc^2$
-
-### Block:  
-
-
-- [ ] *Syntax*
-```markdown
-$$
-\int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
-$$
-```
-- [>] *Result*:
-$$
-\int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
-$$
-
-## You’ve mastered Obsidian basics!  
-Next step: enable Core Plugins → Graph View, Daily Notes, and explore Community Plugins. Happy note-taking! 🚀
+## Tabriklaymiz, endi siz Obsidian-ning asosiy funksiyalarini to‘liq bilasiz!  
