@@ -1,12 +1,16 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:28:27.959+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:35:06.487+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
 > [!warning] Reminder:
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
 
-
+```markdown
+!\[\[photo.jpg\]\]
+!\[\[photo.jpg|400x300\]\]
+!\[\[photo.jpg|right|250\]\]
+```
 ---
 # 001. Install Obsidian in 1 Minute
 
@@ -510,14 +514,18 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:28:27.959+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:35:06.487+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
 > [!warning] Reminder:
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
 
-
+```markdown
+!\[\[photo.jpg\]\]
+!\[\[photo.jpg|400x300\]\]
+!\[\[photo.jpg|right|250\]\]
+```
 ---
 # 001. Install Obsidian in 1 Minute
 
