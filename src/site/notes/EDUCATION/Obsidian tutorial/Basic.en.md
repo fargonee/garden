@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:01:20.840+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:03:21.542+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -8,7 +8,7 @@
 
 
 
-<div>![[somefile.png\|somefile.png]]</div>
+<div>![[[somefile.png\|[somefile.png]]]</div>
 ---
 # 001. Install Obsidian in 1 Minute
 
@@ -509,7 +509,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:01:20.840+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:03:21.542+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -518,7 +518,7 @@ graph TD
 
 
 
-<div>![[somefile.png]]</div>
+<div>![[[somefile.png]]]</div>
 ---
 # 001. Install Obsidian in 1 Minute
 
