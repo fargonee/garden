@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T19:53:19.909+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T19:57:38.206+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -50,7 +50,7 @@
 ##### H5 Heading
 ###### H6 Heading (smallest)
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 # H1 Heading (Biggest)
 ## H2 Heading
@@ -69,7 +69,7 @@
 ```markdown
 **bold** or __bold__
 ```
-- [>] *Result*: 
+- [x] *Result*: 
 **bold** or __bold__
 
 
@@ -82,7 +82,7 @@
 ```markdown
 *italic* or _italic_
 ```
-- [>] *Result*:
+- [x] *Result*:
 *italic* or _italic_
 
 
@@ -96,7 +96,7 @@
 ```markdown
 ~~strikethrough~~
 ```
-- [>] *Result*:
+- [x] *Result*:
 ~~strikethrough~~
 
 
@@ -111,7 +111,7 @@
 ```markdown
 ==highlight==
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -140,7 +140,7 @@ Select text → use:
 ***
 ___
 ```
-- [>] *Result*:
+- [x] *Result*:
 ---
 ***
 ___
@@ -157,7 +157,7 @@ ___
 > Single level quote
 >> Nested quote
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 > Single level quote
 >> Nested quote
@@ -176,7 +176,7 @@ ___
 - Item 2
   - Sub-item
 ```
-- [>] *Result*:
+- [x] *Result*:
 - Item 1
 - Item 2
   - Sub-item
@@ -196,7 +196,7 @@ ___
    3. Sub 1
    4. Sub 2
 ```
-- [>] *Result*:
+- [x] *Result*:
 1. First
 2. Second
    3. Sub 1
@@ -226,7 +226,7 @@ ___
 - [>] Deferred
 - [?] Question
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 - [ ] Not done
 - [x] Done
@@ -245,7 +245,7 @@ ___
 ```markdown
 [Obsidian](https://obsidian.md)
 ```
-- [>] *Result*: → [Obsidian](https://obsidian.md)
+- [x] *Result*: → [Obsidian](https://obsidian.md)
 
 
 
@@ -259,7 +259,7 @@ ___
 ```markdown
 [[031. Math in Obsidian\|031. Math in Obsidian]]
 ```
-- [>] *Result*: → [[031. Math in Obsidian\|031. Math in Obsidian]]
+- [x] *Result*: → [[031. Math in Obsidian\|031. Math in Obsidian]]
 
 
 
@@ -273,7 +273,7 @@ ___
 ```markdown
 [[031. Math in Obsidian\|LaTeX Guide]]
 ```
-- [>] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
+- [x] *Result*: → [LaTeX Guide]([[031. Math in Obsidian\|031. Math in Obsidian]])
 
 
 
@@ -287,7 +287,7 @@ ___
 ```markdown
 [[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Bold Text]]
 ```
-- [>] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])
+- [x] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Obsidian Guide#005. How to Make Text Bold in Obsidian]])
 
 
 
@@ -298,15 +298,14 @@ ___
 
 
 - [ ] *Syntax*:
-<b>```here put following script```</b>
 ```markdown
-![[001. Install Obsidian in 1 Minute]]
+![[001. Install Obsidian in 1 Minute\|001. Install Obsidian in 1 Minute]]
 ```
-- [>] *Result*: → (embeds the whole note here)
+- [x] *Result*: → (embeds the whole note here)
 
 Resize example:  
 ```markdown
-![[photo.jpg|300]]
+![[photo.jpg\|300]]
 ```
 
 
@@ -321,7 +320,7 @@ Resize example:
     ```python
     print("Hello Obsidian!")
     ```
-- [>] *Result*:  
+- [x] *Result*:  
 ```python
 print("Hello Obsidian!")
 ```
@@ -341,7 +340,7 @@ print("Hello Obsidian!")
 | Ali    | 25  | Tashkent   |
 | Vali   | 30  | Samarkand  |
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 | Name   | Age | City       |
 |:-------|:---:|-----------:|
@@ -369,10 +368,10 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 
 - [ ] *Syntax*:
 ```markdown
-![[song.mp3]]
+![[song.mp3\|song.mp3]]
 ```
 Plays inline.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -383,10 +382,10 @@ Plays inline.
 
 - [ ] *Syntax*:
 ```markdown
-![[video.mp4]]
+![[video.mp4\|video.mp4]]
 ```
 Plays inside the note.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -397,11 +396,11 @@ Plays inside the note.
 
 - [ ] *Syntax*:
 ```markdown
-![[paper.pdf]]
-![[paper.pdf#page=5]]
+![[paper.pdf\|paper.pdf]]
+![[paper.pdf#page=5\|paper.pdf#page=5]]
 ```
 Shows page 5 directly.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -412,12 +411,12 @@ Shows page 5 directly.
 
 - [ ] *Syntax*:
 ```markdown
-![[photo.jpg]]
-![[photo.jpg|400x300]]
-![[photo.jpg|right|250]]
+![[photo.jpg\|photo.jpg]]
+![[photo.jpg\|400x300]]
+![[photo.jpg\|right]]
 ```
 Aligns right with width 250px.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -428,13 +427,13 @@ Aligns right with width 250px.
 
 - [ ] *Syntax*:
 ```markdown
-![[map-screenshot.jpg]]
+![[map-screenshot.jpg\|map-screenshot.jpg]]
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 or link:  
 [Google Maps Location](https://goo.gl/maps/...)
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -448,7 +447,7 @@ or link:
 > [!info] Title
 > Useful information
 ```
-- [>] *Result*:
+- [x] *Result*:
 > [!info] Title
 > Useful information
 
@@ -458,7 +457,7 @@ or link:
 > [!tip] Quick Tip
 > Save time with this!
 ```
-- [>] *Result*:
+- [x] *Result*:
 > [!tip] Quick Tip
 > Save time with this!
 
@@ -468,7 +467,7 @@ or link:
 > [!warning] Careful
 > This might break something
 ```
-- [>] *Result*:
+- [x] *Result*:
 > [!warning] Careful
 > This might break something
 
@@ -480,7 +479,7 @@ Other types: `note`, `abstract`, `success`, `error`, `example`, `quote`
 
 ---
 # 030. Flowcharts and Diagrams Fast (Mermaid)
-
+#InsideTripleBacktics 
 
 - [ ] *Syntax*:
 ``` code
@@ -490,7 +489,7 @@ graph TD
     B -->|Yes| C[Good]
     B -->|No| D[Try Again]
 ```
-- [>] *Result*:
+- [x] *Result*:
 ```mermaid
 graph TD
     A[Start] --> B{Decision}
@@ -509,7 +508,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T19:53:19.909+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T19:57:38.206+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -560,7 +559,7 @@ graph TD
 ##### H5 Heading
 ###### H6 Heading (smallest)
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 # H1 Heading (Biggest)
 ## H2 Heading
@@ -579,7 +578,7 @@ graph TD
 ```markdown
 **bold** or __bold__
 ```
-- [>] *Result*: 
+- [x] *Result*: 
 **bold** or __bold__
 
 
@@ -592,7 +591,7 @@ graph TD
 ```markdown
 *italic* or _italic_
 ```
-- [>] *Result*:
+- [x] *Result*:
 *italic* or _italic_
 
 
@@ -606,7 +605,7 @@ graph TD
 ```markdown
 ~~strikethrough~~
 ```
-- [>] *Result*:
+- [x] *Result*:
 ~~strikethrough~~
 
 
@@ -621,7 +620,7 @@ graph TD
 ```markdown
 ==highlight==
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -650,7 +649,7 @@ Select text → use:
 ***
 ___
 ```
-- [>] *Result*:
+- [x] *Result*:
 ---
 ***
 ___
@@ -667,7 +666,7 @@ ___
 > Single level quote
 >> Nested quote
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 > Single level quote
 >> Nested quote
@@ -686,7 +685,7 @@ ___
 - Item 2
   - Sub-item
 ```
-- [>] *Result*:
+- [x] *Result*:
 - Item 1
 - Item 2
   - Sub-item
@@ -706,7 +705,7 @@ ___
    3. Sub 1
    4. Sub 2
 ```
-- [>] *Result*:
+- [x] *Result*:
 1. First
 2. Second
    3. Sub 1
@@ -736,7 +735,7 @@ ___
 - [>] Deferred
 - [?] Question
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 - [ ] Not done
 - [x] Done
@@ -755,7 +754,7 @@ ___
 ```markdown
 [Obsidian](https://obsidian.md)
 ```
-- [>] *Result*: → [Obsidian](https://obsidian.md)
+- [x] *Result*: → [Obsidian](https://obsidian.md)
 
 
 
@@ -769,7 +768,7 @@ ___
 ```markdown
 [[031. Math in Obsidian]]
 ```
-- [>] *Result*: → [[031. Math in Obsidian]]
+- [x] *Result*: → [[031. Math in Obsidian]]
 
 
 
@@ -781,9 +780,9 @@ ___
 
 - [ ] *Syntax*:
 ```markdown
-[[031. Math in Obsidian\|LaTeX Guide]]
+[[031. Math in Obsidian|LaTeX Guide]]
 ```
-- [>] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
+- [x] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
 
 
 
@@ -795,9 +794,9 @@ ___
 
 - [ ] *Syntax*:
 ```markdown
-[[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Bold Text]]
+[[Obsidian Guide#005. How to Make Text Bold in Obsidian|Bold Text]]
 ```
-- [>] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])
+- [x] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])
 
 
 
@@ -808,11 +807,10 @@ ___
 
 
 - [ ] *Syntax*:
-<b>```here put following script```</b>
 ```markdown
 ![[001. Install Obsidian in 1 Minute]]
 ```
-- [>] *Result*: → (embeds the whole note here)
+- [x] *Result*: → (embeds the whole note here)
 
 Resize example:  
 ```markdown
@@ -831,7 +829,7 @@ Resize example:
     ```python
     print("Hello Obsidian!")
     ```
-- [>] *Result*:  
+- [x] *Result*:  
 ```python
 print("Hello Obsidian!")
 ```
@@ -851,7 +849,7 @@ print("Hello Obsidian!")
 | Ali    | 25  | Tashkent   |
 | Vali   | 30  | Samarkand  |
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 | Name   | Age | City       |
 |:-------|:---:|-----------:|
@@ -882,7 +880,7 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 ![[song.mp3]]
 ```
 Plays inline.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -896,7 +894,7 @@ Plays inline.
 ![[video.mp4]]
 ```
 Plays inside the note.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -911,7 +909,7 @@ Plays inside the note.
 ![[paper.pdf#page=5]]
 ```
 Shows page 5 directly.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -927,7 +925,7 @@ Shows page 5 directly.
 ![[photo.jpg|right|250]]
 ```
 Aligns right with width 250px.
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -940,11 +938,11 @@ Aligns right with width 250px.
 ```markdown
 ![[map-screenshot.jpg]]
 ```
-- [>] *Result*:
+- [x] *Result*:
 
 or link:  
 [Google Maps Location](https://goo.gl/maps/...)
-- [>] *Result*:
+- [x] *Result*:
 
 
 
@@ -958,7 +956,7 @@ or link:
 > [!info] Title
 > Useful information
 ```
-- [>] *Result*:
+- [x] *Result*:
 > [!info] Title
 > Useful information
 
@@ -968,7 +966,7 @@ or link:
 > [!tip] Quick Tip
 > Save time with this!
 ```
-- [>] *Result*:
+- [x] *Result*:
 > [!tip] Quick Tip
 > Save time with this!
 
@@ -978,7 +976,7 @@ or link:
 > [!warning] Careful
 > This might break something
 ```
-- [>] *Result*:
+- [x] *Result*:
 > [!warning] Careful
 > This might break something
 
@@ -990,7 +988,7 @@ Other types: `note`, `abstract`, `success`, `error`, `example`, `quote`
 
 ---
 # 030. Flowcharts and Diagrams Fast (Mermaid)
-
+#InsideTripleBacktics 
 
 - [ ] *Syntax*:
 ``` code
@@ -1000,14 +998,14 @@ graph TD
     B -->|Yes| C[Good]
     B -->|No| D[Try Again]
 ```
-- [>] *Result*:
+- [x] *Result*:
 ```mermaid
 graph TD
     A[Start] --> B{Decision}
     B -->|Yes| C[Good]
     B -->|No| D[Try Again]
 
-- [>] *Result*:
+- [x] *Result*:
 $E = mc^2$
 
 ### Block:  
@@ -1019,7 +1017,7 @@ $$
 \int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
 $$
 ```
-- [>] *Result*:
+- [x] *Result*:
 $$
 \int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
 $$
