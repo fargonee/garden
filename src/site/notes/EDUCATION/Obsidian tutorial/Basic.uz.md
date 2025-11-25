@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","noteIcon":"","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-25T23:45:42.890+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","noteIcon":"","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-26T00:05:09.997+05:00"}
 ---
 
 
@@ -8,37 +8,37 @@
 
 
 # Mundarija
-[[#001. Yangi hamyon ochish (Yangi Vault yaratish)]]
-[[#002. O'zbek Tiliga O'tish]]
-[[#003. Yangi Eslatma Yaratish]]
-[[#004. Sarlavhalar Bilan Ishlash]]
-[[#005. Qalin Matn Yozish]]
-[[#006. Qiya Matn Yozish]]
-[[#007. Ustiga Chizilgan Matn]]
-[[#008. Matnni Belgilash (Highlight)]]
-[[#009. Tez Formatlash]]
-[[#010. Gorizontal Chiziq]]
-[[#011. Blok Iqtibos Yaratish]]
-[[#012. Tartiblanmagan Ro'yxat]]
-[[#013. Tartiblangan Ro'yxat]]
-[[#014. Ro'yxat Sathini O'zgartirish]]
-[[#015. Checkbox Vazifalar (Task)]]
-[[#016. Tashqi Havola Qo'yish]]
-[[#017. Oddiy Ichki Link]]
-[[#018. Nomlangan Ichki Link]]
-[[#019. Sarlavhaga Link Berish]]
-[[#020. Eslatmani Biriktirish (Embed)]]
-[[#021. Kod Bloklari Yaratish]]
-[[#022. Jadval Qo'shish]]
-[[#023. Media Uchun Papka Tayyorlash]]
-[[#024. Musiqa Biriktirish]]
-[[#025. Video Biriktirish]]
-[[#026. PDF Biriktirish]]
-[[#027. Rasm Biriktirish]]
-[[#028. Xarita Biriktirish (Obsidian Maps yoki oddiy)]]
-[[#029. Konvert Bloklari (Callouts)]]
-[[#030. Mermaid Diagrammalar]]
-[[#031. Matematik Ifodalar | LaTeX]]
+[001. Yangi hamyon ochish (Yangi Vault yaratish)](#001-yangi-hamyon-ochish-yangi-vault-yaratish)
+[002. O'zbek Tiliga O'tish](#002-o-zbek-tiliga-o-tish)
+[003. Yangi Eslatma Yaratish](#003-Yangi-Eslatma-Yaratish)
+[004. Sarlavhalar Bilan Ishlash](#004-Sarlavhalar-Bilan-Ishlash)
+[005. Qalin Matn Yozish](#005-Qalin-Matn-Yozish)
+[006. Qiya Matn Yozish](#006-Qiya-Matn-Yozish)
+[007. Ustiga Chizilgan Matn](#007-Ustiga-Chizilgan-Matn)
+[008. Matnni Belgilash (Highlight)](#008-Matnni-Belgilash-(Highlight))
+[009. Tez Formatlash](#009-Tez-Formatlash)
+[010. Gorizontal Chiziq](#010-Gorizontal-Chiziq)
+[011. Blok Iqtibos Yaratish](#011-Blok-Iqtibos-Yaratish)
+[012. Tartiblanmagan Ro'yxat](#012-Tartiblanmagan-Ro'yxat)
+[013. Tartiblangan Ro'yxat](#013-Tartiblangan-Ro'yxat)
+[014. Ro'yxat Sathini O'zgartirish](#014-Ro'yxat-Sathini-O'zgartirish)
+[015. Checkbox Vazifalar (Task)](#015-Checkbox-Vazifalar-(Task))
+[016. Tashqi Havola Qo'yish](#016-Tashqi-Havola-Qo'yish)
+[017. Oddiy Ichki Link](#017-Oddiy-Ichki-Link)
+[018. Nomlangan Ichki Link](#018-Nomlangan-Ichki-Link)
+[019. Sarlavhaga Link Berish](#019-Sarlavhaga-Link-Berish)
+[020. Eslatmani Biriktirish (Embed)](#020-Eslatmani-Biriktirish-(Embed))
+[021. Kod Bloklari Yaratish](#021-Kod-Bloklari-Yaratish)
+[022. Jadval Qo'shish](#022-Jadval-Qo'shish)
+[023. Media Uchun Papka Tayyorlash](#023-Media-Uchun-Papka-Tayyorlash)
+[024. Musiqa Biriktirish](#024-Musiqa-Biriktirish)
+[025. Video Biriktirish](#025-Video-Biriktirish)
+[026. PDF Biriktirish](#026-PDF-Biriktirish)
+[027. Rasm Biriktirish](#027-Rasm-Biriktirish)
+[028. Xarita Biriktirish (Obsidian Maps yoki oddiy)](#028-Xarita-Biriktirish-(Obsidian-Maps-yoki-oddiy))
+[029. Konvert Bloklari (Callouts)](#029-Konvert-Bloklari-(Callouts))
+[030. Mermaid Diagrammalar](#030-Mermaid-Diagrammalar)
+[031. Matematik Ifodalar | LaTeX](#031-Matematik-Ifodalar-|-LaTeX)
 
 
 > [!warning] Eslatma:
