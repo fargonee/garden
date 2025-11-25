@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:06:34.015+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:10:31.756+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -7,10 +7,6 @@
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
 
 
-
-```code
-![[[[somefile.png\|[[somefile.png]]]]
-```
 ---
 # 001. Install Obsidian in 1 Minute
 
@@ -258,7 +254,7 @@ ___
 
 - [ ] *Syntax*:
 ```code
-[[031. Math in Obsidian\|031. Math in Obsidian]]
+[[[[031. Math in Obsidian\|[[031. Math in Obsidian\|031. Math in Obsidian]]]]
 ```
 - [x] *Result*: → [[031. Math in Obsidian\|031. Math in Obsidian]]
 
@@ -272,9 +268,9 @@ ___
 
 - [ ] *Syntax*:
 ```code
-[[031. Math in Obsidian\|LaTeX Guide]]
+[[[[031. Math in Obsidian\|LaTeX Guide]]]]
 ```
-- [x] *Result*: → [LaTeX Guide]([[031. Math in Obsidian\|031. Math in Obsidian]])
+- [x] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
 
 
 
@@ -286,7 +282,7 @@ ___
 
 - [ ] *Syntax*:
 ```code
-[[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Bold Text]]
+[[[[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Bold Text]]]]
 ```
 - [x] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Obsidian Guide#005. How to Make Text Bold in Obsidian]])
 
@@ -300,13 +296,13 @@ ___
 
 - [ ] *Syntax*:
 ```code
-![[001. Install Obsidian in 1 Minute\|001. Install Obsidian in 1 Minute]]
+![[[[001. Install Obsidian in 1 Minute\|[[001. Install Obsidian in 1 Minute]]]]
 ```
 - [x] *Result*: → (embeds the whole note here)
 
 Resize example:  
 ```code
-![[photo.jpg\|300]]
+![[[[photo.jpg\|300]]]]
 ```
 
 
@@ -318,7 +314,8 @@ Resize example:
 
 
 - [ ] *Syntax*:
-    ```python
+    ```markdown
+    python
     print("Hello Obsidian!")
     ```
 - [x] *Result*:  
@@ -369,7 +366,7 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 
 - [ ] *Syntax*:
 ```code
-![[song.mp3\|song.mp3]]
+![[[[song.mp3\|[[song.mp3]]]]
 ```
 Plays inline.
 - [x] *Result*:
@@ -384,7 +381,7 @@ Plays inline.
 - [ ] *Syntax*:
 ##### markdown
 ```code
-![[video.mp4\|video.mp4]]
+![[[[video.mp4\|[[video.mp4]]]]
 ```
 ##### html 
 ```code
@@ -402,9 +399,9 @@ Plays inline.
 
 - [ ] *Syntax*:
 ```code
-![[paper.pdf\|paper.pdf]]
-![[paper.pdf\|200]]
-![[paper.pdf#page=5\|paper.pdf#page=5]]
+![[[[paper.pdf\|[[paper.pdf]]]]
+![[[[paper.pdf\|200]]]]
+![[[[paper.pdf#page=5\|[[paper.pdf#page=5]]]]
 ```
 Shows page 5 directly.
 - [x] *Result*:
@@ -418,9 +415,9 @@ Shows page 5 directly.
 
 - [ ] *Syntax*:
 ```code
-![.[photo.jpg].]
-![.[photo.jpg|400x300].]
-![.[photo.jpg|right|250].]
+![[[[photo.jpg\|[[photo.jpg]]]]
+![[[[photo.jpg\|400x300]]]]
+![[[[photo.jpg\|right]]]]
 ```
 Aligns right with width 250px.
 - [x] *Result*:
@@ -511,7 +508,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:06:34.015+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T21:10:31.756+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -519,10 +516,6 @@ graph TD
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
 
 
-
-```code
-![[[[somefile.png]]]]
-```
 ---
 # 001. Install Obsidian in 1 Minute
 
@@ -770,7 +763,7 @@ ___
 
 - [ ] *Syntax*:
 ```code
-[[031. Math in Obsidian]]
+[[[[031. Math in Obsidian]]]]
 ```
 - [x] *Result*: → [[031. Math in Obsidian]]
 
@@ -784,7 +777,7 @@ ___
 
 - [ ] *Syntax*:
 ```code
-[[031. Math in Obsidian|LaTeX Guide]]
+[[[[031. Math in Obsidian|LaTeX Guide]]]]
 ```
 - [x] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
 
@@ -798,7 +791,7 @@ ___
 
 - [ ] *Syntax*:
 ```code
-[[Obsidian Guide#005. How to Make Text Bold in Obsidian|Bold Text]]
+[[[[Obsidian Guide#005. How to Make Text Bold in Obsidian|Bold Text]]]]
 ```
 - [x] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])
 
@@ -812,13 +805,13 @@ ___
 
 - [ ] *Syntax*:
 ```code
-![[001. Install Obsidian in 1 Minute]]
+![[[[001. Install Obsidian in 1 Minute]]]]
 ```
 - [x] *Result*: → (embeds the whole note here)
 
 Resize example:  
 ```code
-![[photo.jpg|300]]
+![[[[photo.jpg|300]]]]
 ```
 
 
@@ -830,7 +823,8 @@ Resize example:
 
 
 - [ ] *Syntax*:
-    ```python
+    ```markdown
+    python
     print("Hello Obsidian!")
     ```
 - [x] *Result*:  
@@ -881,7 +875,7 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 
 - [ ] *Syntax*:
 ```code
-![[song.mp3]]
+![[[[song.mp3]]]]
 ```
 Plays inline.
 - [x] *Result*:
@@ -896,7 +890,7 @@ Plays inline.
 - [ ] *Syntax*:
 ##### markdown
 ```code
-![[video.mp4]]
+![[[[video.mp4]]]]
 ```
 ##### html 
 ```code
@@ -914,9 +908,9 @@ Plays inline.
 
 - [ ] *Syntax*:
 ```code
-![[paper.pdf]]
-![[paper.pdf|200]]
-![[paper.pdf#page=5]]
+![[[[paper.pdf]]]]
+![[[[paper.pdf|200]]]]
+![[[[paper.pdf#page=5]]]]
 ```
 Shows page 5 directly.
 - [x] *Result*:
@@ -930,9 +924,9 @@ Shows page 5 directly.
 
 - [ ] *Syntax*:
 ```code
-![.[photo.jpg].]
-![.[photo.jpg|400x300].]
-![.[photo.jpg|right|250].]
+![[[[photo.jpg]]]]
+![[[[photo.jpg|400x300]]]]
+![[[[photo.jpg|right|250]]]]
 ```
 Aligns right with width 250px.
 - [x] *Result*:
