@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T19:57:38.206+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:24:51.822+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -381,11 +381,16 @@ Plays inline.
 
 
 - [ ] *Syntax*:
+##### markdown
 ```markdown
 ![[video.mp4\|video.mp4]]
 ```
-Plays inside the note.
+##### html 
+```markdown
+<video src="local_path_or_external_url_link" width="300" controls></video>
+```
 - [x] *Result*:
+<video src="assets/animated_1.mp4" width="300" controls></video>
 
 
 
@@ -419,6 +424,7 @@ Aligns right with width 250px.
 - [x] *Result*:
 
 
+![EDUCATION/Obsidian tutorial/assets/original_logo.jpg|right|250](/img/user/EDUCATION/Obsidian%20tutorial/assets/original_logo.jpg)
 
 
 ---
@@ -427,16 +433,11 @@ Aligns right with width 250px.
 
 - [ ] *Syntax*:
 ```markdown
-![[map-screenshot.jpg\|map-screenshot.jpg]]
+<iframe width=600 height=600 src="the_url_of_a_map" />
 ```
+
 - [x] *Result*:
-
-or link:  
-[Google Maps Location](https://goo.gl/maps/...)
-- [x] *Result*:
-
-
-
+<iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=71.52442932128908%2C40.2748109313747%2C71.97761535644533%2C40.51171103483292&amp;layer=mapnik" style="border: 1px solid black"></iframe>
 
 ---
 # 029. Callouts for Beautiful Notes
@@ -508,7 +509,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T19:57:38.206+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:24:51.822+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -890,11 +891,16 @@ Plays inline.
 
 
 - [ ] *Syntax*:
+##### markdown
 ```markdown
 ![[video.mp4]]
 ```
-Plays inside the note.
+##### html 
+```markdown
+<video src="local_path_or_external_url_link" width="300" controls></video>
+```
 - [x] *Result*:
+<video src="assets/animated_1.mp4" width="300" controls></video>
 
 
 
@@ -928,6 +934,7 @@ Aligns right with width 250px.
 - [x] *Result*:
 
 
+![EDUCATION/Obsidian tutorial/assets/original_logo.jpg|right|250](/img/user/EDUCATION/Obsidian%20tutorial/assets/original_logo.jpg)
 
 
 ---
@@ -936,16 +943,11 @@ Aligns right with width 250px.
 
 - [ ] *Syntax*:
 ```markdown
-![[map-screenshot.jpg]]
+<iframe width=600 height=600 src="the_url_of_a_map" />
 ```
+
 - [x] *Result*:
-
-or link:  
-[Google Maps Location](https://goo.gl/maps/...)
-- [x] *Result*:
-
-
-
+<iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=71.52442932128908%2C40.2748109313747%2C71.97761535644533%2C40.51171103483292&amp;layer=mapnik" style="border: 1px solid black"></iframe>
 
 ---
 # 029. Callouts for Beautiful Notes
