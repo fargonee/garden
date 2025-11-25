@@ -167,27 +167,56 @@ CTRL + K
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js"></script>
-<script>document.addEventListener("DOMContentLoaded",init,!1),document.addEventListener("DOMContentLoaded",setCorrectShortcut,!1),window.toggleSearch=function(){document.getElementById("globalsearch").classList.contains("active")?document.getElementById("globalsearch").classList.remove("active"):(document.getElementById("globalsearch").classList.add("active"),document.getElementById("term").focus())},window.toggleTagSearch=function(e){console.log(e.textContent);const t=e.textContent;t&&(window.document.getElementById("term").value=t.trim(),window.toggleSearch(),window.search())};const loadingSvg='\n    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">\n      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="1.5s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="1.5s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="1.5s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="3s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="3s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="3s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="8">\n              <animate attributeName="r"\n                   begin="0s" dur="1.5s"\n                   values="6;1;2;3;4;5;6"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n      </g>\n  </svg>';function debounce(e,t,n){var a;return function(){var r=this,i=arguments,c=n&&!a;clearTimeout(a),a=setTimeout((function(){a=null,n||e.apply(r,i)}),t),c&&e.apply(r,i)}}function setCorrectShortcut(){navigator.platform.toUpperCase().indexOf("MAC")>=0&&document.querySelectorAll(".search-keys").forEach((e=>e.innerHTML="⌘ + K"))}function createIndex(e){const t=e=>e.toLowerCase().split(/([^a-z]|[^\x00-\x7F])/),n=new FlexSearch.Document({cache:!0,charset:"latin:extra",optimize:!0,index:[{field:"content",tokenize:"reverse",encode:t},{field:"title",tokenize:"forward",encode:t},{field:"tags",tokenize:"forward",encode:t}]});return e.forEach(((e,t)=>{n.add({id:t,title:e.title,content:e.content,tags:e.tags})})),n}async function init(){let e=!0;if(localStorage.getItem("searchIndex")){let{date:t,docs:n}=JSON.parse(localStorage.getItem("searchIndex"));if("2025-11-25T17:58:40.207Z"===t){e=!1;let t=createIndex(n);window.docs=n,window.index=t}}if(e){let e=await(await fetch("/searchIndex.json?v=2025-11-25T17:58:40.207Z")).json(),t=createIndex(e);localStorage.setItem("searchIndex",JSON.stringify({date:"2025-11-25T17:58:40.207Z",docs:e})),window.docs=e,window.index=t}document.addEventListener("keydown",(e=>{if((e.ctrlKey||e.metaKey)&&"k"===e.key&&(e.preventDefault(),toggleSearch()),"Escape"===e.key&&document.getElementById("globalsearch").classList.remove("active"),document.getElementById("globalsearch").classList.contains("active")){if("ArrowDown"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.nextElementSibling?t.nextElementSibling.classList.add("active"):document.querySelector(".searchresult").classList.add("active")):document.querySelector(".searchresult").classList.add("active");let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("ArrowUp"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.previousElementSibling?t.previousElementSibling.classList.add("active"):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling||e.classList.add("active")}))):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling&&e.classList.add("active")}));let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("Enter"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t&&(window.location.href=t.querySelector("a").href)}}}));const t=debounce(search,200,!1);field=document.querySelector("#term"),field.addEventListener("keydown",(e=>{"ArrowDown"!==e.key&&"ArrowUp"!==e.key&&t()})),resultsDiv=document.querySelector("#search-results");const n=new URL(location.href).searchParams;n.get("q")&&(field.setAttribute("value",n.get("q")),toggleSearch(),search())}async function search(){let e=field.value.trim();if(!e)return;if(e==lastSearch)return;console.log(`search for ${e}`),window.lastSearch=e,resultsDiv.innerHTML=loadingSvg;let t=offlineSearch(e),n="";if(!t.length){let t=document.createElement("p");return t.innerText=`No results for "${e}"`,resultsDiv.innerHTML="",void resultsDiv.appendChild(t)}n+='<div style="max-width:100%;">',t.forEach((e=>{e.tags&&e.tags.length>0?n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        <div class="header-meta">\n                            <div class="header-tags">\n                                ${e.tags.map((e=>'<a class="tag" href="JavaScript:Void(0);">#'+e+"</a>")).join("")}\n                            </div>\n                        </div>\n                        ${e.content}\n                    </div>\n                </div>`:n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        ${e.content}\n                    </div>\n                </div>`})),n+="</div>",resultsDiv.innerHTML=n}function truncate(e,t){return(e=e.replaceAll(/<[^>]*>/g,"")).length<t?e:e.substring(0,t-3)+"..."}function offlineSearch(e){let t=window.docs,n="#"===e[0]&&e.length>1?index.search(e.substring(1),[{field:"tags"}]):index.search(e,[{field:"title",limit:5},{field:"content",weight:10}]);const a=e=>{const t=n.filter((t=>t.field===e));return 0===t.length?[]:[...t[0].result]};return[...new Set([...a("title"),...a("content"),...a("tags")])].map((e=>{let n=t[e];return n.content=truncate(n.content,400),n.tags=n.tags.filter((e=>"gardenEntry"!=e&&"note"!=e)),n}))}window.lastSearch=""</script>
+<script>document.addEventListener("DOMContentLoaded",init,!1),document.addEventListener("DOMContentLoaded",setCorrectShortcut,!1),window.toggleSearch=function(){document.getElementById("globalsearch").classList.contains("active")?document.getElementById("globalsearch").classList.remove("active"):(document.getElementById("globalsearch").classList.add("active"),document.getElementById("term").focus())},window.toggleTagSearch=function(e){console.log(e.textContent);const t=e.textContent;t&&(window.document.getElementById("term").value=t.trim(),window.toggleSearch(),window.search())};const loadingSvg='\n    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">\n      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="1.5s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="1.5s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="1.5s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="3s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="3s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="3s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="8">\n              <animate attributeName="r"\n                   begin="0s" dur="1.5s"\n                   values="6;1;2;3;4;5;6"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n      </g>\n  </svg>';function debounce(e,t,n){var a;return function(){var r=this,i=arguments,c=n&&!a;clearTimeout(a),a=setTimeout((function(){a=null,n||e.apply(r,i)}),t),c&&e.apply(r,i)}}function setCorrectShortcut(){navigator.platform.toUpperCase().indexOf("MAC")>=0&&document.querySelectorAll(".search-keys").forEach((e=>e.innerHTML="⌘ + K"))}function createIndex(e){const t=e=>e.toLowerCase().split(/([^a-z]|[^\x00-\x7F])/),n=new FlexSearch.Document({cache:!0,charset:"latin:extra",optimize:!0,index:[{field:"content",tokenize:"reverse",encode:t},{field:"title",tokenize:"forward",encode:t},{field:"tags",tokenize:"forward",encode:t}]});return e.forEach(((e,t)=>{n.add({id:t,title:e.title,content:e.content,tags:e.tags})})),n}async function init(){let e=!0;if(localStorage.getItem("searchIndex")){let{date:t,docs:n}=JSON.parse(localStorage.getItem("searchIndex"));if("2025-11-25T18:46:32.700Z"===t){e=!1;let t=createIndex(n);window.docs=n,window.index=t}}if(e){let e=await(await fetch("/searchIndex.json?v=2025-11-25T18:46:32.700Z")).json(),t=createIndex(e);localStorage.setItem("searchIndex",JSON.stringify({date:"2025-11-25T18:46:32.700Z",docs:e})),window.docs=e,window.index=t}document.addEventListener("keydown",(e=>{if((e.ctrlKey||e.metaKey)&&"k"===e.key&&(e.preventDefault(),toggleSearch()),"Escape"===e.key&&document.getElementById("globalsearch").classList.remove("active"),document.getElementById("globalsearch").classList.contains("active")){if("ArrowDown"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.nextElementSibling?t.nextElementSibling.classList.add("active"):document.querySelector(".searchresult").classList.add("active")):document.querySelector(".searchresult").classList.add("active");let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("ArrowUp"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.previousElementSibling?t.previousElementSibling.classList.add("active"):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling||e.classList.add("active")}))):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling&&e.classList.add("active")}));let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("Enter"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t&&(window.location.href=t.querySelector("a").href)}}}));const t=debounce(search,200,!1);field=document.querySelector("#term"),field.addEventListener("keydown",(e=>{"ArrowDown"!==e.key&&"ArrowUp"!==e.key&&t()})),resultsDiv=document.querySelector("#search-results");const n=new URL(location.href).searchParams;n.get("q")&&(field.setAttribute("value",n.get("q")),toggleSearch(),search())}async function search(){let e=field.value.trim();if(!e)return;if(e==lastSearch)return;console.log(`search for ${e}`),window.lastSearch=e,resultsDiv.innerHTML=loadingSvg;let t=offlineSearch(e),n="";if(!t.length){let t=document.createElement("p");return t.innerText=`No results for "${e}"`,resultsDiv.innerHTML="",void resultsDiv.appendChild(t)}n+='<div style="max-width:100%;">',t.forEach((e=>{e.tags&&e.tags.length>0?n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        <div class="header-meta">\n                            <div class="header-tags">\n                                ${e.tags.map((e=>'<a class="tag" href="JavaScript:Void(0);">#'+e+"</a>")).join("")}\n                            </div>\n                        </div>\n                        ${e.content}\n                    </div>\n                </div>`:n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        ${e.content}\n                    </div>\n                </div>`})),n+="</div>",resultsDiv.innerHTML=n}function truncate(e,t){return(e=e.replaceAll(/<[^>]*>/g,"")).length<t?e:e.substring(0,t-3)+"..."}function offlineSearch(e){let t=window.docs,n="#"===e[0]&&e.length>1?index.search(e.substring(1),[{field:"tags"}]):index.search(e,[{field:"title",limit:5},{field:"content",weight:10}]);const a=e=>{const t=n.filter((t=>t.field===e));return 0===t.length?[]:[...t[0].result]};return[...new Set([...a("title"),...a("content"),...a("tags")])].map((e=>{let n=t[e];return n.content=truncate(n.content,400),n.tags=n.tags.filter((e=>"gardenEntry"!=e&&"note"!=e)),n}))}window.lastSearch=""</script>
 <main class="content cm-s-obsidian">
 <header>
 <h1 data-note-icon="">Basic.en</h1>
 <div class="header-meta">
 <div class="header-tags">
 </div>
-<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2025-11-25T18:04:33.314+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2025-11-25T22:57:44.871+05:00"></span></div></div></div>
+<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2025-11-25T18:04:33.314+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2025-11-25T23:13:16.597+05:00"></span></div></div></div>
 </header>
 <h1 id="obsidian-beginner-s-guide-english-clean-and-amp-visual" tabindex="-1">Obsidian Beginner’s Guide (English) – Clean &amp; Visual</h1>
+<h1 id="index" tabindex="-1">Index</h1>
+<p>[[#001. Install Obsidian in 1 Minute]]<br>
+[[#002. Switch to Uzbek Language Fast]]<br>
+[[#003. Create New Note in One Click]]<br>
+[[#004. Headings with Hash Levels]]<br>
+[[#005. How to Make Text Bold in Obsidian]]<br>
+[[#006. How to Write Italic Text Fast]]<br>
+[[#007. Strikethrough Text Tutorial]]<br>
+[[#008. Highlight Important Text Easily]]<br>
+[[#009. Toolbar Quick Formatting Tips]]<br>
+[[#010. Horizontal Divider Line in Obsidian]]<br>
+[[#011. Block Quotes for Better Notes]]<br>
+[[#012. Bulleted Lists in Obsidian]]<br>
+[[#013. Numbered Lists Step by Step]]<br>
+[[#014. Indent and Outdent Lists]]<br>
+[[#015. Task Checkboxes in Obsidian]]<br>
+[[#016. Add External Links Correctly]]<br>
+[[#017. Simple Internal Links Wiki Style]]<br>
+[[#018. Aliased Internal Links]]<br>
+[[#019. Link to Headings Inside Note]]<br>
+[[#020. Embed Notes with Exclamation]]<br>
+[[#021. Code Blocks and Syntax Highlight]]<br>
+[[#022. Create Tables in Obsidian Fast]]<br>
+[[#023. Assets Folder Setup]]<br>
+[[#024. Embed Audio Files in Notes]]<br>
+[[#025. Embed Local Video Files Easily]]<br>
+[[#026. Embed PDF Documents in Obsidian]]<br>
+[[#027. Add and Embed Images Properly]]<br>
+[[#028. Embed Maps]]<br>
+[[#029. Callouts for Beautiful Notes]]<br>
+[[#030. Flowcharts and Diagrams Fast (Mermaid)]]<br>
+<a class="internal-link is-unresolved" href="/404" target=""> LaTeX</a></p>
 <div class="callout" data-callout="warning"><div class="callout-title"><div class="callout-title-inner"> Reminder:</div></div>
 <div class="callout-content">
 <p>
 </p><h5 id="below-syntax-examples-are-given-some-of-them-should-be-wrapped-with-two-b-b-backticks-when-using-they-are-marked-as-inside-triple-backtics-in-examples" tabindex="-1">Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as <a class="tag" onclick="toggleTagSearch(this)" data-content="#InsideTripleBacktics">#InsideTripleBacktics</a> in examples.</h5>
 <p></p></div></div>
-<pre><code class="language-markdown">!\[\[photo.jpg\]\]
-!\[\[photo.jpg|400x300\]\]
-!\[\[photo.jpg|right|250\]\]
-</code></pre>
 <hr>
 <h1 id="001-install-obsidian-in-1-minute" tabindex="-1">001. Install Obsidian in 1 Minute</h1>
+<h6 id="jump-to-index" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"></video>
 <ol>
 <li>Go to <a href="https://obsidian.md" target="_blank" class="external-link">obsidian.md</a></li>
@@ -197,6 +226,7 @@ CTRL + K
 </ol>
 <hr>
 <h1 id="002-switch-to-uzbek-language-fast" tabindex="-1">002. Switch to Uzbek Language Fast</h1>
+<h6 id="jump-to-index-1" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/002_ozbek_tiliga_sozlash___8c7e1b6775a0091c31a740e19164f1b20c1abfdc7043b999f82013c5b4220e24.mkv"></video>
 <ol>
 <li>Settings → Appearance → Language</li>
@@ -205,6 +235,7 @@ CTRL + K
 </ol>
 <hr>
 <h1 id="003-create-new-note-in-one-click" tabindex="-1">003. Create New Note in One Click</h1>
+<h6 id="jump-to-index-2" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/003_yangi_eslatma_yaratish___10d75ec88b5e8d0ab031016491e24e7b24ab6a4f7dd0d1083027555eed20b4b0.mkv"></video>
 <ol>
 <li>Press Ctrl + N → New blank note</li>
@@ -213,6 +244,7 @@ CTRL + K
 </ol>
 <hr>
 <h1 id="004-headings-with-hash-levels" tabindex="-1">004. Headings with Hash Levels</h1>
+<h6 id="jump-to-index-3" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/004_sarvlavhalar___6b3ae0127bf621a3253131631386da3d3083fdbccf295138afa6da87e68850be.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_0" disabled="true"><label for="cbx_0"> <em>Syntax</em>:</label></li>
@@ -235,6 +267,7 @@ CTRL + K
 <h6 id="h6-heading-smallest" tabindex="-1">H6 Heading (smallest)</h6>
 <hr>
 <h1 id="005-how-to-make-text-bold-in-obsidian" tabindex="-1">005. How to Make Text Bold in Obsidian</h1>
+<h6 id="jump-to-index-4" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/005_qalin_matn___4f85e0e68709ae50d6b99bed8901ffa783898608792aaa799064c4dd05d0e3e8.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_2" disabled="true"><label for="cbx_2"> <em>Syntax</em>:</label></li>
@@ -247,6 +280,7 @@ CTRL + K
 </ul>
 <hr>
 <h1 id="006-how-to-write-italic-text-fast" tabindex="-1">006. How to Write Italic Text Fast</h1>
+<h6 id="jump-to-index-5" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/006_qiya_matn___c7aea5a314c3f6333335afcd1c7fa8192cd2e56d44324f5701ac619b73566330.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_4" disabled="true"><label for="cbx_4"> <em>Syntax</em>:</label></li>
@@ -259,6 +293,7 @@ CTRL + K
 </ul>
 <hr>
 <h1 id="007-strikethrough-text-tutorial" tabindex="-1">007. Strikethrough Text Tutorial</h1>
+<h6 id="jump-to-index-6" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/007_ustiga_chizilgan_matn___50ddf3f3525f4f668478cccb98663c70d704abada3a290c9779d63e9276d0097.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_6" disabled="true"><label for="cbx_6"> <em>Syntax</em>:</label></li>
@@ -271,6 +306,7 @@ CTRL + K
 </ul>
 <hr>
 <h1 id="008-highlight-important-text-easily" tabindex="-1">008. Highlight Important Text Easily</h1>
+<h6 id="jump-to-index-7" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/008_belgilangan_matn___59e6c2c6175a9f988e27ac14402fa6395aee5b1186c82b73a01074175e0b4354.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_8" disabled="true"><label for="cbx_8"> <em>Syntax</em>:</label></li>
@@ -282,6 +318,7 @@ CTRL + K
 </ul>
 <hr>
 <h1 id="009-toolbar-quick-formatting-tips" tabindex="-1">009. Toolbar Quick Formatting Tips</h1>
+<h6 id="jump-to-index-8" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/009_matn_formatlash_oson_usuli___96f954cccab714212d460e16d4115c1dfea57bc62793be471976ceacfad8f8eb.mkv"></video>
 <p>Select text → use:</p>
 <ul>
@@ -292,6 +329,7 @@ CTRL + K
 </ul>
 <hr>
 <h1 id="010-horizontal-divider-line-in-obsidian" tabindex="-1">010. Horizontal Divider Line in Obsidian</h1>
+<h6 id="jump-to-index-9" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/010_gorizontal_chiziq___f6741c79fbcbd0ee61ea5e99e608d5bff534a3fabc38252acf1bbda7947a3b8f.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_10" disabled="true"><label for="cbx_10"> <em>Syntax</em>:</label></li>
@@ -308,6 +346,7 @@ ___
 <hr>
 <hr>
 <h1 id="011-block-quotes-for-better-notes" tabindex="-1">011. Block Quotes for Better Notes</h1>
+<h6 id="jump-to-index-10" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/011_blokli_iqtibos___74636df7221ba08e3b0303ba85c90a0b88904309b2dd7d8704fc7dd9e8f71a8f.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_12" disabled="true"><label for="cbx_12"> <em>Syntax</em>:</label></li>
@@ -326,6 +365,7 @@ ___
 </blockquote>
 <hr>
 <h1 id="012-bulleted-lists-in-obsidian" tabindex="-1">012. Bulleted Lists in Obsidian</h1>
+<h6 id="jump-to-index-11" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/012_tartiblanMagan_royxat___59b6ace492f886c329f18631fd63c86232100631c736bcf629cfd1f4b6243d1c.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_14" disabled="true"><label for="cbx_14"> <em>Syntax</em>:</label></li>
@@ -345,6 +385,7 @@ ___
 </ul>
 <hr>
 <h1 id="013-numbered-lists-step-by-step" tabindex="-1">013. Numbered Lists Step by Step</h1>
+<h6 id="jump-to-index-12" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/013_tartiblangan_royxat___dd1479c1b049f341f7b7fe1442bfb8f2daedf2a9e845597f8d991b0047cee4b6.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_16" disabled="true"><label for="cbx_16"> <em>Syntax</em>:</label></li>
@@ -365,11 +406,13 @@ ___
 </ol>
 <hr>
 <h1 id="014-indent-and-outdent-lists" tabindex="-1">014. Indent and Outdent Lists</h1>
+<h6 id="jump-to-index-13" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/014_royxat_elementlari_sathini_ozgartirish___c80be343ae7a2b9257d4a617a3f3960c2f639abf5524ac09a23ea95622f45136.mkv"></video>
 <h4 id="code-tab-code-indent" tabindex="-1"><code>Tab</code> → indent</h4>
 <h4 id="code-shift-tab-code-outdent" tabindex="-1"><code>Shift+Tab</code> → outdent</h4>
 <hr>
 <h1 id="015-task-checkboxes-in-obsidian" tabindex="-1">015. Task Checkboxes in Obsidian</h1>
+<h6 id="jump-to-index-14" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/015_checkbox_lar___1ce21d6e4804d412f0593ecec9c463ea8db4271f3fe42a3c88e7842f51e188e9.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_18" disabled="true"><label for="cbx_18"> <em>Syntax</em>:</label></li>
@@ -398,6 +441,7 @@ ___
 </ul>
 <hr>
 <h1 id="016-add-external-links-correctly" tabindex="-1">016. Add External Links Correctly</h1>
+<h6 id="jump-to-index-15" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/016_tashqi_linklar___04b42c846cb299bdcb45330d03277d022464e6501b9e7b92ec65678f38c0c279.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_22" disabled="true"><label for="cbx_22"> <em>Syntax</em>:</label></li>
@@ -409,6 +453,7 @@ ___
 </ul>
 <hr>
 <h1 id="017-simple-internal-links-wiki-style" tabindex="-1">017. Simple Internal Links Wiki Style</h1>
+<h6 id="jump-to-index-16" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/017_ichki_linklar_oddiy_link___53cbc2f77b6e972c66a2e6fcf71c99f4b45da45d3078d8950af2ec4adfa3d2e4.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_24" disabled="true"><label for="cbx_24"> <em>Syntax</em>:</label></li>
@@ -420,6 +465,7 @@ ___
 </ul>
 <hr>
 <h1 id="018-aliased-internal-links" tabindex="-1">018. Aliased Internal Links</h1>
+<h6 id="jump-to-index-17" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/018_ichki_linklar_nomlangan_link___9a8500bda856cd386e1ed65dff7a87cad5f552dec9989a61715b51357f5528ab.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_26" disabled="true"><label for="cbx_26"> <em>Syntax</em>:</label></li>
@@ -431,6 +477,7 @@ ___
 </ul>
 <hr>
 <h1 id="019-link-to-headings-inside-note" tabindex="-1">019. Link to Headings Inside Note</h1>
+<h6 id="jump-to-index-18" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/019_ichki_linklar_sarvlavha_linklari___b29dcd2cc6051b2b3a43880efe32cd87ae5180b43fafa9154029dfffdb72c4e0.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_28" disabled="true"><label for="cbx_28"> <em>Syntax</em>:</label></li>
@@ -442,6 +489,7 @@ ___
 </ul>
 <hr>
 <h1 id="020-embed-notes-with-exclamation" tabindex="-1">020. Embed Notes with Exclamation</h1>
+<h6 id="jump-to-index-19" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/020_eslatmalarni_biriktirish___5b3123c4b27659c8f113943a44ff444ebe5fb592c0f7fbd59722fd4d62209a6c.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_30" disabled="true"><label for="cbx_30"> <em>Syntax</em>:</label></li>
@@ -456,6 +504,7 @@ ___
 </code></pre>
 <hr>
 <h1 id="021-code-blocks-and-syntax-highlight" tabindex="-1">021. Code Blocks and Syntax Highlight</h1>
+<h6 id="jump-to-index-20" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/021_kod_bloklari___40c00d056d3d09fe8023b3022805ac8d753f4f2d61963c5a73e5a9bc5b7d313d.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_32" disabled="true"><label for="cbx_32"> <em>Syntax</em>:</label><pre><code class="language-markdown">python
@@ -468,6 +517,7 @@ print(&quot;Hello Obsidian!&quot;)
 </code></pre>
 <hr>
 <h1 id="022-create-tables-in-obsidian-fast" tabindex="-1">022. Create Tables in Obsidian Fast</h1>
+<h6 id="jump-to-index-21" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/022_jadvallar___dc1753675e585f73c5f5d59daf1da8bed59349ffc69346f64fffb4e0b29bf3de.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_34" disabled="true"><label for="cbx_34"> <em>Syntax</em>:</label></li>
@@ -503,6 +553,7 @@ print(&quot;Hello Obsidian!&quot;)
 </table></div>
 <hr>
 <h1 id="023-assets-folder-setup" tabindex="-1">023. Assets Folder Setup</h1>
+<h6 id="jump-to-index-22" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/023_medialar_resurslarni_tayyorlash___20664f6660c4bb9e14549fb2148d3c16fc998471dd6e5953ae941bc523639981.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_36" disabled="true"><label for="cbx_36"> <em>Syntax</em>:<br>
@@ -510,6 +561,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="024-embed-audio-files-in-notes" tabindex="-1">024. Embed Audio Files in Notes</h1>
+<h6 id="jump-to-index-23" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/024_medialar_musiqa_biriktirish___ea8edebe9e04e8962aaee78fb48f3508e8e26200cca89526d6234a0e3e366585.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_37" disabled="true"><label for="cbx_37"> <em>Syntax</em>:</label></li>
@@ -522,6 +574,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="025-embed-local-video-files-easily" tabindex="-1">025. Embed Local Video Files Easily</h1>
+<h6 id="jump-to-index-24" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/025_medialar_video_biriktirish___f6b8172d82dfc1a548473449e545c2da225a8dce5facda49fcad17546a0d0bdf.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_39" disabled="true"><label for="cbx_39"> <em>Syntax</em>:</label></li>
@@ -538,6 +591,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="026-embed-pdf-documents-in-obsidian" tabindex="-1">026. Embed PDF Documents in Obsidian</h1>
+<h6 id="jump-to-index-25" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/026_medialar_pdf_biriktirish___f122e6a7ba96faf9c47db147f2334094cb19457b630e61749eec87210645bceb.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_41" disabled="true"><label for="cbx_41"> <em>Syntax</em>:</label></li>
@@ -553,6 +607,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="027-add-and-embed-images-properly" tabindex="-1">027. Add and Embed Images Properly</h1>
+<h6 id="jump-to-index-26" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/027_medialar_rasm_biriktirish___616f562592a6d637b9794cf390021eb2e54fdbc1b6ecbd14920023cdee6ed833.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_43" disabled="true"><label for="cbx_43"> <em>Syntax</em>:<br>
@@ -567,6 +622,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 <p><img src="/img/user/EDUCATION/Obsidian%20tutorial/assets/original_logo.jpg" alt="EDUCATION/Obsidian tutorial/assets/original_logo.jpg|right|250" width="250px"></p>
 <hr>
 <h1 id="028-embed-maps" tabindex="-1">028. Embed Maps</h1>
+<h6 id="jump-to-index-27" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/028_medialar_xarita_biriktirish___57b64848cda9d0d17d4d4cb31797a98b4fedc98a5fdad77b4651ea94049dafbb.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_45" disabled="true"><label for="cbx_45"> <em>Syntax</em>:</label></li>
@@ -579,6 +635,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 <iframe width="425" height="350" src="https://www.opentmap.org/export/embed.html?bbox=71.52442932128908%2C40.2748109313747%2C71.97761535644533%2C40.51171103483292&amp;layer=mapnik" style="border:1px solid #000"></iframe>
 <hr>
 <h1 id="029-callouts-for-beautiful-notes" tabindex="-1">029. Callouts for Beautiful Notes</h1>
+<h6 id="jump-to-index-28" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/029_konvertlar___ec0e09799ef10b63c6c09c7e991f55e8c8a88b0f6ba90b52e18055788669fc10.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_47" disabled="true"><label for="cbx_47"> <em>Syntax</em>:</label></li>
@@ -625,6 +682,7 @@ This might break something</p>
 <p>Other types: <code>note</code>, <code>abstract</code>, <code>success</code>, <code>error</code>, <code>example</code>, <code>quote</code></p>
 <hr>
 <h1 id="030-flowcharts-and-diagrams-mermaid" tabindex="-1">030. Flowcharts and Diagrams (Mermaid)</h1>
+<h6 id="jump-to-index-29" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/030_mermaid_diagrammalar___c4bcdc05bf8495846e68c993670178ae75152220d42a5d3382dfbf4b464a7b7e.mkv"></video>
 <p><a class="tag" onclick="toggleTagSearch(this)" data-content="#InsideTripleBacktics">#InsideTripleBacktics</a></p>
 <ul class="task-list">
@@ -644,26 +702,56 @@ graph TD
     B -->|Yes| C[Good]
     B -->|No| D[Try Again]</pre><hr>
 <h1 id="031-math-in-obsidian-la-te-x" tabindex="-1">031. Math in Obsidian | LaTeX</h1>
+<h6 id="jump-to-index-30" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/031_matematik_ifodalar_LaTeX_formati___40cb5637cc2248790aa2eae1a58306aecc74eab56f566cf5f4337187ca64198e.mkv"></video>
 <h3 id="inline" tabindex="-1">Inline:</h3>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_55" disabled="true"><label for="cbx_55"> <em>Syntax</em><br>
 `$E = mc^2---<br>
-{&quot;dg-publish&quot;:true,&quot;permalink&quot;:&quot;/education/obsidian-tutorial/basic-en/&quot;,&quot;noteIcon&quot;:&quot;&quot;,&quot;created&quot;:&quot;2025-11-25T18:04:33.314+05:00&quot;,&quot;updated&quot;:&quot;2025-11-25T22:57:44.871+05:00&quot;}</label></li>
+{&quot;dg-publish&quot;:true,&quot;permalink&quot;:&quot;/education/obsidian-tutorial/basic-en/&quot;,&quot;noteIcon&quot;:&quot;&quot;,&quot;created&quot;:&quot;2025-11-25T18:04:33.314+05:00&quot;,&quot;updated&quot;:&quot;2025-11-25T23:13:16.597+05:00&quot;}</label></li>
 </ul>
 <hr>
 <h1 id="obsidian-beginner-s-guide-english-clean-and-amp-visual-1" tabindex="-1">Obsidian Beginner’s Guide (English) – Clean &amp; Visual</h1>
+<h1 id="index-1" tabindex="-1">Index</h1>
+<p>[[#001. Install Obsidian in 1 Minute]]<br>
+[[#002. Switch to Uzbek Language Fast]]<br>
+[[#003. Create New Note in One Click]]<br>
+[[#004. Headings with Hash Levels]]<br>
+[[#005. How to Make Text Bold in Obsidian]]<br>
+[[#006. How to Write Italic Text Fast]]<br>
+[[#007. Strikethrough Text Tutorial]]<br>
+[[#008. Highlight Important Text Easily]]<br>
+[[#009. Toolbar Quick Formatting Tips]]<br>
+[[#010. Horizontal Divider Line in Obsidian]]<br>
+[[#011. Block Quotes for Better Notes]]<br>
+[[#012. Bulleted Lists in Obsidian]]<br>
+[[#013. Numbered Lists Step by Step]]<br>
+[[#014. Indent and Outdent Lists]]<br>
+[[#015. Task Checkboxes in Obsidian]]<br>
+[[#016. Add External Links Correctly]]<br>
+[[#017. Simple Internal Links Wiki Style]]<br>
+[[#018. Aliased Internal Links]]<br>
+[[#019. Link to Headings Inside Note]]<br>
+[[#020. Embed Notes with Exclamation]]<br>
+[[#021. Code Blocks and Syntax Highlight]]<br>
+[[#022. Create Tables in Obsidian Fast]]<br>
+[[#023. Assets Folder Setup]]<br>
+[[#024. Embed Audio Files in Notes]]<br>
+[[#025. Embed Local Video Files Easily]]<br>
+[[#026. Embed PDF Documents in Obsidian]]<br>
+[[#027. Add and Embed Images Properly]]<br>
+[[#028. Embed Maps]]<br>
+[[#029. Callouts for Beautiful Notes]]<br>
+[[#030. Flowcharts and Diagrams Fast (Mermaid)]]<br>
+<a class="internal-link is-unresolved" href="/404" target=""> LaTeX</a></p>
 <div class="callout" data-callout="warning"><div class="callout-title"><div class="callout-title-inner"> Reminder:</div></div>
 <div class="callout-content">
 <p>
 </p><h5 id="below-syntax-examples-are-given-some-of-them-should-be-wrapped-with-two-b-b-backticks-when-using-they-are-marked-as-inside-triple-backtics-in-examples-1" tabindex="-1">Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as <a class="tag" onclick="toggleTagSearch(this)" data-content="#InsideTripleBacktics">#InsideTripleBacktics</a> in examples.</h5>
 <p></p></div></div>
-<pre><code class="language-markdown">!\[\[photo.jpg\]\]
-!\[\[photo.jpg|400x300\]\]
-!\[\[photo.jpg|right|250\]\]
-</code></pre>
 <hr>
 <h1 id="001-install-obsidian-in-1-minute-1" tabindex="-1">001. Install Obsidian in 1 Minute</h1>
+<h6 id="jump-to-index-31" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"></video>
 <ol>
 <li>Go to <a href="https://obsidian.md" target="_blank" class="external-link">obsidian.md</a></li>
@@ -673,6 +761,7 @@ graph TD
 </ol>
 <hr>
 <h1 id="002-switch-to-uzbek-language-fast-1" tabindex="-1">002. Switch to Uzbek Language Fast</h1>
+<h6 id="jump-to-index-32" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/002_ozbek_tiliga_sozlash___8c7e1b6775a0091c31a740e19164f1b20c1abfdc7043b999f82013c5b4220e24.mkv"></video>
 <ol>
 <li>Settings → Appearance → Language</li>
@@ -681,6 +770,7 @@ graph TD
 </ol>
 <hr>
 <h1 id="003-create-new-note-in-one-click-1" tabindex="-1">003. Create New Note in One Click</h1>
+<h6 id="jump-to-index-33" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/003_yangi_eslatma_yaratish___10d75ec88b5e8d0ab031016491e24e7b24ab6a4f7dd0d1083027555eed20b4b0.mkv"></video>
 <ol>
 <li>Press Ctrl + N → New blank note</li>
@@ -689,6 +779,7 @@ graph TD
 </ol>
 <hr>
 <h1 id="004-headings-with-hash-levels-1" tabindex="-1">004. Headings with Hash Levels</h1>
+<h6 id="jump-to-index-34" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/004_sarvlavhalar___6b3ae0127bf621a3253131631386da3d3083fdbccf295138afa6da87e68850be.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_56" disabled="true"><label for="cbx_56"> <em>Syntax</em>:</label></li>
@@ -711,6 +802,7 @@ graph TD
 <h6 id="h6-heading-smallest-1" tabindex="-1">H6 Heading (smallest)</h6>
 <hr>
 <h1 id="005-how-to-make-text-bold-in-obsidian-1" tabindex="-1">005. How to Make Text Bold in Obsidian</h1>
+<h6 id="jump-to-index-35" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/005_qalin_matn___4f85e0e68709ae50d6b99bed8901ffa783898608792aaa799064c4dd05d0e3e8.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_58" disabled="true"><label for="cbx_58"> <em>Syntax</em>:</label></li>
@@ -723,6 +815,7 @@ graph TD
 </ul>
 <hr>
 <h1 id="006-how-to-write-italic-text-fast-1" tabindex="-1">006. How to Write Italic Text Fast</h1>
+<h6 id="jump-to-index-36" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/006_qiya_matn___c7aea5a314c3f6333335afcd1c7fa8192cd2e56d44324f5701ac619b73566330.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_60" disabled="true"><label for="cbx_60"> <em>Syntax</em>:</label></li>
@@ -735,6 +828,7 @@ graph TD
 </ul>
 <hr>
 <h1 id="007-strikethrough-text-tutorial-1" tabindex="-1">007. Strikethrough Text Tutorial</h1>
+<h6 id="jump-to-index-37" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/007_ustiga_chizilgan_matn___50ddf3f3525f4f668478cccb98663c70d704abada3a290c9779d63e9276d0097.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_62" disabled="true"><label for="cbx_62"> <em>Syntax</em>:</label></li>
@@ -747,6 +841,7 @@ graph TD
 </ul>
 <hr>
 <h1 id="008-highlight-important-text-easily-1" tabindex="-1">008. Highlight Important Text Easily</h1>
+<h6 id="jump-to-index-38" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/008_belgilangan_matn___59e6c2c6175a9f988e27ac14402fa6395aee5b1186c82b73a01074175e0b4354.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_64" disabled="true"><label for="cbx_64"> <em>Syntax</em>:</label></li>
@@ -758,6 +853,7 @@ graph TD
 </ul>
 <hr>
 <h1 id="009-toolbar-quick-formatting-tips-1" tabindex="-1">009. Toolbar Quick Formatting Tips</h1>
+<h6 id="jump-to-index-39" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/009_matn_formatlash_oson_usuli___96f954cccab714212d460e16d4115c1dfea57bc62793be471976ceacfad8f8eb.mkv"></video>
 <p>Select text → use:</p>
 <ul>
@@ -768,6 +864,7 @@ graph TD
 </ul>
 <hr>
 <h1 id="010-horizontal-divider-line-in-obsidian-1" tabindex="-1">010. Horizontal Divider Line in Obsidian</h1>
+<h6 id="jump-to-index-40" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/010_gorizontal_chiziq___f6741c79fbcbd0ee61ea5e99e608d5bff534a3fabc38252acf1bbda7947a3b8f.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_66" disabled="true"><label for="cbx_66"> <em>Syntax</em>:</label></li>
@@ -784,6 +881,7 @@ ___
 <hr>
 <hr>
 <h1 id="011-block-quotes-for-better-notes-1" tabindex="-1">011. Block Quotes for Better Notes</h1>
+<h6 id="jump-to-index-41" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/011_blokli_iqtibos___74636df7221ba08e3b0303ba85c90a0b88904309b2dd7d8704fc7dd9e8f71a8f.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_68" disabled="true"><label for="cbx_68"> <em>Syntax</em>:</label></li>
@@ -802,6 +900,7 @@ ___
 </blockquote>
 <hr>
 <h1 id="012-bulleted-lists-in-obsidian-1" tabindex="-1">012. Bulleted Lists in Obsidian</h1>
+<h6 id="jump-to-index-42" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/012_tartiblanMagan_royxat___59b6ace492f886c329f18631fd63c86232100631c736bcf629cfd1f4b6243d1c.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_70" disabled="true"><label for="cbx_70"> <em>Syntax</em>:</label></li>
@@ -821,6 +920,7 @@ ___
 </ul>
 <hr>
 <h1 id="013-numbered-lists-step-by-step-1" tabindex="-1">013. Numbered Lists Step by Step</h1>
+<h6 id="jump-to-index-43" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/013_tartiblangan_royxat___dd1479c1b049f341f7b7fe1442bfb8f2daedf2a9e845597f8d991b0047cee4b6.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_72" disabled="true"><label for="cbx_72"> <em>Syntax</em>:</label></li>
@@ -841,11 +941,13 @@ ___
 </ol>
 <hr>
 <h1 id="014-indent-and-outdent-lists-1" tabindex="-1">014. Indent and Outdent Lists</h1>
+<h6 id="jump-to-index-44" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/014_royxat_elementlari_sathini_ozgartirish___c80be343ae7a2b9257d4a617a3f3960c2f639abf5524ac09a23ea95622f45136.mkv"></video>
 <h4 id="code-tab-code-indent-1" tabindex="-1"><code>Tab</code> → indent</h4>
 <h4 id="code-shift-tab-code-outdent-1" tabindex="-1"><code>Shift+Tab</code> → outdent</h4>
 <hr>
 <h1 id="015-task-checkboxes-in-obsidian-1" tabindex="-1">015. Task Checkboxes in Obsidian</h1>
+<h6 id="jump-to-index-45" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/015_checkbox_lar___1ce21d6e4804d412f0593ecec9c463ea8db4271f3fe42a3c88e7842f51e188e9.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_74" disabled="true"><label for="cbx_74"> <em>Syntax</em>:</label></li>
@@ -874,6 +976,7 @@ ___
 </ul>
 <hr>
 <h1 id="016-add-external-links-correctly-1" tabindex="-1">016. Add External Links Correctly</h1>
+<h6 id="jump-to-index-46" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/016_tashqi_linklar___04b42c846cb299bdcb45330d03277d022464e6501b9e7b92ec65678f38c0c279.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_78" disabled="true"><label for="cbx_78"> <em>Syntax</em>:</label></li>
@@ -885,6 +988,7 @@ ___
 </ul>
 <hr>
 <h1 id="017-simple-internal-links-wiki-style-1" tabindex="-1">017. Simple Internal Links Wiki Style</h1>
+<h6 id="jump-to-index-47" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/017_ichki_linklar_oddiy_link___53cbc2f77b6e972c66a2e6fcf71c99f4b45da45d3078d8950af2ec4adfa3d2e4.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_80" disabled="true"><label for="cbx_80"> <em>Syntax</em>:</label></li>
@@ -896,6 +1000,7 @@ ___
 </ul>
 <hr>
 <h1 id="018-aliased-internal-links-1" tabindex="-1">018. Aliased Internal Links</h1>
+<h6 id="jump-to-index-48" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/018_ichki_linklar_nomlangan_link___9a8500bda856cd386e1ed65dff7a87cad5f552dec9989a61715b51357f5528ab.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_82" disabled="true"><label for="cbx_82"> <em>Syntax</em>:</label></li>
@@ -907,6 +1012,7 @@ ___
 </ul>
 <hr>
 <h1 id="019-link-to-headings-inside-note-1" tabindex="-1">019. Link to Headings Inside Note</h1>
+<h6 id="jump-to-index-49" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/019_ichki_linklar_sarvlavha_linklari___b29dcd2cc6051b2b3a43880efe32cd87ae5180b43fafa9154029dfffdb72c4e0.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_84" disabled="true"><label for="cbx_84"> <em>Syntax</em>:</label></li>
@@ -918,6 +1024,7 @@ ___
 </ul>
 <hr>
 <h1 id="020-embed-notes-with-exclamation-1" tabindex="-1">020. Embed Notes with Exclamation</h1>
+<h6 id="jump-to-index-50" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/020_eslatmalarni_biriktirish___5b3123c4b27659c8f113943a44ff444ebe5fb592c0f7fbd59722fd4d62209a6c.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_86" disabled="true"><label for="cbx_86"> <em>Syntax</em>:</label></li>
@@ -932,6 +1039,7 @@ ___
 </code></pre>
 <hr>
 <h1 id="021-code-blocks-and-syntax-highlight-1" tabindex="-1">021. Code Blocks and Syntax Highlight</h1>
+<h6 id="jump-to-index-51" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/021_kod_bloklari___40c00d056d3d09fe8023b3022805ac8d753f4f2d61963c5a73e5a9bc5b7d313d.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_88" disabled="true"><label for="cbx_88"> <em>Syntax</em>:</label><pre><code class="language-markdown">python
@@ -944,6 +1052,7 @@ print(&quot;Hello Obsidian!&quot;)
 </code></pre>
 <hr>
 <h1 id="022-create-tables-in-obsidian-fast-1" tabindex="-1">022. Create Tables in Obsidian Fast</h1>
+<h6 id="jump-to-index-52" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/022_jadvallar___dc1753675e585f73c5f5d59daf1da8bed59349ffc69346f64fffb4e0b29bf3de.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_90" disabled="true"><label for="cbx_90"> <em>Syntax</em>:</label></li>
@@ -979,6 +1088,7 @@ print(&quot;Hello Obsidian!&quot;)
 </table></div>
 <hr>
 <h1 id="023-assets-folder-setup-1" tabindex="-1">023. Assets Folder Setup</h1>
+<h6 id="jump-to-index-53" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/023_medialar_resurslarni_tayyorlash___20664f6660c4bb9e14549fb2148d3c16fc998471dd6e5953ae941bc523639981.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_92" disabled="true"><label for="cbx_92"> <em>Syntax</em>:<br>
@@ -986,6 +1096,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="024-embed-audio-files-in-notes-1" tabindex="-1">024. Embed Audio Files in Notes</h1>
+<h6 id="jump-to-index-54" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/024_medialar_musiqa_biriktirish___ea8edebe9e04e8962aaee78fb48f3508e8e26200cca89526d6234a0e3e366585.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_93" disabled="true"><label for="cbx_93"> <em>Syntax</em>:</label></li>
@@ -998,6 +1109,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="025-embed-local-video-files-easily-1" tabindex="-1">025. Embed Local Video Files Easily</h1>
+<h6 id="jump-to-index-55" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/025_medialar_video_biriktirish___f6b8172d82dfc1a548473449e545c2da225a8dce5facda49fcad17546a0d0bdf.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_95" disabled="true"><label for="cbx_95"> <em>Syntax</em>:</label></li>
@@ -1014,6 +1126,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="026-embed-pdf-documents-in-obsidian-1" tabindex="-1">026. Embed PDF Documents in Obsidian</h1>
+<h6 id="jump-to-index-56" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/026_medialar_pdf_biriktirish___f122e6a7ba96faf9c47db147f2334094cb19457b630e61749eec87210645bceb.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_97" disabled="true"><label for="cbx_97"> <em>Syntax</em>:</label></li>
@@ -1029,6 +1142,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 </ul>
 <hr>
 <h1 id="027-add-and-embed-images-properly-1" tabindex="-1">027. Add and Embed Images Properly</h1>
+<h6 id="jump-to-index-57" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/027_medialar_rasm_biriktirish___616f562592a6d637b9794cf390021eb2e54fdbc1b6ecbd14920023cdee6ed833.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_99" disabled="true"><label for="cbx_99"> <em>Syntax</em>:<br>
@@ -1043,6 +1157,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 <p><img src="/img/user/EDUCATION/Obsidian%20tutorial/assets/original_logo.jpg" alt="EDUCATION/Obsidian tutorial/assets/original_logo.jpg|right|250" width="250px"></p>
 <hr>
 <h1 id="028-embed-maps-1" tabindex="-1">028. Embed Maps</h1>
+<h6 id="jump-to-index-58" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/028_medialar_xarita_biriktirish___57b64848cda9d0d17d4d4cb31797a98b4fedc98a5fdad77b4651ea94049dafbb.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_101" disabled="true"><label for="cbx_101"> <em>Syntax</em>:</label></li>
@@ -1055,6 +1170,7 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 <iframe width="425" height="350" src="https://www.opentmap.org/export/embed.html?bbox=71.52442932128908%2C40.2748109313747%2C71.97761535644533%2C40.51171103483292&amp;layer=mapnik" style="border:1px solid #000"></iframe>
 <hr>
 <h1 id="029-callouts-for-beautiful-notes-1" tabindex="-1">029. Callouts for Beautiful Notes</h1>
+<h6 id="jump-to-index-59" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/029_konvertlar___ec0e09799ef10b63c6c09c7e991f55e8c8a88b0f6ba90b52e18055788669fc10.mkv"></video>
 <ul class="task-list">
 <li class="task-list-item"><input type="checkbox" id="cbx_103" disabled="true"><label for="cbx_103"> <em>Syntax</em>:</label></li>
@@ -1101,6 +1217,7 @@ This might break something</p>
 <p>Other types: <code>note</code>, <code>abstract</code>, <code>success</code>, <code>error</code>, <code>example</code>, <code>quote</code></p>
 <hr>
 <h1 id="030-flowcharts-and-diagrams-mermaid-1" tabindex="-1">030. Flowcharts and Diagrams (Mermaid)</h1>
+<h6 id="jump-to-index-60" tabindex="-1">Jump to [[#Index]]</h6>
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/030_mermaid_diagrammalar___c4bcdc05bf8495846e68c993670178ae75152220d42a5d3382dfbf4b464a7b7e.mkv"></video>
 <p><a class="tag" onclick="toggleTagSearch(this)" data-content="#InsideTripleBacktics">#InsideTripleBacktics</a></p>
 <ul class="task-list">
@@ -1177,18 +1294,36 @@ On this page
 <nav class="toc">
 <ol>
 <li><a href="#obsidian-beginner-s-guide-english-clean-and-amp-visual">Obsidian Beginner’s Guide (English) – Clean & Visual</a>
+</li>
+<li><a href="#index">Index</a>
 <ol>
 <li><a href="#below-syntax-examples-are-given-some-of-them-should-be-wrapped-with-two-b-b-backticks-when-using-they-are-marked-as-inside-triple-backtics-in-examples">Below syntax examples are given. Some of them should be wrapped with two ``` backticks when using. They are marked as #InsideTripleBacktics in examples.</a>
 </li>
 </ol>
 </li>
 <li><a href="#001-install-obsidian-in-1-minute">001. Install Obsidian in 1 Minute</a>
+<ol>
+<li><a href="#jump-to-index">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#002-switch-to-uzbek-language-fast">002. Switch to Uzbek Language Fast</a>
+<ol>
+<li><a href="#jump-to-index-1">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#003-create-new-note-in-one-click">003. Create New Note in One Click</a>
+<ol>
+<li><a href="#jump-to-index-2">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#004-headings-with-hash-levels">004. Headings with Hash Levels</a>
+<ol>
+<li><a href="#jump-to-index-3">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#h1-heading-biggest">H1 Heading (Biggest)</a>
 <ol>
@@ -1213,25 +1348,63 @@ On this page
 </ol>
 </li>
 <li><a href="#005-how-to-make-text-bold-in-obsidian">005. How to Make Text Bold in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-4">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#006-how-to-write-italic-text-fast">006. How to Write Italic Text Fast</a>
+<ol>
+<li><a href="#jump-to-index-5">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#007-strikethrough-text-tutorial">007. Strikethrough Text Tutorial</a>
+<ol>
+<li><a href="#jump-to-index-6">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#008-highlight-important-text-easily">008. Highlight Important Text Easily</a>
+<ol>
+<li><a href="#jump-to-index-7">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#009-toolbar-quick-formatting-tips">009. Toolbar Quick Formatting Tips</a>
+<ol>
+<li><a href="#jump-to-index-8">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#010-horizontal-divider-line-in-obsidian">010. Horizontal Divider Line in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-9">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#011-block-quotes-for-better-notes">011. Block Quotes for Better Notes</a>
+<ol>
+<li><a href="#jump-to-index-10">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#012-bulleted-lists-in-obsidian">012. Bulleted Lists in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-11">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#013-numbered-lists-step-by-step">013. Numbered Lists Step by Step</a>
+<ol>
+<li><a href="#jump-to-index-12">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#014-indent-and-outdent-lists">014. Indent and Outdent Lists</a>
 <ol>
+<li><a href="#jump-to-index-13">Jump to [[#Index]]</a>
+</li>
 <li><a href="#code-tab-code-indent">Tab → indent</a>
 </li>
 <li><a href="#code-shift-tab-code-outdent">Shift+Tab → outdent</a>
@@ -1239,27 +1412,69 @@ On this page
 </ol>
 </li>
 <li><a href="#015-task-checkboxes-in-obsidian">015. Task Checkboxes in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-14">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#016-add-external-links-correctly">016. Add External Links Correctly</a>
+<ol>
+<li><a href="#jump-to-index-15">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#017-simple-internal-links-wiki-style">017. Simple Internal Links Wiki Style</a>
+<ol>
+<li><a href="#jump-to-index-16">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#018-aliased-internal-links">018. Aliased Internal Links</a>
+<ol>
+<li><a href="#jump-to-index-17">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#019-link-to-headings-inside-note">019. Link to Headings Inside Note</a>
+<ol>
+<li><a href="#jump-to-index-18">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#020-embed-notes-with-exclamation">020. Embed Notes with Exclamation</a>
+<ol>
+<li><a href="#jump-to-index-19">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#021-code-blocks-and-syntax-highlight">021. Code Blocks and Syntax Highlight</a>
+<ol>
+<li><a href="#jump-to-index-20">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#022-create-tables-in-obsidian-fast">022. Create Tables in Obsidian Fast</a>
+<ol>
+<li><a href="#jump-to-index-21">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#023-assets-folder-setup">023. Assets Folder Setup</a>
+<ol>
+<li><a href="#jump-to-index-22">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#024-embed-audio-files-in-notes">024. Embed Audio Files in Notes</a>
+<ol>
+<li><a href="#jump-to-index-23">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#025-embed-local-video-files-easily">025. Embed Local Video Files Easily</a>
 <ol>
+<li><a href="#jump-to-index-24">Jump to [[#Index]]</a>
+</li>
 <li><a href="#markdown">markdown</a>
 </li>
 <li><a href="#html">html</a>
@@ -1267,34 +1482,74 @@ On this page
 </ol>
 </li>
 <li><a href="#026-embed-pdf-documents-in-obsidian">026. Embed PDF Documents in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-25">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#027-add-and-embed-images-properly">027. Add and Embed Images Properly</a>
+<ol>
+<li><a href="#jump-to-index-26">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#028-embed-maps">028. Embed Maps</a>
+<ol>
+<li><a href="#jump-to-index-27">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#029-callouts-for-beautiful-notes">029. Callouts for Beautiful Notes</a>
+<ol>
+<li><a href="#jump-to-index-28">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#030-flowcharts-and-diagrams-mermaid">030. Flowcharts and Diagrams (Mermaid)</a>
+<ol>
+<li><a href="#jump-to-index-29">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#031-math-in-obsidian-la-te-x">031. Math in Obsidian | LaTeX</a>
 <ol>
+<li><a href="#jump-to-index-30">Jump to [[#Index]]</a>
+</li>
 <li><a href="#inline">Inline:</a>
 </li>
 </ol>
 </li>
 <li><a href="#obsidian-beginner-s-guide-english-clean-and-amp-visual-1">Obsidian Beginner’s Guide (English) – Clean & Visual</a>
+</li>
+<li><a href="#index-1">Index</a>
 <ol>
 <li><a href="#below-syntax-examples-are-given-some-of-them-should-be-wrapped-with-two-b-b-backticks-when-using-they-are-marked-as-inside-triple-backtics-in-examples-1">Below syntax examples are given. Some of them should be wrapped with two ``` backticks when using. They are marked as #InsideTripleBacktics in examples.</a>
 </li>
 </ol>
 </li>
 <li><a href="#001-install-obsidian-in-1-minute-1">001. Install Obsidian in 1 Minute</a>
+<ol>
+<li><a href="#jump-to-index-31">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#002-switch-to-uzbek-language-fast-1">002. Switch to Uzbek Language Fast</a>
+<ol>
+<li><a href="#jump-to-index-32">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#003-create-new-note-in-one-click-1">003. Create New Note in One Click</a>
+<ol>
+<li><a href="#jump-to-index-33">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#004-headings-with-hash-levels-1">004. Headings with Hash Levels</a>
+<ol>
+<li><a href="#jump-to-index-34">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#h1-heading-biggest-1">H1 Heading (Biggest)</a>
 <ol>
@@ -1319,25 +1574,63 @@ On this page
 </ol>
 </li>
 <li><a href="#005-how-to-make-text-bold-in-obsidian-1">005. How to Make Text Bold in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-35">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#006-how-to-write-italic-text-fast-1">006. How to Write Italic Text Fast</a>
+<ol>
+<li><a href="#jump-to-index-36">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#007-strikethrough-text-tutorial-1">007. Strikethrough Text Tutorial</a>
+<ol>
+<li><a href="#jump-to-index-37">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#008-highlight-important-text-easily-1">008. Highlight Important Text Easily</a>
+<ol>
+<li><a href="#jump-to-index-38">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#009-toolbar-quick-formatting-tips-1">009. Toolbar Quick Formatting Tips</a>
+<ol>
+<li><a href="#jump-to-index-39">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#010-horizontal-divider-line-in-obsidian-1">010. Horizontal Divider Line in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-40">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#011-block-quotes-for-better-notes-1">011. Block Quotes for Better Notes</a>
+<ol>
+<li><a href="#jump-to-index-41">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#012-bulleted-lists-in-obsidian-1">012. Bulleted Lists in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-42">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#013-numbered-lists-step-by-step-1">013. Numbered Lists Step by Step</a>
+<ol>
+<li><a href="#jump-to-index-43">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#014-indent-and-outdent-lists-1">014. Indent and Outdent Lists</a>
 <ol>
+<li><a href="#jump-to-index-44">Jump to [[#Index]]</a>
+</li>
 <li><a href="#code-tab-code-indent-1">Tab → indent</a>
 </li>
 <li><a href="#code-shift-tab-code-outdent-1">Shift+Tab → outdent</a>
@@ -1345,27 +1638,69 @@ On this page
 </ol>
 </li>
 <li><a href="#015-task-checkboxes-in-obsidian-1">015. Task Checkboxes in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-45">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#016-add-external-links-correctly-1">016. Add External Links Correctly</a>
+<ol>
+<li><a href="#jump-to-index-46">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#017-simple-internal-links-wiki-style-1">017. Simple Internal Links Wiki Style</a>
+<ol>
+<li><a href="#jump-to-index-47">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#018-aliased-internal-links-1">018. Aliased Internal Links</a>
+<ol>
+<li><a href="#jump-to-index-48">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#019-link-to-headings-inside-note-1">019. Link to Headings Inside Note</a>
+<ol>
+<li><a href="#jump-to-index-49">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#020-embed-notes-with-exclamation-1">020. Embed Notes with Exclamation</a>
+<ol>
+<li><a href="#jump-to-index-50">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#021-code-blocks-and-syntax-highlight-1">021. Code Blocks and Syntax Highlight</a>
+<ol>
+<li><a href="#jump-to-index-51">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#022-create-tables-in-obsidian-fast-1">022. Create Tables in Obsidian Fast</a>
+<ol>
+<li><a href="#jump-to-index-52">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#023-assets-folder-setup-1">023. Assets Folder Setup</a>
+<ol>
+<li><a href="#jump-to-index-53">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#024-embed-audio-files-in-notes-1">024. Embed Audio Files in Notes</a>
+<ol>
+<li><a href="#jump-to-index-54">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#025-embed-local-video-files-easily-1">025. Embed Local Video Files Easily</a>
 <ol>
+<li><a href="#jump-to-index-55">Jump to [[#Index]]</a>
+</li>
 <li><a href="#markdown-1">markdown</a>
 </li>
 <li><a href="#html-1">html</a>
@@ -1373,15 +1708,33 @@ On this page
 </ol>
 </li>
 <li><a href="#026-embed-pdf-documents-in-obsidian-1">026. Embed PDF Documents in Obsidian</a>
+<ol>
+<li><a href="#jump-to-index-56">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#027-add-and-embed-images-properly-1">027. Add and Embed Images Properly</a>
+<ol>
+<li><a href="#jump-to-index-57">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#028-embed-maps-1">028. Embed Maps</a>
+<ol>
+<li><a href="#jump-to-index-58">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#029-callouts-for-beautiful-notes-1">029. Callouts for Beautiful Notes</a>
+<ol>
+<li><a href="#jump-to-index-59">Jump to [[#Index]]</a>
+</li>
+</ol>
 </li>
 <li><a href="#030-flowcharts-and-diagrams-mermaid-1">030. Flowcharts and Diagrams (Mermaid)</a>
 <ol>
+<li><a href="#jump-to-index-60">Jump to [[#Index]]</a>
+</li>
 <li><a href="#you-ve-mastered-obsidian-basics">You’ve mastered Obsidian basics!</a>
 </li>
 </ol>
@@ -1392,8 +1745,7 @@ On this page
 </div>
 <div class="backlinks">
 <div class="backlink-title" style="margin:4px 0!important">Pages mentioning this page</div>
-<div class="backlink-list"><div class="backlink-card">
-<span class="no-backlinks-message">No other pages mentions this page</span>
+<div class="backlink-list"><div class="backlink-card"><a href="/education/obsidian-tutorial/basic-uz/" data-note-icon="" class="backlink">Basic.uz</a>
 </div></div>
 </div>
 </div>
