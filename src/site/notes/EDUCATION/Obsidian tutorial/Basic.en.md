@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:24:51.822+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:40:53.908+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -42,7 +42,7 @@
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 # H1 Heading (Biggest)
 ## H2 Heading
 ### H3 Heading
@@ -66,7 +66,7 @@
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 **bold** or __bold__
 ```
 - [x] *Result*: 
@@ -79,7 +79,7 @@
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 *italic* or _italic_
 ```
 - [x] *Result*:
@@ -93,7 +93,7 @@
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ~~strikethrough~~
 ```
 - [x] *Result*:
@@ -108,7 +108,7 @@
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ==highlight==
 ```
 - [x] *Result*:
@@ -135,7 +135,7 @@ Select text → use:
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ---
 ***
 ___
@@ -153,7 +153,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > Single level quote
 >> Nested quote
 ```
@@ -171,7 +171,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 - Item 1
 - Item 2
   - Sub-item
@@ -190,7 +190,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 1. First
 2. Second
    3. Sub 1
@@ -220,7 +220,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 - [ ] Not done
 - [x] Done
 - [>] Deferred
@@ -242,7 +242,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [Obsidian](https://obsidian.md)
 ```
 - [x] *Result*: → [Obsidian](https://obsidian.md)
@@ -256,7 +256,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [[031. Math in Obsidian\|031. Math in Obsidian]]
 ```
 - [x] *Result*: → [[031. Math in Obsidian\|031. Math in Obsidian]]
@@ -270,7 +270,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [[031. Math in Obsidian\|LaTeX Guide]]
 ```
 - [x] *Result*: → [LaTeX Guide]([[031. Math in Obsidian\|031. Math in Obsidian]])
@@ -284,7 +284,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Bold Text]]
 ```
 - [x] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian\|Obsidian Guide#005. How to Make Text Bold in Obsidian]])
@@ -298,13 +298,13 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[001. Install Obsidian in 1 Minute\|001. Install Obsidian in 1 Minute]]
 ```
 - [x] *Result*: → (embeds the whole note here)
 
 Resize example:  
-```markdown
+```code
 ![[photo.jpg\|300]]
 ```
 
@@ -334,7 +334,7 @@ print("Hello Obsidian!")
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 | Name   | Age | City       |
 |:-------|:---:|-----------:|
 | Ali    | 25  | Tashkent   |
@@ -367,7 +367,7 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[song.mp3\|song.mp3]]
 ```
 Plays inline.
@@ -382,11 +382,11 @@ Plays inline.
 
 - [ ] *Syntax*:
 ##### markdown
-```markdown
+```code
 ![[video.mp4\|video.mp4]]
 ```
 ##### html 
-```markdown
+```code
 <video src="local_path_or_external_url_link" width="300" controls></video>
 ```
 - [x] *Result*:
@@ -400,13 +400,14 @@ Plays inline.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[paper.pdf\|paper.pdf]]
+![[paper.pdf\|200]]
 ![[paper.pdf#page=5\|paper.pdf#page=5]]
 ```
 Shows page 5 directly.
 - [x] *Result*:
-
+![[progit.pdf|200]]
 
 
 
@@ -415,7 +416,7 @@ Shows page 5 directly.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[photo.jpg\|photo.jpg]]
 ![[photo.jpg\|400x300]]
 ![[photo.jpg\|right]]
@@ -432,7 +433,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 <iframe width=600 height=600 src="the_url_of_a_map" />
 ```
 
@@ -444,7 +445,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > [!info] Title
 > Useful information
 ```
@@ -454,7 +455,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > [!tip] Quick Tip
 > Save time with this!
 ```
@@ -464,7 +465,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > [!warning] Careful
 > This might break something
 ```
@@ -509,7 +510,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:24:51.822+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T20:40:53.908+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -552,7 +553,7 @@ graph TD
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 # H1 Heading (Biggest)
 ## H2 Heading
 ### H3 Heading
@@ -576,7 +577,7 @@ graph TD
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 **bold** or __bold__
 ```
 - [x] *Result*: 
@@ -589,7 +590,7 @@ graph TD
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 *italic* or _italic_
 ```
 - [x] *Result*:
@@ -603,7 +604,7 @@ graph TD
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ~~strikethrough~~
 ```
 - [x] *Result*:
@@ -618,7 +619,7 @@ graph TD
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ==highlight==
 ```
 - [x] *Result*:
@@ -645,7 +646,7 @@ Select text → use:
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ---
 ***
 ___
@@ -663,7 +664,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > Single level quote
 >> Nested quote
 ```
@@ -681,7 +682,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 - Item 1
 - Item 2
   - Sub-item
@@ -700,7 +701,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 1. First
 2. Second
    3. Sub 1
@@ -730,7 +731,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 - [ ] Not done
 - [x] Done
 - [>] Deferred
@@ -752,7 +753,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [Obsidian](https://obsidian.md)
 ```
 - [x] *Result*: → [Obsidian](https://obsidian.md)
@@ -766,7 +767,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [[031. Math in Obsidian]]
 ```
 - [x] *Result*: → [[031. Math in Obsidian]]
@@ -780,7 +781,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [[031. Math in Obsidian|LaTeX Guide]]
 ```
 - [x] *Result*: → [LaTeX Guide]([[031. Math in Obsidian]])
@@ -794,7 +795,7 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 [[Obsidian Guide#005. How to Make Text Bold in Obsidian|Bold Text]]
 ```
 - [x] *Result*: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])
@@ -808,13 +809,13 @@ ___
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[001. Install Obsidian in 1 Minute]]
 ```
 - [x] *Result*: → (embeds the whole note here)
 
 Resize example:  
-```markdown
+```code
 ![[photo.jpg|300]]
 ```
 
@@ -844,7 +845,7 @@ print("Hello Obsidian!")
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 | Name   | Age | City       |
 |:-------|:---:|-----------:|
 | Ali    | 25  | Tashkent   |
@@ -877,7 +878,7 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[song.mp3]]
 ```
 Plays inline.
@@ -892,11 +893,11 @@ Plays inline.
 
 - [ ] *Syntax*:
 ##### markdown
-```markdown
+```code
 ![[video.mp4]]
 ```
 ##### html 
-```markdown
+```code
 <video src="local_path_or_external_url_link" width="300" controls></video>
 ```
 - [x] *Result*:
@@ -910,13 +911,14 @@ Plays inline.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[paper.pdf]]
+![[paper.pdf|200]]
 ![[paper.pdf#page=5]]
 ```
 Shows page 5 directly.
 - [x] *Result*:
-
+![[progit.pdf|200]]
 
 
 
@@ -925,7 +927,7 @@ Shows page 5 directly.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 ![[photo.jpg]]
 ![[photo.jpg|400x300]]
 ![[photo.jpg|right|250]]
@@ -942,7 +944,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 <iframe width=600 height=600 src="the_url_of_a_map" />
 ```
 
@@ -954,7 +956,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > [!info] Title
 > Useful information
 ```
@@ -964,7 +966,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > [!tip] Quick Tip
 > Save time with this!
 ```
@@ -974,7 +976,7 @@ Aligns right with width 250px.
 
 
 - [ ] *Syntax*:
-```markdown
+```code
 > [!warning] Careful
 > This might break something
 ```
@@ -1014,7 +1016,7 @@ $E = mc^2$
 
 
 - [ ] *Syntax*
-```markdown
+```code
 $$
 \int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
 $$

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-25T19:53:15.149+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","noteIcon":"","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-25T19:53:15.149+05:00"}
 ---
 
 
