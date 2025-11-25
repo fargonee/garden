@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T22:00:22.970+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T22:31:14.577+05:00"}
 ---
 
 
@@ -26,7 +26,8 @@
 ```
 ---
 # 001. Install Obsidian in 1 Minute
-<video controls width=400 height=400 allowfullscreen src="https://github.com/fargonee/obsidian_tutorial/blob/3b488ee93fe37810bf87e28760501401e57e3ba2/resources/sounded_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"/>
+<video autoplay width=400 height=400 allowfullscreen src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/bare_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"/>
+
 
 
 1. Go to [obsidian.md](https://obsidian.md)
@@ -589,7 +590,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T22:00:22.970+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T22:31:14.577+05:00"}
 ---
 
 
@@ -616,7 +617,8 @@ graph TD
 ```
 ---
 # 001. Install Obsidian in 1 Minute
-<video controls width=400 height=400 allowfullscreen src="https://github.com/fargonee/obsidian_tutorial/blob/3b488ee93fe37810bf87e28760501401e57e3ba2/resources/sounded_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"/>
+<video autoplay width=400 height=400 allowfullscreen src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/bare_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"/>
+
 
 
 1. Go to [obsidian.md](https://obsidian.md)
