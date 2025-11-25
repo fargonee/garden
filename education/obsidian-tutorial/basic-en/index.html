@@ -167,14 +167,14 @@ CTRL + K
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js"></script>
-<script>document.addEventListener("DOMContentLoaded",init,!1),document.addEventListener("DOMContentLoaded",setCorrectShortcut,!1),window.toggleSearch=function(){document.getElementById("globalsearch").classList.contains("active")?document.getElementById("globalsearch").classList.remove("active"):(document.getElementById("globalsearch").classList.add("active"),document.getElementById("term").focus())},window.toggleTagSearch=function(e){console.log(e.textContent);const t=e.textContent;t&&(window.document.getElementById("term").value=t.trim(),window.toggleSearch(),window.search())};const loadingSvg='\n    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">\n      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="1.5s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="1.5s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="1.5s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="3s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="3s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="3s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="8">\n              <animate attributeName="r"\n                   begin="0s" dur="1.5s"\n                   values="6;1;2;3;4;5;6"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n      </g>\n  </svg>';function debounce(e,t,n){var a;return function(){var r=this,i=arguments,c=n&&!a;clearTimeout(a),a=setTimeout((function(){a=null,n||e.apply(r,i)}),t),c&&e.apply(r,i)}}function setCorrectShortcut(){navigator.platform.toUpperCase().indexOf("MAC")>=0&&document.querySelectorAll(".search-keys").forEach((e=>e.innerHTML="⌘ + K"))}function createIndex(e){const t=e=>e.toLowerCase().split(/([^a-z]|[^\x00-\x7F])/),n=new FlexSearch.Document({cache:!0,charset:"latin:extra",optimize:!0,index:[{field:"content",tokenize:"reverse",encode:t},{field:"title",tokenize:"forward",encode:t},{field:"tags",tokenize:"forward",encode:t}]});return e.forEach(((e,t)=>{n.add({id:t,title:e.title,content:e.content,tags:e.tags})})),n}async function init(){let e=!0;if(localStorage.getItem("searchIndex")){let{date:t,docs:n}=JSON.parse(localStorage.getItem("searchIndex"));if("2025-11-25T14:55:09.217Z"===t){e=!1;let t=createIndex(n);window.docs=n,window.index=t}}if(e){let e=await(await fetch("/searchIndex.json?v=2025-11-25T14:55:09.217Z")).json(),t=createIndex(e);localStorage.setItem("searchIndex",JSON.stringify({date:"2025-11-25T14:55:09.217Z",docs:e})),window.docs=e,window.index=t}document.addEventListener("keydown",(e=>{if((e.ctrlKey||e.metaKey)&&"k"===e.key&&(e.preventDefault(),toggleSearch()),"Escape"===e.key&&document.getElementById("globalsearch").classList.remove("active"),document.getElementById("globalsearch").classList.contains("active")){if("ArrowDown"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.nextElementSibling?t.nextElementSibling.classList.add("active"):document.querySelector(".searchresult").classList.add("active")):document.querySelector(".searchresult").classList.add("active");let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("ArrowUp"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.previousElementSibling?t.previousElementSibling.classList.add("active"):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling||e.classList.add("active")}))):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling&&e.classList.add("active")}));let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("Enter"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t&&(window.location.href=t.querySelector("a").href)}}}));const t=debounce(search,200,!1);field=document.querySelector("#term"),field.addEventListener("keydown",(e=>{"ArrowDown"!==e.key&&"ArrowUp"!==e.key&&t()})),resultsDiv=document.querySelector("#search-results");const n=new URL(location.href).searchParams;n.get("q")&&(field.setAttribute("value",n.get("q")),toggleSearch(),search())}async function search(){let e=field.value.trim();if(!e)return;if(e==lastSearch)return;console.log(`search for ${e}`),window.lastSearch=e,resultsDiv.innerHTML=loadingSvg;let t=offlineSearch(e),n="";if(!t.length){let t=document.createElement("p");return t.innerText=`No results for "${e}"`,resultsDiv.innerHTML="",void resultsDiv.appendChild(t)}n+='<div style="max-width:100%;">',t.forEach((e=>{e.tags&&e.tags.length>0?n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        <div class="header-meta">\n                            <div class="header-tags">\n                                ${e.tags.map((e=>'<a class="tag" href="JavaScript:Void(0);">#'+e+"</a>")).join("")}\n                            </div>\n                        </div>\n                        ${e.content}\n                    </div>\n                </div>`:n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        ${e.content}\n                    </div>\n                </div>`})),n+="</div>",resultsDiv.innerHTML=n}function truncate(e,t){return(e=e.replaceAll(/<[^>]*>/g,"")).length<t?e:e.substring(0,t-3)+"..."}function offlineSearch(e){let t=window.docs,n="#"===e[0]&&e.length>1?index.search(e.substring(1),[{field:"tags"}]):index.search(e,[{field:"title",limit:5},{field:"content",weight:10}]);const a=e=>{const t=n.filter((t=>t.field===e));return 0===t.length?[]:[...t[0].result]};return[...new Set([...a("title"),...a("content"),...a("tags")])].map((e=>{let n=t[e];return n.content=truncate(n.content,400),n.tags=n.tags.filter((e=>"gardenEntry"!=e&&"note"!=e)),n}))}window.lastSearch=""</script>
+<script>document.addEventListener("DOMContentLoaded",init,!1),document.addEventListener("DOMContentLoaded",setCorrectShortcut,!1),window.toggleSearch=function(){document.getElementById("globalsearch").classList.contains("active")?document.getElementById("globalsearch").classList.remove("active"):(document.getElementById("globalsearch").classList.add("active"),document.getElementById("term").focus())},window.toggleTagSearch=function(e){console.log(e.textContent);const t=e.textContent;t&&(window.document.getElementById("term").value=t.trim(),window.toggleSearch(),window.search())};const loadingSvg='\n    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">\n      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="1.5s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="1.5s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="1.5s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="3s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="3s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="3s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="8">\n              <animate attributeName="r"\n                   begin="0s" dur="1.5s"\n                   values="6;1;2;3;4;5;6"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n      </g>\n  </svg>';function debounce(e,t,n){var a;return function(){var r=this,i=arguments,c=n&&!a;clearTimeout(a),a=setTimeout((function(){a=null,n||e.apply(r,i)}),t),c&&e.apply(r,i)}}function setCorrectShortcut(){navigator.platform.toUpperCase().indexOf("MAC")>=0&&document.querySelectorAll(".search-keys").forEach((e=>e.innerHTML="⌘ + K"))}function createIndex(e){const t=e=>e.toLowerCase().split(/([^a-z]|[^\x00-\x7F])/),n=new FlexSearch.Document({cache:!0,charset:"latin:extra",optimize:!0,index:[{field:"content",tokenize:"reverse",encode:t},{field:"title",tokenize:"forward",encode:t},{field:"tags",tokenize:"forward",encode:t}]});return e.forEach(((e,t)=>{n.add({id:t,title:e.title,content:e.content,tags:e.tags})})),n}async function init(){let e=!0;if(localStorage.getItem("searchIndex")){let{date:t,docs:n}=JSON.parse(localStorage.getItem("searchIndex"));if("2025-11-25T14:58:23.245Z"===t){e=!1;let t=createIndex(n);window.docs=n,window.index=t}}if(e){let e=await(await fetch("/searchIndex.json?v=2025-11-25T14:58:23.245Z")).json(),t=createIndex(e);localStorage.setItem("searchIndex",JSON.stringify({date:"2025-11-25T14:58:23.245Z",docs:e})),window.docs=e,window.index=t}document.addEventListener("keydown",(e=>{if((e.ctrlKey||e.metaKey)&&"k"===e.key&&(e.preventDefault(),toggleSearch()),"Escape"===e.key&&document.getElementById("globalsearch").classList.remove("active"),document.getElementById("globalsearch").classList.contains("active")){if("ArrowDown"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.nextElementSibling?t.nextElementSibling.classList.add("active"):document.querySelector(".searchresult").classList.add("active")):document.querySelector(".searchresult").classList.add("active");let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("ArrowUp"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.previousElementSibling?t.previousElementSibling.classList.add("active"):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling||e.classList.add("active")}))):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling&&e.classList.add("active")}));let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("Enter"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t&&(window.location.href=t.querySelector("a").href)}}}));const t=debounce(search,200,!1);field=document.querySelector("#term"),field.addEventListener("keydown",(e=>{"ArrowDown"!==e.key&&"ArrowUp"!==e.key&&t()})),resultsDiv=document.querySelector("#search-results");const n=new URL(location.href).searchParams;n.get("q")&&(field.setAttribute("value",n.get("q")),toggleSearch(),search())}async function search(){let e=field.value.trim();if(!e)return;if(e==lastSearch)return;console.log(`search for ${e}`),window.lastSearch=e,resultsDiv.innerHTML=loadingSvg;let t=offlineSearch(e),n="";if(!t.length){let t=document.createElement("p");return t.innerText=`No results for "${e}"`,resultsDiv.innerHTML="",void resultsDiv.appendChild(t)}n+='<div style="max-width:100%;">',t.forEach((e=>{e.tags&&e.tags.length>0?n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        <div class="header-meta">\n                            <div class="header-tags">\n                                ${e.tags.map((e=>'<a class="tag" href="JavaScript:Void(0);">#'+e+"</a>")).join("")}\n                            </div>\n                        </div>\n                        ${e.content}\n                    </div>\n                </div>`:n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        ${e.content}\n                    </div>\n                </div>`})),n+="</div>",resultsDiv.innerHTML=n}function truncate(e,t){return(e=e.replaceAll(/<[^>]*>/g,"")).length<t?e:e.substring(0,t-3)+"..."}function offlineSearch(e){let t=window.docs,n="#"===e[0]&&e.length>1?index.search(e.substring(1),[{field:"tags"}]):index.search(e,[{field:"title",limit:5},{field:"content",weight:10}]);const a=e=>{const t=n.filter((t=>t.field===e));return 0===t.length?[]:[...t[0].result]};return[...new Set([...a("title"),...a("content"),...a("tags")])].map((e=>{let n=t[e];return n.content=truncate(n.content,400),n.tags=n.tags.filter((e=>"gardenEntry"!=e&&"note"!=e)),n}))}window.lastSearch=""</script>
 <main class="content cm-s-obsidian">
 <header>
 <h1 data-note-icon="">Basic.en</h1>
 <div class="header-meta">
 <div class="header-tags">
 </div>
-<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2025-11-25T18:04:33.314+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2025-11-25T19:53:19.909+05:00"></span></div></div></div>
+<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2025-11-25T18:04:33.314+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2025-11-25T19:57:38.206+05:00"></span></div></div></div>
 </header>
 <h1 id="obsidian-beginner-s-guide-english-clean-and-amp-visual" tabindex="-1">Obsidian Beginner’s Guide (English) – Clean &amp; Visual</h1>
 <div class="callout" data-callout="warning"><div class="callout-title"><div class="callout-title-inner"> Reminder:</div></div>
@@ -216,8 +216,8 @@ CTRL + K
 ##### H5 Heading
 ###### H6 Heading (smallest)
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_1" checked="true" disabled="true"><label for="cbx_1"> <em>Result</em>:</label></li>
 </ul>
 <h1 id="h1-heading-biggest" tabindex="-1">H1 Heading (Biggest)</h1>
 <h2 id="h2-heading" tabindex="-1">H2 Heading</h2>
@@ -228,45 +228,45 @@ CTRL + K
 <hr>
 <h1 id="005-how-to-make-text-bold-in-obsidian" tabindex="-1">005. How to Make Text Bold in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_1" disabled="true"><label for="cbx_1"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_2" disabled="true"><label for="cbx_2"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">**bold** or __bold__
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:<br>
-<strong>bold</strong> or <strong>bold</strong></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_3" checked="true" disabled="true"><label for="cbx_3"> <em>Result</em>:<br>
+<strong>bold</strong> or <strong>bold</strong></label></li>
 </ul>
 <hr>
 <h1 id="006-how-to-write-italic-text-fast" tabindex="-1">006. How to Write Italic Text Fast</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_2" disabled="true"><label for="cbx_2"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_4" disabled="true"><label for="cbx_4"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">*italic* or _italic_
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:<br>
-<em>italic</em> or <em>italic</em></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_5" checked="true" disabled="true"><label for="cbx_5"> <em>Result</em>:<br>
+<em>italic</em> or <em>italic</em></label></li>
 </ul>
 <hr>
 <h1 id="007-strikethrough-text-tutorial" tabindex="-1">007. Strikethrough Text Tutorial</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_3" disabled="true"><label for="cbx_3"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_6" disabled="true"><label for="cbx_6"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">~~strikethrough~~
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:<br>
-<s>strikethrough</s></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_7" checked="true" disabled="true"><label for="cbx_7"> <em>Result</em>:<br>
+<s>strikethrough</s></label></li>
 </ul>
 <hr>
 <h1 id="008-highlight-important-text-easily" tabindex="-1">008. Highlight Important Text Easily</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_4" disabled="true"><label for="cbx_4"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_8" disabled="true"><label for="cbx_8"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">==highlight==
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_9" checked="true" disabled="true"><label for="cbx_9"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="009-toolbar-quick-formatting-tips" tabindex="-1">009. Toolbar Quick Formatting Tips</h1>
@@ -280,14 +280,14 @@ CTRL + K
 <hr>
 <h1 id="010-horizontal-divider-line-in-obsidian" tabindex="-1">010. Horizontal Divider Line in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_5" disabled="true"><label for="cbx_5"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_10" disabled="true"><label for="cbx_10"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">---
 ***
 ___
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_11" checked="true" disabled="true"><label for="cbx_11"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <hr>
@@ -295,13 +295,13 @@ ___
 <hr>
 <h1 id="011-block-quotes-for-better-notes" tabindex="-1">011. Block Quotes for Better Notes</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_6" disabled="true"><label for="cbx_6"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_12" disabled="true"><label for="cbx_12"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; Single level quote
 &gt;&gt; Nested quote
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_13" checked="true" disabled="true"><label for="cbx_13"> <em>Result</em>:</label></li>
 </ul>
 <blockquote>
 <p>Single level quote</p>
@@ -312,14 +312,14 @@ ___
 <hr>
 <h1 id="012-bulleted-lists-in-obsidian" tabindex="-1">012. Bulleted Lists in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_7" disabled="true"><label for="cbx_7"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_14" disabled="true"><label for="cbx_14"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">- Item 1
 - Item 2
   - Sub-item
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_15" checked="true" disabled="true"><label for="cbx_15"> <em>Result</em>:</label></li>
 <li>Item 1</li>
 <li>Item 2
 <ul>
@@ -330,15 +330,15 @@ ___
 <hr>
 <h1 id="013-numbered-lists-step-by-step" tabindex="-1">013. Numbered Lists Step by Step</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_8" disabled="true"><label for="cbx_8"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_16" disabled="true"><label for="cbx_16"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">1. First
 2. Second
    3. Sub 1
    4. Sub 2
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_17" checked="true" disabled="true"><label for="cbx_17"> <em>Result</em>:</label></li>
 </ul>
 <ol>
 <li>First</li>
@@ -353,7 +353,7 @@ ___
 <hr>
 <h1 id="015-task-checkboxes-in-obsidian" tabindex="-1">015. Task Checkboxes in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_9" disabled="true"><label for="cbx_9"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_18" disabled="true"><label for="cbx_18"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">- [ ] Not done
 - [x] Done
@@ -361,14 +361,14 @@ ___
 - [?] Question
 </code></pre>
 <ul class="task-list">
-<li>
-<p>[&gt;] <em>Result</em>:</p>
+<li class="task-list-item">
+<p><input type="checkbox" id="cbx_19" checked="true" disabled="true"><label for="cbx_19"> <em>Result</em>:</label></p>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" id="cbx_10" disabled="true"><label for="cbx_10"> Not done</label></p>
+<p><input type="checkbox" id="cbx_20" disabled="true"><label for="cbx_20"> Not done</label></p>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" id="cbx_11" checked="true" disabled="true"><label for="cbx_11"> Done</label></p>
+<p><input type="checkbox" id="cbx_21" checked="true" disabled="true"><label for="cbx_21"> Done</label></p>
 </li>
 <li>
 <p>[&gt;] Deferred</p>
@@ -380,53 +380,52 @@ ___
 <hr>
 <h1 id="016-add-external-links-correctly" tabindex="-1">016. Add External Links Correctly</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_12" disabled="true"><label for="cbx_12"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_22" disabled="true"><label for="cbx_22"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">[Obsidian](https://obsidian.md)
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → <a href="https://obsidian.md" target="_blank" class="external-link">Obsidian</a></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_23" checked="true" disabled="true"><label for="cbx_23"> <em>Result</em>: → <a href="https://obsidian.md" target="_blank" class="external-link">Obsidian</a></label></li>
 </ul>
 <hr>
 <h1 id="017-simple-internal-links-wiki-style" tabindex="-1">017. Simple Internal Links Wiki Style</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_13" disabled="true"><label for="cbx_13"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_24" disabled="true"><label for="cbx_24"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown"><a class="internal-link is-unresolved" href="/404" target="">031. Math in Obsidian</a>
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → <a class="internal-link is-unresolved" href="/404" target="">031. Math in Obsidian</a></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_25" checked="true" disabled="true"><label for="cbx_25"> <em>Result</em>: → <a class="internal-link is-unresolved" href="/404" target="">031. Math in Obsidian</a></label></li>
 </ul>
 <hr>
 <h1 id="018-aliased-internal-links" tabindex="-1">018. Aliased Internal Links</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_14" disabled="true"><label for="cbx_14"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_26" disabled="true"><label for="cbx_26"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown"><a class="internal-link is-unresolved" href="/404" target="">LaTeX Guide</a>
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → [LaTeX Guide]([[031. Math in Obsidian]])</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_27" checked="true" disabled="true"><label for="cbx_27"> <em>Result</em>: → [LaTeX Guide](<a class="internal-link is-unresolved" href="/404" target="">031. Math in Obsidian</a>)</label></li>
 </ul>
 <hr>
 <h1 id="019-link-to-headings-inside-note" tabindex="-1">019. Link to Headings Inside Note</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_15" disabled="true"><label for="cbx_15"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_28" disabled="true"><label for="cbx_28"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown"><a class="internal-link is-unresolved" href="/404" target="">Bold Text</a>
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_29" checked="true" disabled="true"><label for="cbx_29"> <em>Result</em>: → [Bold Text](<a class="internal-link is-unresolved" href="/404" target="">Obsidian Guide#005. How to Make Text Bold in Obsidian</a>)</label></li>
 </ul>
 <hr>
 <h1 id="020-embed-notes-with-exclamation" tabindex="-1">020. Embed Notes with Exclamation</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_16" disabled="true"><label for="cbx_16"> <em>Syntax</em>:<br>
-<b><code>here put following script</code></b></label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_30" disabled="true"><label for="cbx_30"> <em>Syntax</em>:</label></li>
 </ul>
-<pre><code class="language-markdown">![[001. Install Obsidian in 1 Minute]]
+<pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">001. Install Obsidian in 1 Minute</a>
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → (embeds the whole note here)</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_31" checked="true" disabled="true"><label for="cbx_31"> <em>Result</em>: → (embeds the whole note here)</label></li>
 </ul>
 <p>Resize example:</p>
 <pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">300</a>
@@ -434,25 +433,25 @@ ___
 <hr>
 <h1 id="021-code-blocks-and-syntax-highlight" tabindex="-1">021. Code Blocks and Syntax Highlight</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_17" disabled="true"><label for="cbx_17"> <em>Syntax</em>:</label><pre><code class="language-python">print(&quot;Hello Obsidian!&quot;)
+<li class="task-list-item"><input type="checkbox" id="cbx_32" disabled="true"><label for="cbx_32"> <em>Syntax</em>:</label><pre><code class="language-python">print(&quot;Hello Obsidian!&quot;)
 </code></pre>
 </li>
-<li>[&gt;] <em>Result</em>:</li>
+<li class="task-list-item"><input type="checkbox" id="cbx_33" checked="true" disabled="true"><label for="cbx_33"> <em>Result</em>:</label></li>
 </ul>
 <pre><code class="language-python">print(&quot;Hello Obsidian!&quot;)
 </code></pre>
 <hr>
 <h1 id="022-create-tables-in-obsidian-fast" tabindex="-1">022. Create Tables in Obsidian Fast</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_18" disabled="true"><label for="cbx_18"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_34" disabled="true"><label for="cbx_34"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">| Name   | Age | City       |
 |:-------|:---:|-----------:|
 | Ali    | 25  | Tashkent   |
 | Vali   | 30  | Samarkand  |
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_35" checked="true" disabled="true"><label for="cbx_35"> <em>Result</em>:</label></li>
 </ul>
 <div class="table-wrapper"><table>
 <thead>
@@ -478,81 +477,81 @@ ___
 <hr>
 <h1 id="023-assets-folder-setup" tabindex="-1">023. Assets Folder Setup</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_19" disabled="true"><label for="cbx_19"> <em>Syntax</em>:<br>
+<li class="task-list-item"><input type="checkbox" id="cbx_36" disabled="true"><label for="cbx_36"> <em>Syntax</em>:<br>
 Create folder → <code>Assets</code> or <code>Attachments</code> → drop all media there.</label></li>
 </ul>
 <hr>
 <h1 id="024-embed-audio-files-in-notes" tabindex="-1">024. Embed Audio Files in Notes</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_20" disabled="true"><label for="cbx_20"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_37" disabled="true"><label for="cbx_37"> <em>Syntax</em>:</label></li>
 </ul>
-<pre><code class="language-markdown">![[song.mp3]]
+<pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">song.mp3</a>
 </code></pre>
 <p>Plays inline.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_38" checked="true" disabled="true"><label for="cbx_38"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="025-embed-local-video-files-easily" tabindex="-1">025. Embed Local Video Files Easily</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_21" disabled="true"><label for="cbx_21"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_39" disabled="true"><label for="cbx_39"> <em>Syntax</em>:</label></li>
 </ul>
-<pre><code class="language-markdown">![[video.mp4]]
+<pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">video.mp4</a>
 </code></pre>
 <p>Plays inside the note.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_40" checked="true" disabled="true"><label for="cbx_40"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="026-embed-pdf-documents-in-obsidian" tabindex="-1">026. Embed PDF Documents in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_22" disabled="true"><label for="cbx_22"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_41" disabled="true"><label for="cbx_41"> <em>Syntax</em>:</label></li>
 </ul>
-<pre><code class="language-markdown">![[paper.pdf]]
-![[paper.pdf#page=5]]
+<pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">paper.pdf</a>
+!<a class="internal-link is-unresolved" href="/404" target="">paper.pdf#page=5</a>
 </code></pre>
 <p>Shows page 5 directly.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_42" checked="true" disabled="true"><label for="cbx_42"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="027-add-and-embed-images-properly" tabindex="-1">027. Add and Embed Images Properly</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_23" disabled="true"><label for="cbx_23"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_43" disabled="true"><label for="cbx_43"> <em>Syntax</em>:</label></li>
 </ul>
-<pre><code class="language-markdown">![[photo.jpg]]
+<pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">photo.jpg</a>
 !<a class="internal-link is-unresolved" href="/404" target="">400x300</a>
 !<a class="internal-link is-unresolved" href="/404" target="">right</a>
 </code></pre>
 <p>Aligns right with width 250px.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_44" checked="true" disabled="true"><label for="cbx_44"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="028-embed-maps" tabindex="-1">028. Embed Maps</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_24" disabled="true"><label for="cbx_24"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_45" disabled="true"><label for="cbx_45"> <em>Syntax</em>:</label></li>
 </ul>
-<pre><code class="language-markdown">![[map-screenshot.jpg]]
+<pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">map-screenshot.jpg</a>
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_46" checked="true" disabled="true"><label for="cbx_46"> <em>Result</em>:</label></li>
 </ul>
 <p>or link:<br>
 <a href="https://goo.gl/maps/..." target="_blank" class="external-link">Google Maps Location</a></p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_47" checked="true" disabled="true"><label for="cbx_47"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="029-callouts-for-beautiful-notes" tabindex="-1">029. Callouts for Beautiful Notes</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_25" disabled="true"><label for="cbx_25"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_48" disabled="true"><label for="cbx_48"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; [!info] Title
 &gt; Useful information
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_49" checked="true" disabled="true"><label for="cbx_49"> <em>Result</em>:</label></li>
 </ul>
 <div class="callout" data-callout="info"><div class="callout-title"><div class="callout-title-inner"> Title<br></div></div>
 <div class="callout-content">
@@ -560,13 +559,13 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 Useful information</p>
 </div></div>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_26" disabled="true"><label for="cbx_26"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_50" disabled="true"><label for="cbx_50"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; [!tip] Quick Tip
 &gt; Save time with this!
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_51" checked="true" disabled="true"><label for="cbx_51"> <em>Result</em>:</label></li>
 </ul>
 <div class="callout" data-callout="tip"><div class="callout-title"><div class="callout-title-inner"> Quick Tip<br></div></div>
 <div class="callout-content">
@@ -574,13 +573,13 @@ Useful information</p>
 Save time with this!</p>
 </div></div>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_27" disabled="true"><label for="cbx_27"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_52" disabled="true"><label for="cbx_52"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; [!warning] Careful
 &gt; This might break something
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_53" checked="true" disabled="true"><label for="cbx_53"> <em>Result</em>:</label></li>
 </ul>
 <div class="callout" data-callout="warning"><div class="callout-title"><div class="callout-title-inner"> Careful<br></div></div>
 <div class="callout-content">
@@ -590,8 +589,9 @@ This might break something</p>
 <p>Other types: <code>note</code>, <code>abstract</code>, <code>success</code>, <code>error</code>, <code>example</code>, <code>quote</code></p>
 <hr>
 <h1 id="030-flowcharts-and-diagrams-fast-mermaid" tabindex="-1">030. Flowcharts and Diagrams Fast (Mermaid)</h1>
+<p><a class="tag" onclick="toggleTagSearch(this)" data-content="#InsideTripleBacktics">#InsideTripleBacktics</a></p>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_28" disabled="true"><label for="cbx_28"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_54" disabled="true"><label for="cbx_54"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-code">mermaid
 graph TD
@@ -599,8 +599,8 @@ graph TD
     B --&gt;|Yes| C[Good]
     B --&gt;|No| D[Try Again]
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_55" checked="true" disabled="true"><label for="cbx_55"> <em>Result</em>:</label></li>
 </ul>
 <pre class="mermaid">graph TD
     A[Start] --> B{Decision}
@@ -609,9 +609,9 @@ graph TD
 <h1 id="031-math-in-obsidian-la-te-x" tabindex="-1">031. Math in Obsidian | LaTeX</h1>
 <h3 id="inline" tabindex="-1">Inline:</h3>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_29" disabled="true"><label for="cbx_29"> <em>Syntax</em><br>
+<li class="task-list-item"><input type="checkbox" id="cbx_56" disabled="true"><label for="cbx_56"> <em>Syntax</em><br>
 `$E = mc^2---<br>
-{&quot;dg-publish&quot;:true,&quot;permalink&quot;:&quot;/education/obsidian-tutorial/basic-en/&quot;,&quot;created&quot;:&quot;2025-11-25T18:04:33.314+05:00&quot;,&quot;updated&quot;:&quot;2025-11-25T19:53:19.909+05:00&quot;}</label></li>
+{&quot;dg-publish&quot;:true,&quot;permalink&quot;:&quot;/education/obsidian-tutorial/basic-en/&quot;,&quot;created&quot;:&quot;2025-11-25T18:04:33.314+05:00&quot;,&quot;updated&quot;:&quot;2025-11-25T19:57:38.206+05:00&quot;}</label></li>
 </ul>
 <hr>
 <h1 id="obsidian-beginner-s-guide-english-clean-and-amp-visual-1" tabindex="-1">Obsidian Beginner’s Guide (English) – Clean &amp; Visual</h1>
@@ -645,7 +645,7 @@ graph TD
 <hr>
 <h1 id="004-headings-with-hash-levels-1" tabindex="-1">004. Headings with Hash Levels</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_30" disabled="true"><label for="cbx_30"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_57" disabled="true"><label for="cbx_57"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown"># H1 Heading (Biggest)
 ## H2 Heading
@@ -654,8 +654,8 @@ graph TD
 ##### H5 Heading
 ###### H6 Heading (smallest)
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_58" checked="true" disabled="true"><label for="cbx_58"> <em>Result</em>:</label></li>
 </ul>
 <h1 id="h1-heading-biggest-1" tabindex="-1">H1 Heading (Biggest)</h1>
 <h2 id="h2-heading-1" tabindex="-1">H2 Heading</h2>
@@ -666,45 +666,45 @@ graph TD
 <hr>
 <h1 id="005-how-to-make-text-bold-in-obsidian-1" tabindex="-1">005. How to Make Text Bold in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_31" disabled="true"><label for="cbx_31"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_59" disabled="true"><label for="cbx_59"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">**bold** or __bold__
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:<br>
-<strong>bold</strong> or <strong>bold</strong></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_60" checked="true" disabled="true"><label for="cbx_60"> <em>Result</em>:<br>
+<strong>bold</strong> or <strong>bold</strong></label></li>
 </ul>
 <hr>
 <h1 id="006-how-to-write-italic-text-fast-1" tabindex="-1">006. How to Write Italic Text Fast</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_32" disabled="true"><label for="cbx_32"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_61" disabled="true"><label for="cbx_61"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">*italic* or _italic_
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:<br>
-<em>italic</em> or <em>italic</em></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_62" checked="true" disabled="true"><label for="cbx_62"> <em>Result</em>:<br>
+<em>italic</em> or <em>italic</em></label></li>
 </ul>
 <hr>
 <h1 id="007-strikethrough-text-tutorial-1" tabindex="-1">007. Strikethrough Text Tutorial</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_33" disabled="true"><label for="cbx_33"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_63" disabled="true"><label for="cbx_63"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">~~strikethrough~~
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:<br>
-<s>strikethrough</s></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_64" checked="true" disabled="true"><label for="cbx_64"> <em>Result</em>:<br>
+<s>strikethrough</s></label></li>
 </ul>
 <hr>
 <h1 id="008-highlight-important-text-easily-1" tabindex="-1">008. Highlight Important Text Easily</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_34" disabled="true"><label for="cbx_34"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_65" disabled="true"><label for="cbx_65"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">==highlight==
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_66" checked="true" disabled="true"><label for="cbx_66"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="009-toolbar-quick-formatting-tips-1" tabindex="-1">009. Toolbar Quick Formatting Tips</h1>
@@ -718,14 +718,14 @@ graph TD
 <hr>
 <h1 id="010-horizontal-divider-line-in-obsidian-1" tabindex="-1">010. Horizontal Divider Line in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_35" disabled="true"><label for="cbx_35"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_67" disabled="true"><label for="cbx_67"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">---
 ***
 ___
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_68" checked="true" disabled="true"><label for="cbx_68"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <hr>
@@ -733,13 +733,13 @@ ___
 <hr>
 <h1 id="011-block-quotes-for-better-notes-1" tabindex="-1">011. Block Quotes for Better Notes</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_36" disabled="true"><label for="cbx_36"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_69" disabled="true"><label for="cbx_69"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; Single level quote
 &gt;&gt; Nested quote
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_70" checked="true" disabled="true"><label for="cbx_70"> <em>Result</em>:</label></li>
 </ul>
 <blockquote>
 <p>Single level quote</p>
@@ -750,14 +750,14 @@ ___
 <hr>
 <h1 id="012-bulleted-lists-in-obsidian-1" tabindex="-1">012. Bulleted Lists in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_37" disabled="true"><label for="cbx_37"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_71" disabled="true"><label for="cbx_71"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">- Item 1
 - Item 2
   - Sub-item
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_72" checked="true" disabled="true"><label for="cbx_72"> <em>Result</em>:</label></li>
 <li>Item 1</li>
 <li>Item 2
 <ul>
@@ -768,15 +768,15 @@ ___
 <hr>
 <h1 id="013-numbered-lists-step-by-step-1" tabindex="-1">013. Numbered Lists Step by Step</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_38" disabled="true"><label for="cbx_38"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_73" disabled="true"><label for="cbx_73"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">1. First
 2. Second
    3. Sub 1
    4. Sub 2
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_74" checked="true" disabled="true"><label for="cbx_74"> <em>Result</em>:</label></li>
 </ul>
 <ol>
 <li>First</li>
@@ -791,7 +791,7 @@ ___
 <hr>
 <h1 id="015-task-checkboxes-in-obsidian-1" tabindex="-1">015. Task Checkboxes in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_39" disabled="true"><label for="cbx_39"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_75" disabled="true"><label for="cbx_75"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">- [ ] Not done
 - [x] Done
@@ -799,14 +799,14 @@ ___
 - [?] Question
 </code></pre>
 <ul class="task-list">
-<li>
-<p>[&gt;] <em>Result</em>:</p>
+<li class="task-list-item">
+<p><input type="checkbox" id="cbx_76" checked="true" disabled="true"><label for="cbx_76"> <em>Result</em>:</label></p>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" id="cbx_40" disabled="true"><label for="cbx_40"> Not done</label></p>
+<p><input type="checkbox" id="cbx_77" disabled="true"><label for="cbx_77"> Not done</label></p>
 </li>
 <li class="task-list-item">
-<p><input type="checkbox" id="cbx_41" checked="true" disabled="true"><label for="cbx_41"> Done</label></p>
+<p><input type="checkbox" id="cbx_78" checked="true" disabled="true"><label for="cbx_78"> Done</label></p>
 </li>
 <li>
 <p>[&gt;] Deferred</p>
@@ -818,53 +818,52 @@ ___
 <hr>
 <h1 id="016-add-external-links-correctly-1" tabindex="-1">016. Add External Links Correctly</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_42" disabled="true"><label for="cbx_42"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_79" disabled="true"><label for="cbx_79"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">[Obsidian](https://obsidian.md)
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → <a href="https://obsidian.md" target="_blank" class="external-link">Obsidian</a></li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_80" checked="true" disabled="true"><label for="cbx_80"> <em>Result</em>: → <a href="https://obsidian.md" target="_blank" class="external-link">Obsidian</a></label></li>
 </ul>
 <hr>
 <h1 id="017-simple-internal-links-wiki-style-1" tabindex="-1">017. Simple Internal Links Wiki Style</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_43" disabled="true"><label for="cbx_43"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_81" disabled="true"><label for="cbx_81"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">[[031. Math in Obsidian]]
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → [[031. Math in Obsidian]]</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_82" checked="true" disabled="true"><label for="cbx_82"> <em>Result</em>: → [[031. Math in Obsidian]]</label></li>
 </ul>
 <hr>
 <h1 id="018-aliased-internal-links-1" tabindex="-1">018. Aliased Internal Links</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_44" disabled="true"><label for="cbx_44"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_83" disabled="true"><label for="cbx_83"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown"><a class="internal-link is-unresolved" href="/404" target="">LaTeX Guide</a>
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → [LaTeX Guide]([[031. Math in Obsidian]])</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_84" checked="true" disabled="true"><label for="cbx_84"> <em>Result</em>: → [LaTeX Guide]([[031. Math in Obsidian]])</label></li>
 </ul>
 <hr>
 <h1 id="019-link-to-headings-inside-note-1" tabindex="-1">019. Link to Headings Inside Note</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_45" disabled="true"><label for="cbx_45"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_85" disabled="true"><label for="cbx_85"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown"><a class="internal-link is-unresolved" href="/404" target="">Bold Text</a>
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_86" checked="true" disabled="true"><label for="cbx_86"> <em>Result</em>: → [Bold Text]([[Obsidian Guide#005. How to Make Text Bold in Obsidian]])</label></li>
 </ul>
 <hr>
 <h1 id="020-embed-notes-with-exclamation-1" tabindex="-1">020. Embed Notes with Exclamation</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_46" disabled="true"><label for="cbx_46"> <em>Syntax</em>:<br>
-<b><code>here put following script</code></b></label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_87" disabled="true"><label for="cbx_87"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">![[001. Install Obsidian in 1 Minute]]
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>: → (embeds the whole note here)</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_88" checked="true" disabled="true"><label for="cbx_88"> <em>Result</em>: → (embeds the whole note here)</label></li>
 </ul>
 <p>Resize example:</p>
 <pre><code class="language-markdown">!<a class="internal-link is-unresolved" href="/404" target="">300</a>
@@ -872,25 +871,25 @@ ___
 <hr>
 <h1 id="021-code-blocks-and-syntax-highlight-1" tabindex="-1">021. Code Blocks and Syntax Highlight</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_47" disabled="true"><label for="cbx_47"> <em>Syntax</em>:</label><pre><code class="language-python">print(&quot;Hello Obsidian!&quot;)
+<li class="task-list-item"><input type="checkbox" id="cbx_89" disabled="true"><label for="cbx_89"> <em>Syntax</em>:</label><pre><code class="language-python">print(&quot;Hello Obsidian!&quot;)
 </code></pre>
 </li>
-<li>[&gt;] <em>Result</em>:</li>
+<li class="task-list-item"><input type="checkbox" id="cbx_90" checked="true" disabled="true"><label for="cbx_90"> <em>Result</em>:</label></li>
 </ul>
 <pre><code class="language-python">print(&quot;Hello Obsidian!&quot;)
 </code></pre>
 <hr>
 <h1 id="022-create-tables-in-obsidian-fast-1" tabindex="-1">022. Create Tables in Obsidian Fast</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_48" disabled="true"><label for="cbx_48"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_91" disabled="true"><label for="cbx_91"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">| Name   | Age | City       |
 |:-------|:---:|-----------:|
 | Ali    | 25  | Tashkent   |
 | Vali   | 30  | Samarkand  |
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_92" checked="true" disabled="true"><label for="cbx_92"> <em>Result</em>:</label></li>
 </ul>
 <div class="table-wrapper"><table>
 <thead>
@@ -916,81 +915,81 @@ ___
 <hr>
 <h1 id="023-assets-folder-setup-1" tabindex="-1">023. Assets Folder Setup</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_49" disabled="true"><label for="cbx_49"> <em>Syntax</em>:<br>
+<li class="task-list-item"><input type="checkbox" id="cbx_93" disabled="true"><label for="cbx_93"> <em>Syntax</em>:<br>
 Create folder → <code>Assets</code> or <code>Attachments</code> → drop all media there.</label></li>
 </ul>
 <hr>
 <h1 id="024-embed-audio-files-in-notes-1" tabindex="-1">024. Embed Audio Files in Notes</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_50" disabled="true"><label for="cbx_50"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_94" disabled="true"><label for="cbx_94"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">![[song.mp3]]
 </code></pre>
 <p>Plays inline.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_95" checked="true" disabled="true"><label for="cbx_95"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="025-embed-local-video-files-easily-1" tabindex="-1">025. Embed Local Video Files Easily</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_51" disabled="true"><label for="cbx_51"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_96" disabled="true"><label for="cbx_96"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">![[video.mp4]]
 </code></pre>
 <p>Plays inside the note.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_97" checked="true" disabled="true"><label for="cbx_97"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="026-embed-pdf-documents-in-obsidian-1" tabindex="-1">026. Embed PDF Documents in Obsidian</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_52" disabled="true"><label for="cbx_52"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_98" disabled="true"><label for="cbx_98"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">![[paper.pdf]]
 ![[paper.pdf#page=5]]
 </code></pre>
 <p>Shows page 5 directly.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_99" checked="true" disabled="true"><label for="cbx_99"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="027-add-and-embed-images-properly-1" tabindex="-1">027. Add and Embed Images Properly</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_53" disabled="true"><label for="cbx_53"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_100" disabled="true"><label for="cbx_100"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">![[photo.jpg]]
 !<a class="internal-link is-unresolved" href="/404" target="">400x300</a>
 !<a class="internal-link is-unresolved" href="/404" target="">right</a>
 </code></pre>
 <p>Aligns right with width 250px.</p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_101" checked="true" disabled="true"><label for="cbx_101"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="028-embed-maps-1" tabindex="-1">028. Embed Maps</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_54" disabled="true"><label for="cbx_54"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_102" disabled="true"><label for="cbx_102"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">![[map-screenshot.jpg]]
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_103" checked="true" disabled="true"><label for="cbx_103"> <em>Result</em>:</label></li>
 </ul>
 <p>or link:<br>
 <a href="https://goo.gl/maps/..." target="_blank" class="external-link">Google Maps Location</a></p>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_104" checked="true" disabled="true"><label for="cbx_104"> <em>Result</em>:</label></li>
 </ul>
 <hr>
 <h1 id="029-callouts-for-beautiful-notes-1" tabindex="-1">029. Callouts for Beautiful Notes</h1>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_55" disabled="true"><label for="cbx_55"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_105" disabled="true"><label for="cbx_105"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; [!info] Title
 &gt; Useful information
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_106" checked="true" disabled="true"><label for="cbx_106"> <em>Result</em>:</label></li>
 </ul>
 <div class="callout" data-callout="info"><div class="callout-title"><div class="callout-title-inner"> Title<br></div></div>
 <div class="callout-content">
@@ -998,13 +997,13 @@ Create folder → <code>Assets</code> or <code>Attachments</code> → drop all m
 Useful information</p>
 </div></div>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_56" disabled="true"><label for="cbx_56"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_107" disabled="true"><label for="cbx_107"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; [!tip] Quick Tip
 &gt; Save time with this!
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_108" checked="true" disabled="true"><label for="cbx_108"> <em>Result</em>:</label></li>
 </ul>
 <div class="callout" data-callout="tip"><div class="callout-title"><div class="callout-title-inner"> Quick Tip<br></div></div>
 <div class="callout-content">
@@ -1012,13 +1011,13 @@ Useful information</p>
 Save time with this!</p>
 </div></div>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_57" disabled="true"><label for="cbx_57"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_109" disabled="true"><label for="cbx_109"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-markdown">&gt; [!warning] Careful
 &gt; This might break something
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_110" checked="true" disabled="true"><label for="cbx_110"> <em>Result</em>:</label></li>
 </ul>
 <div class="callout" data-callout="warning"><div class="callout-title"><div class="callout-title-inner"> Careful<br></div></div>
 <div class="callout-content">
@@ -1028,8 +1027,9 @@ This might break something</p>
 <p>Other types: <code>note</code>, <code>abstract</code>, <code>success</code>, <code>error</code>, <code>example</code>, <code>quote</code></p>
 <hr>
 <h1 id="030-flowcharts-and-diagrams-fast-mermaid-1" tabindex="-1">030. Flowcharts and Diagrams Fast (Mermaid)</h1>
+<p><a class="tag" onclick="toggleTagSearch(this)" data-content="#InsideTripleBacktics">#InsideTripleBacktics</a></p>
 <ul class="task-list">
-<li class="task-list-item"><input type="checkbox" id="cbx_58" disabled="true"><label for="cbx_58"> <em>Syntax</em>:</label></li>
+<li class="task-list-item"><input type="checkbox" id="cbx_111" disabled="true"><label for="cbx_111"> <em>Syntax</em>:</label></li>
 </ul>
 <pre><code class="language-code">mermaid
 graph TD
@@ -1037,15 +1037,15 @@ graph TD
     B --&gt;|Yes| C[Good]
     B --&gt;|No| D[Try Again]
 </code></pre>
-<ul>
-<li>[&gt;] <em>Result</em>:</li>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_112" checked="true" disabled="true"><label for="cbx_112"> <em>Result</em>:</label></li>
 </ul>
 <pre class="mermaid">graph TD
     A[Start] --> B{Decision}
     B -->|Yes| C[Good]
     B -->|No| D[Try Again]
 
-- [>] *Result*:
+- [x] *Result*:
 $E = mc^2$
 
 ### Block:  
@@ -1055,8 +1055,8 @@ $E = mc^2$
 ```markdown
 $$
 \int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
-$$</pre><ul>
-<li>[&gt;] <em>Result</em>:</li>
+$$</pre><ul class="task-list">
+<li class="task-list-item"><input type="checkbox" id="cbx_113" checked="true" disabled="true"><label for="cbx_113"> <em>Result</em>:</label></li>
 </ul>
 <mjx-container class="MathJax" jax="SVG" display="true" style="direction:ltr;display:block;text-align:center;margin:1em 0;position:relative"><svg style="overflow:visible;min-height:1px;min-width:1px;vertical-align:-2.063ex" xmlns="http://www.w3.org/2000/svg" width="18.638ex" height="5.502ex" role="img" focusable="false" viewBox="0 -1520 8238 2431.9" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msubsup"><g data-mml-node="mo" transform="translate(0 1)"><path data-c="222B" d="M114 -798Q132 -824 165 -824H167Q195 -824 223 -764T275 -600T320 -391T362 -164Q365 -143 367 -133Q439 292 523 655T645 1127Q651 1145 655 1157T672 1201T699 1257T733 1306T777 1346T828 1360Q884 1360 912 1325T944 1245Q944 1220 932 1205T909 1186T887 1183Q866 1183 849 1198T832 1239Q832 1287 885 1296L882 1300Q879 1303 874 1307T866 1313Q851 1323 833 1323Q819 1323 807 1311T775 1255T736 1139T689 936T633 628Q574 293 510 -5T410 -437T355 -629Q278 -862 165 -862Q125 -862 92 -831T55 -746Q55 -711 74 -698T112 -685Q133 -685 150 -700T167 -741Q167 -789 114 -798Z" style="stroke-width:3"></path></g><g data-mml-node="mi" transform="translate(1046.4,1088.1) scale(0.707)"><path data-c="221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z" style="stroke-width:3"></path></g><g data-mml-node="mn" transform="translate(589,-896.4) scale(0.707)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" style="stroke-width:3"></path></g></g><g data-mml-node="msup" transform="translate(1970.2,0)"><g data-mml-node="mi"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z" style="stroke-width:3"></path></g><g data-mml-node="TeXAtom" transform="translate(499,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z" style="stroke-width:3"></path></g><g data-mml-node="msup" transform="translate(778,0)"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z" style="stroke-width:3"></path></g><g data-mml-node="mn" transform="translate(605,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" style="stroke-width:3"></path></g></g></g></g><g data-mml-node="mstyle" transform="translate(3782.5,0)"><g data-mml-node="mspace"></g></g><g data-mml-node="mi" transform="translate(3949.5,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z" style="stroke-width:3"></path></g><g data-mml-node="mi" transform="translate(4469.5,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z" style="stroke-width:3"></path></g><g data-mml-node="mo" transform="translate(5319.2,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" style="stroke-width:3"></path></g><g data-mml-node="mfrac" transform="translate(6375,0)"><g data-mml-node="msqrt" transform="translate(220,682.5)"><g transform="translate(853,0)"><g data-mml-node="mi"><path data-c="1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z" style="stroke-width:3"></path></g></g><g data-mml-node="mo" transform="translate(0,-22.5)"><path data-c="221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z" style="stroke-width:3"></path></g><rect width="570" height="60" x="853" y="717.5"></rect></g><g data-mml-node="mn" transform="translate(681.5,-686)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" style="stroke-width:3"></path></g><rect width="1623" height="60" x="120" y="220"></rect></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block" style="top:0;left:0;clip:rect(1px,1px,1px,1px);-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:absolute;padding:1px 0 0 0;border:0;display:block;overflow:hidden;width:100%"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msubsup><mo data-mjx-texclass="OP">∫</mo><mn>0</mn><mi mathvariant="normal">∞</mi></msubsup><msup><mi>e</mi><mrow data-mjx-texclass="ORD"><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mstyle scriptlevel="0"><mspace width="0.167em"></mspace></mstyle><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><msqrt><mi>π</mi></msqrt><mn>2</mn></mfrac></math></mjx-assistive-mml></mjx-container><h2 id="you-ve-mastered-obsidian-basics" tabindex="-1">You’ve mastered Obsidian basics!</h2>
 <p>Next step: enable Core Plugins → Graph View, Daily Notes, and explore Community Plugins. Happy note-taking! 🚀</p>
