@@ -1,31 +1,52 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T22:57:44.871+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T23:13:16.597+05:00"}
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Obsidian Beginner’s Guide (English) – Clean & Visual
+
+
+# Index
+
+[[#001. Install Obsidian in 1 Minute]]
+[[#002. Switch to Uzbek Language Fast]]
+[[#003. Create New Note in One Click]]
+[[#004. Headings with Hash Levels]]
+[[#005. How to Make Text Bold in Obsidian]]
+[[#006. How to Write Italic Text Fast]]
+[[#007. Strikethrough Text Tutorial]]
+[[#008. Highlight Important Text Easily]]
+[[#009. Toolbar Quick Formatting Tips]]
+[[#010. Horizontal Divider Line in Obsidian]]
+[[#011. Block Quotes for Better Notes]]
+[[#012. Bulleted Lists in Obsidian]]
+[[#013. Numbered Lists Step by Step]]
+[[#014. Indent and Outdent Lists]]
+[[#015. Task Checkboxes in Obsidian]]
+[[#016. Add External Links Correctly]]
+[[#017. Simple Internal Links Wiki Style]]
+[[#018. Aliased Internal Links]]
+[[#019. Link to Headings Inside Note]]
+[[#020. Embed Notes with Exclamation]]
+[[#021. Code Blocks and Syntax Highlight]]
+[[#022. Create Tables in Obsidian Fast]]
+[[#023. Assets Folder Setup]]
+[[#024. Embed Audio Files in Notes]]
+[[#025. Embed Local Video Files Easily]]
+[[#026. Embed PDF Documents in Obsidian]]
+[[#027. Add and Embed Images Properly]]
+[[#028. Embed Maps]]
+[[#029. Callouts for Beautiful Notes]]
+[[#030. Flowcharts and Diagrams Fast (Mermaid)]]
+[[#031. Math in Obsidian | LaTeX]]
+
+
 > [!warning] Reminder:
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
 
-```markdown
-!\[\[photo.jpg\]\]
-!\[\[photo.jpg|400x300\]\]
-!\[\[photo.jpg|right|250\]\]
-```
 ---
 # 001. Install Obsidian in 1 Minute
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"/>
 
 
@@ -38,6 +59,8 @@
 
 ---
 # 002. Switch to Uzbek Language Fast
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/002_ozbek_tiliga_sozlash___8c7e1b6775a0091c31a740e19164f1b20c1abfdc7043b999f82013c5b4220e24.mkv"/>
 
 
@@ -48,6 +71,8 @@
 
 ---
 # 003. Create New Note in One Click
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/003_yangi_eslatma_yaratish___10d75ec88b5e8d0ab031016491e24e7b24ab6a4f7dd0d1083027555eed20b4b0.mkv"/>
 
 
@@ -59,6 +84,8 @@
 
 ---
 # 004. Headings with Hash Levels
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/004_sarvlavhalar___6b3ae0127bf621a3253131631386da3d3083fdbccf295138afa6da87e68850be.mkv"/>
 
 
@@ -85,6 +112,8 @@
 
 ---
 # 005. How to Make Text Bold in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/005_qalin_matn___4f85e0e68709ae50d6b99bed8901ffa783898608792aaa799064c4dd05d0e3e8.mkv"/>
 
 
@@ -100,6 +129,8 @@
 
 ---
 # 006. How to Write Italic Text Fast
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/006_qiya_matn___c7aea5a314c3f6333335afcd1c7fa8192cd2e56d44324f5701ac619b73566330.mkv"/>
 
 
@@ -116,6 +147,8 @@
 
 ---
 # 007. Strikethrough Text Tutorial
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/007_ustiga_chizilgan_matn___50ddf3f3525f4f668478cccb98663c70d704abada3a290c9779d63e9276d0097.mkv"/>
 
 
@@ -133,6 +166,8 @@
 
 ---
 # 008. Highlight Important Text Easily
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/008_belgilangan_matn___59e6c2c6175a9f988e27ac14402fa6395aee5b1186c82b73a01074175e0b4354.mkv"/>
 
 
@@ -150,6 +185,8 @@
 
 ---
 # 009. Toolbar Quick Formatting Tips
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/009_matn_formatlash_oson_usuli___96f954cccab714212d460e16d4115c1dfea57bc62793be471976ceacfad8f8eb.mkv"/>
 
 Select text → use:
@@ -164,6 +201,8 @@ Select text → use:
 
 ---
 # 010. Horizontal Divider Line in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/010_gorizontal_chiziq___f6741c79fbcbd0ee61ea5e99e608d5bff534a3fabc38252acf1bbda7947a3b8f.mkv"/>
 
 
@@ -184,6 +223,8 @@ ___
 
 ---
 # 011. Block Quotes for Better Notes
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/011_blokli_iqtibos___74636df7221ba08e3b0303ba85c90a0b88904309b2dd7d8704fc7dd9e8f71a8f.mkv"/>
 
 
@@ -204,6 +245,8 @@ ___
 
 ---
 # 012. Bulleted Lists in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/012_tartiblanMagan_royxat___59b6ace492f886c329f18631fd63c86232100631c736bcf629cfd1f4b6243d1c.mkv"/>
 
 
@@ -225,6 +268,8 @@ ___
 
 ---
 # 013. Numbered Lists Step by Step
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/013_tartiblangan_royxat___dd1479c1b049f341f7b7fe1442bfb8f2daedf2a9e845597f8d991b0047cee4b6.mkv"/>
 
 
@@ -248,6 +293,8 @@ ___
 
 ---
 # 014. Indent and Outdent Lists
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/014_royxat_elementlari_sathini_ozgartirish___c80be343ae7a2b9257d4a617a3f3960c2f639abf5524ac09a23ea95622f45136.mkv"/>
 
 #### `Tab` → indent  
@@ -259,6 +306,8 @@ ___
 
 ---
 # 015. Task Checkboxes in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/015_checkbox_lar___1ce21d6e4804d412f0593ecec9c463ea8db4271f3fe42a3c88e7842f51e188e9.mkv"/>
 
 
@@ -283,6 +332,8 @@ ___
 
 ---
 # 016. Add External Links Correctly
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/016_tashqi_linklar___04b42c846cb299bdcb45330d03277d022464e6501b9e7b92ec65678f38c0c279.mkv"/>
 
 
@@ -299,6 +350,8 @@ ___
 
 ---
 # 017. Simple Internal Links Wiki Style
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/017_ichki_linklar_oddiy_link___53cbc2f77b6e972c66a2e6fcf71c99f4b45da45d3078d8950af2ec4adfa3d2e4.mkv"/>
 
 
@@ -315,6 +368,8 @@ ___
 
 ---
 # 018. Aliased Internal Links
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/018_ichki_linklar_nomlangan_link___9a8500bda856cd386e1ed65dff7a87cad5f552dec9989a61715b51357f5528ab.mkv"/>
 
 
@@ -331,6 +386,8 @@ ___
 
 ---
 # 019. Link to Headings Inside Note
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/019_ichki_linklar_sarvlavha_linklari___b29dcd2cc6051b2b3a43880efe32cd87ae5180b43fafa9154029dfffdb72c4e0.mkv"/>
 
 
@@ -347,6 +404,8 @@ ___
 
 ---
 # 020. Embed Notes with Exclamation
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/020_eslatmalarni_biriktirish___5b3123c4b27659c8f113943a44ff444ebe5fb592c0f7fbd59722fd4d62209a6c.mkv"/>
 
 
@@ -368,6 +427,8 @@ Resize example:
 
 ---
 # 021. Code Blocks and Syntax Highlight
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/021_kod_bloklari___40c00d056d3d09fe8023b3022805ac8d753f4f2d61963c5a73e5a9bc5b7d313d.mkv"/>
 
 
@@ -388,6 +449,8 @@ print("Hello Obsidian!")
 
 ---
 # 022. Create Tables in Obsidian Fast
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/022_jadvallar___dc1753675e585f73c5f5d59daf1da8bed59349ffc69346f64fffb4e0b29bf3de.mkv"/>
 
 
@@ -412,6 +475,8 @@ print("Hello Obsidian!")
 
 ---
 # 023. Assets Folder Setup
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/023_medialar_resurslarni_tayyorlash___20664f6660c4bb9e14549fb2148d3c16fc998471dd6e5953ae941bc523639981.mkv"/>
 
 
@@ -425,6 +490,8 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 
 ---
 # 024. Embed Audio Files in Notes
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/024_medialar_musiqa_biriktirish___ea8edebe9e04e8962aaee78fb48f3508e8e26200cca89526d6234a0e3e366585.mkv"/>
 
 
@@ -441,6 +508,8 @@ Plays inline.
 
 ---
 # 025. Embed Local Video Files Easily
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/025_medialar_video_biriktirish___f6b8172d82dfc1a548473449e545c2da225a8dce5facda49fcad17546a0d0bdf.mkv"/>
 
 
@@ -462,6 +531,8 @@ Plays inline.
 
 ---
 # 026. Embed PDF Documents in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/026_medialar_pdf_biriktirish___f122e6a7ba96faf9c47db147f2334094cb19457b630e61749eec87210645bceb.mkv"/>
 
 
@@ -480,6 +551,8 @@ Shows page 5 directly.
 
 ---
 # 027. Add and Embed Images Properly
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/027_medialar_rasm_biriktirish___616f562592a6d637b9794cf390021eb2e54fdbc1b6ecbd14920023cdee6ed833.mkv"/>
 
 
@@ -501,6 +574,8 @@ Aligns right with width 250px.
 
 ---
 # 028. Embed Maps
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/028_medialar_xarita_biriktirish___57b64848cda9d0d17d4d4cb31797a98b4fedc98a5fdad77b4651ea94049dafbb.mkv"/>
 
 
@@ -515,6 +590,8 @@ Aligns right with width 250px.
 
 ---
 # 029. Callouts for Beautiful Notes
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/029_konvertlar___ec0e09799ef10b63c6c09c7e991f55e8c8a88b0f6ba90b52e18055788669fc10.mkv"/>
 
 
@@ -556,6 +633,8 @@ Other types: `note`, `abstract`, `success`, `error`, `example`, `quote`
 
 ---
 # 030. Flowcharts and Diagrams (Mermaid)
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/030_mermaid_diagrammalar___c4bcdc05bf8495846e68c993670178ae75152220d42a5d3382dfbf4b464a7b7e.mkv"/>
 
 #InsideTripleBacktics 
@@ -582,6 +661,8 @@ graph TD
 
 ---
 # 031. Math in Obsidian | LaTeX
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/031_matematik_ifodalar_LaTeX_formati___40cb5637cc2248790aa2eae1a58306aecc74eab56f566cf5f4337187ca64198e.mkv"/>
 
 ### Inline:  
@@ -589,33 +670,54 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T22:57:44.871+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-25T23:13:16.597+05:00"}
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Obsidian Beginner’s Guide (English) – Clean & Visual
+
+
+# Index
+
+[[#001. Install Obsidian in 1 Minute]]
+[[#002. Switch to Uzbek Language Fast]]
+[[#003. Create New Note in One Click]]
+[[#004. Headings with Hash Levels]]
+[[#005. How to Make Text Bold in Obsidian]]
+[[#006. How to Write Italic Text Fast]]
+[[#007. Strikethrough Text Tutorial]]
+[[#008. Highlight Important Text Easily]]
+[[#009. Toolbar Quick Formatting Tips]]
+[[#010. Horizontal Divider Line in Obsidian]]
+[[#011. Block Quotes for Better Notes]]
+[[#012. Bulleted Lists in Obsidian]]
+[[#013. Numbered Lists Step by Step]]
+[[#014. Indent and Outdent Lists]]
+[[#015. Task Checkboxes in Obsidian]]
+[[#016. Add External Links Correctly]]
+[[#017. Simple Internal Links Wiki Style]]
+[[#018. Aliased Internal Links]]
+[[#019. Link to Headings Inside Note]]
+[[#020. Embed Notes with Exclamation]]
+[[#021. Code Blocks and Syntax Highlight]]
+[[#022. Create Tables in Obsidian Fast]]
+[[#023. Assets Folder Setup]]
+[[#024. Embed Audio Files in Notes]]
+[[#025. Embed Local Video Files Easily]]
+[[#026. Embed PDF Documents in Obsidian]]
+[[#027. Add and Embed Images Properly]]
+[[#028. Embed Maps]]
+[[#029. Callouts for Beautiful Notes]]
+[[#030. Flowcharts and Diagrams Fast (Mermaid)]]
+[[#031. Math in Obsidian | LaTeX]]
+
+
 > [!warning] Reminder:
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
 
-```markdown
-!\[\[photo.jpg\]\]
-!\[\[photo.jpg|400x300\]\]
-!\[\[photo.jpg|right|250\]\]
-```
 ---
 # 001. Install Obsidian in 1 Minute
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/001_yangi_hamyon_ochish___62ce7908763d16742d92294e7be78ee2f12e969b388fb78234ec37b148731944.mkv"/>
 
 
@@ -628,6 +730,8 @@ graph TD
 
 ---
 # 002. Switch to Uzbek Language Fast
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/002_ozbek_tiliga_sozlash___8c7e1b6775a0091c31a740e19164f1b20c1abfdc7043b999f82013c5b4220e24.mkv"/>
 
 
@@ -638,6 +742,8 @@ graph TD
 
 ---
 # 003. Create New Note in One Click
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/003_yangi_eslatma_yaratish___10d75ec88b5e8d0ab031016491e24e7b24ab6a4f7dd0d1083027555eed20b4b0.mkv"/>
 
 
@@ -649,6 +755,8 @@ graph TD
 
 ---
 # 004. Headings with Hash Levels
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/004_sarvlavhalar___6b3ae0127bf621a3253131631386da3d3083fdbccf295138afa6da87e68850be.mkv"/>
 
 
@@ -675,6 +783,8 @@ graph TD
 
 ---
 # 005. How to Make Text Bold in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/005_qalin_matn___4f85e0e68709ae50d6b99bed8901ffa783898608792aaa799064c4dd05d0e3e8.mkv"/>
 
 
@@ -690,6 +800,8 @@ graph TD
 
 ---
 # 006. How to Write Italic Text Fast
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/006_qiya_matn___c7aea5a314c3f6333335afcd1c7fa8192cd2e56d44324f5701ac619b73566330.mkv"/>
 
 
@@ -706,6 +818,8 @@ graph TD
 
 ---
 # 007. Strikethrough Text Tutorial
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/007_ustiga_chizilgan_matn___50ddf3f3525f4f668478cccb98663c70d704abada3a290c9779d63e9276d0097.mkv"/>
 
 
@@ -723,6 +837,8 @@ graph TD
 
 ---
 # 008. Highlight Important Text Easily
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/008_belgilangan_matn___59e6c2c6175a9f988e27ac14402fa6395aee5b1186c82b73a01074175e0b4354.mkv"/>
 
 
@@ -740,6 +856,8 @@ graph TD
 
 ---
 # 009. Toolbar Quick Formatting Tips
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/009_matn_formatlash_oson_usuli___96f954cccab714212d460e16d4115c1dfea57bc62793be471976ceacfad8f8eb.mkv"/>
 
 Select text → use:
@@ -754,6 +872,8 @@ Select text → use:
 
 ---
 # 010. Horizontal Divider Line in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/010_gorizontal_chiziq___f6741c79fbcbd0ee61ea5e99e608d5bff534a3fabc38252acf1bbda7947a3b8f.mkv"/>
 
 
@@ -774,6 +894,8 @@ ___
 
 ---
 # 011. Block Quotes for Better Notes
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/011_blokli_iqtibos___74636df7221ba08e3b0303ba85c90a0b88904309b2dd7d8704fc7dd9e8f71a8f.mkv"/>
 
 
@@ -794,6 +916,8 @@ ___
 
 ---
 # 012. Bulleted Lists in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/012_tartiblanMagan_royxat___59b6ace492f886c329f18631fd63c86232100631c736bcf629cfd1f4b6243d1c.mkv"/>
 
 
@@ -815,6 +939,8 @@ ___
 
 ---
 # 013. Numbered Lists Step by Step
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/013_tartiblangan_royxat___dd1479c1b049f341f7b7fe1442bfb8f2daedf2a9e845597f8d991b0047cee4b6.mkv"/>
 
 
@@ -838,6 +964,8 @@ ___
 
 ---
 # 014. Indent and Outdent Lists
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/014_royxat_elementlari_sathini_ozgartirish___c80be343ae7a2b9257d4a617a3f3960c2f639abf5524ac09a23ea95622f45136.mkv"/>
 
 #### `Tab` → indent  
@@ -849,6 +977,8 @@ ___
 
 ---
 # 015. Task Checkboxes in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/015_checkbox_lar___1ce21d6e4804d412f0593ecec9c463ea8db4271f3fe42a3c88e7842f51e188e9.mkv"/>
 
 
@@ -873,6 +1003,8 @@ ___
 
 ---
 # 016. Add External Links Correctly
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/016_tashqi_linklar___04b42c846cb299bdcb45330d03277d022464e6501b9e7b92ec65678f38c0c279.mkv"/>
 
 
@@ -889,6 +1021,8 @@ ___
 
 ---
 # 017. Simple Internal Links Wiki Style
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/017_ichki_linklar_oddiy_link___53cbc2f77b6e972c66a2e6fcf71c99f4b45da45d3078d8950af2ec4adfa3d2e4.mkv"/>
 
 
@@ -905,6 +1039,8 @@ ___
 
 ---
 # 018. Aliased Internal Links
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/018_ichki_linklar_nomlangan_link___9a8500bda856cd386e1ed65dff7a87cad5f552dec9989a61715b51357f5528ab.mkv"/>
 
 
@@ -921,6 +1057,8 @@ ___
 
 ---
 # 019. Link to Headings Inside Note
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/019_ichki_linklar_sarvlavha_linklari___b29dcd2cc6051b2b3a43880efe32cd87ae5180b43fafa9154029dfffdb72c4e0.mkv"/>
 
 
@@ -937,6 +1075,8 @@ ___
 
 ---
 # 020. Embed Notes with Exclamation
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/020_eslatmalarni_biriktirish___5b3123c4b27659c8f113943a44ff444ebe5fb592c0f7fbd59722fd4d62209a6c.mkv"/>
 
 
@@ -958,6 +1098,8 @@ Resize example:
 
 ---
 # 021. Code Blocks and Syntax Highlight
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/021_kod_bloklari___40c00d056d3d09fe8023b3022805ac8d753f4f2d61963c5a73e5a9bc5b7d313d.mkv"/>
 
 
@@ -978,6 +1120,8 @@ print("Hello Obsidian!")
 
 ---
 # 022. Create Tables in Obsidian Fast
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/022_jadvallar___dc1753675e585f73c5f5d59daf1da8bed59349ffc69346f64fffb4e0b29bf3de.mkv"/>
 
 
@@ -1002,6 +1146,8 @@ print("Hello Obsidian!")
 
 ---
 # 023. Assets Folder Setup
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/023_medialar_resurslarni_tayyorlash___20664f6660c4bb9e14549fb2148d3c16fc998471dd6e5953ae941bc523639981.mkv"/>
 
 
@@ -1015,6 +1161,8 @@ Create folder → `Assets` or `Attachments` → drop all media there.
 
 ---
 # 024. Embed Audio Files in Notes
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/024_medialar_musiqa_biriktirish___ea8edebe9e04e8962aaee78fb48f3508e8e26200cca89526d6234a0e3e366585.mkv"/>
 
 
@@ -1031,6 +1179,8 @@ Plays inline.
 
 ---
 # 025. Embed Local Video Files Easily
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/025_medialar_video_biriktirish___f6b8172d82dfc1a548473449e545c2da225a8dce5facda49fcad17546a0d0bdf.mkv"/>
 
 
@@ -1052,6 +1202,8 @@ Plays inline.
 
 ---
 # 026. Embed PDF Documents in Obsidian
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/026_medialar_pdf_biriktirish___f122e6a7ba96faf9c47db147f2334094cb19457b630e61749eec87210645bceb.mkv"/>
 
 
@@ -1070,6 +1222,8 @@ Shows page 5 directly.
 
 ---
 # 027. Add and Embed Images Properly
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/027_medialar_rasm_biriktirish___616f562592a6d637b9794cf390021eb2e54fdbc1b6ecbd14920023cdee6ed833.mkv"/>
 
 
@@ -1091,6 +1245,8 @@ Aligns right with width 250px.
 
 ---
 # 028. Embed Maps
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/028_medialar_xarita_biriktirish___57b64848cda9d0d17d4d4cb31797a98b4fedc98a5fdad77b4651ea94049dafbb.mkv"/>
 
 
@@ -1105,6 +1261,8 @@ Aligns right with width 250px.
 
 ---
 # 029. Callouts for Beautiful Notes
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/029_konvertlar___ec0e09799ef10b63c6c09c7e991f55e8c8a88b0f6ba90b52e18055788669fc10.mkv"/>
 
 
@@ -1146,6 +1304,8 @@ Other types: `note`, `abstract`, `success`, `error`, `example`, `quote`
 
 ---
 # 030. Flowcharts and Diagrams (Mermaid)
+###### Jump to [[#Index]]
+
 <video autoplay muted controls allowfullscreen preload="none" src="https://raw.githubusercontent.com/fargonee/obsidian_tutorial/main/resources/sounded_videos/030_mermaid_diagrammalar___c4bcdc05bf8495846e68c993670178ae75152220d42a5d3382dfbf4b464a7b7e.mkv"/>
 
 #InsideTripleBacktics 
