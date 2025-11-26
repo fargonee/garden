@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-26T00:00:08.499+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"global/original_logo.svg","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-26T08:53:33.601+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -7,38 +7,37 @@
 
 # Index
 
-[[#001. Install Obsidian in 1 Minute]]
-[[#002. Switch to Uzbek Language Fast]]
-[[#003. Create New Note in One Click]]
-[[#004. Headings with Hash Levels]]
-[[#005. How to Make Text Bold in Obsidian]]
-[[#006. How to Write Italic Text Fast]]
-[[#007. Strikethrough Text Tutorial]]
-[[#008. Highlight Important Text Easily]]
-[[#009. Toolbar Quick Formatting Tips]]
-[[#010. Horizontal Divider Line in Obsidian]]
-[[#011. Block Quotes for Better Notes]]
-[[#012. Bulleted Lists in Obsidian]]
-[[#013. Numbered Lists Step by Step]]
-[[#014. Indent and Outdent Lists]]
-[[#015. Task Checkboxes in Obsidian]]
-[[#016. Add External Links Correctly]]
-[[#017. Simple Internal Links Wiki Style]]
-[[#018. Aliased Internal Links]]
-[[#019. Link to Headings Inside Note]]
-[[#020. Embed Notes with Exclamation]]
-[[#021. Code Blocks and Syntax Highlight]]
-[[#022. Create Tables in Obsidian Fast]]
-[[#023. Assets Folder Setup]]
-[[#024. Embed Audio Files in Notes]]
-[[#025. Embed Local Video Files Easily]]
-[[#026. Embed PDF Documents in Obsidian]]
-[[#027. Add and Embed Images Properly]]
-[[#028. Embed Maps]]
-[[#029. Callouts for Beautiful Notes]]
-[[#030. Flowcharts and Diagrams Fast (Mermaid)]]
-[[#031. Math in Obsidian | LaTeX]]
-
+[[EDUCATION/Obsidian tutorial/Basic.en#001. Install Obsidian in 1 Minute\|Basic.en#001. Install Obsidian in 1 Minute]]
+[[EDUCATION/Obsidian tutorial/Basic.en#002. Switch to Uzbek Language Fast\|Basic.en#002. Switch to Uzbek Language Fast]]
+[[EDUCATION/Obsidian tutorial/Basic.en#003. Create New Note in One Click\|Basic.en#003. Create New Note in One Click]]
+[[EDUCATION/Obsidian tutorial/Basic.en#004. Headings with Hash Levels\|Basic.en#004. Headings with Hash Levels]]
+[[EDUCATION/Obsidian tutorial/Basic.en#005. How to Make Text Bold in Obsidian\|Basic.en#005. How to Make Text Bold in Obsidian]]
+[[EDUCATION/Obsidian tutorial/Basic.en#006. How to Write Italic Text Fast\|Basic.en#006. How to Write Italic Text Fast]]
+[[EDUCATION/Obsidian tutorial/Basic.en#007. Strikethrough Text Tutorial\|Basic.en#007. Strikethrough Text Tutorial]]
+[[EDUCATION/Obsidian tutorial/Basic.en#008. Highlight Important Text Easily\|Basic.en#008. Highlight Important Text Easily]]
+[[EDUCATION/Obsidian tutorial/Basic.en#009. Toolbar Quick Formatting Tips\|Basic.en#009. Toolbar Quick Formatting Tips]]
+[[EDUCATION/Obsidian tutorial/Basic.en#010. Horizontal Divider Line in Obsidian\|Basic.en#010. Horizontal Divider Line in Obsidian]]
+[[EDUCATION/Obsidian tutorial/Basic.en#011. Block Quotes for Better Notes\|Basic.en#011. Block Quotes for Better Notes]]
+[[EDUCATION/Obsidian tutorial/Basic.en#012. Bulleted Lists in Obsidian\|Basic.en#012. Bulleted Lists in Obsidian]]
+[[EDUCATION/Obsidian tutorial/Basic.en#013. Numbered Lists Step by Step\|Basic.en#013. Numbered Lists Step by Step]]
+[[EDUCATION/Obsidian tutorial/Basic.en#014. Indent and Outdent Lists\|Basic.en#014. Indent and Outdent Lists]]
+[[EDUCATION/Obsidian tutorial/Basic.en#015. Task Checkboxes in Obsidian\|Basic.en#015. Task Checkboxes in Obsidian]]
+[[EDUCATION/Obsidian tutorial/Basic.en#016. Add External Links Correctly\|Basic.en#016. Add External Links Correctly]]
+[[EDUCATION/Obsidian tutorial/Basic.en#017. Simple Internal Links Wiki Style\|Basic.en#017. Simple Internal Links Wiki Style]]
+[[EDUCATION/Obsidian tutorial/Basic.en#018. Aliased Internal Links\|Basic.en#018. Aliased Internal Links]]
+[[EDUCATION/Obsidian tutorial/Basic.en#019. Link to Headings Inside Note\|Basic.en#019. Link to Headings Inside Note]]
+[[EDUCATION/Obsidian tutorial/Basic.en#020. Embed Notes with Exclamation\|Basic.en#020. Embed Notes with Exclamation]]
+[[EDUCATION/Obsidian tutorial/Basic.en#021. Code Blocks and Syntax Highlight\|Basic.en#021. Code Blocks and Syntax Highlight]]
+[[EDUCATION/Obsidian tutorial/Basic.en#022. Create Tables in Obsidian Fast\|Basic.en#022. Create Tables in Obsidian Fast]]
+[[EDUCATION/Obsidian tutorial/Basic.en#023. Assets Folder Setup\|Basic.en#023. Assets Folder Setup]]
+[[EDUCATION/Obsidian tutorial/Basic.en#024. Embed Audio Files in Notes\|Basic.en#024. Embed Audio Files in Notes]]
+[[EDUCATION/Obsidian tutorial/Basic.en#025. Embed Local Video Files Easily\|Basic.en#025. Embed Local Video Files Easily]]
+[[EDUCATION/Obsidian tutorial/Basic.en#026. Embed PDF Documents in Obsidian\|Basic.en#026. Embed PDF Documents in Obsidian]]
+[[EDUCATION/Obsidian tutorial/Basic.en#027. Add and Embed Images Properly\|Basic.en#027. Add and Embed Images Properly]]
+[[EDUCATION/Obsidian tutorial/Basic.en#028. Embed Maps\|Basic.en#028. Embed Maps]]
+[[EDUCATION/Obsidian tutorial/Basic.en#029. Callouts for Beautiful Notes\|Basic.en#029. Callouts for Beautiful Notes]]
+[[EDUCATION/Obsidian tutorial/Basic.en#030. Flowcharts and Diagrams Fast (Mermaid)\|Basic.en#030. Flowcharts and Diagrams Fast (Mermaid)]]
+[[EDUCATION/Obsidian tutorial/Basic.en#031. Math in Obsidian \| LaTeX]]
 
 > [!warning] Reminder:
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.
@@ -670,7 +669,7 @@ graph TD
 
 - [ ] *Syntax*
 `$E = mc^2---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-26T00:00:08.499+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-en/","noteIcon":"global/original_logo.svg","created":"2025-11-25T18:04:33.314+05:00","updated":"2025-11-26T08:53:33.601+05:00"}
 ---
 
 # Obsidian Beginner’s Guide (English) – Clean & Visual
@@ -678,38 +677,37 @@ graph TD
 
 # Index
 
-[[#001. Install Obsidian in 1 Minute]]
-[[#002. Switch to Uzbek Language Fast]]
-[[#003. Create New Note in One Click]]
-[[#004. Headings with Hash Levels]]
-[[#005. How to Make Text Bold in Obsidian]]
-[[#006. How to Write Italic Text Fast]]
-[[#007. Strikethrough Text Tutorial]]
-[[#008. Highlight Important Text Easily]]
-[[#009. Toolbar Quick Formatting Tips]]
-[[#010. Horizontal Divider Line in Obsidian]]
-[[#011. Block Quotes for Better Notes]]
-[[#012. Bulleted Lists in Obsidian]]
-[[#013. Numbered Lists Step by Step]]
-[[#014. Indent and Outdent Lists]]
-[[#015. Task Checkboxes in Obsidian]]
-[[#016. Add External Links Correctly]]
-[[#017. Simple Internal Links Wiki Style]]
-[[#018. Aliased Internal Links]]
-[[#019. Link to Headings Inside Note]]
-[[#020. Embed Notes with Exclamation]]
-[[#021. Code Blocks and Syntax Highlight]]
-[[#022. Create Tables in Obsidian Fast]]
-[[#023. Assets Folder Setup]]
-[[#024. Embed Audio Files in Notes]]
-[[#025. Embed Local Video Files Easily]]
-[[#026. Embed PDF Documents in Obsidian]]
-[[#027. Add and Embed Images Properly]]
-[[#028. Embed Maps]]
-[[#029. Callouts for Beautiful Notes]]
-[[#030. Flowcharts and Diagrams Fast (Mermaid)]]
-[[#031. Math in Obsidian | LaTeX]]
-
+[[Basic.en#001. Install Obsidian in 1 Minute]]
+[[Basic.en#002. Switch to Uzbek Language Fast]]
+[[Basic.en#003. Create New Note in One Click]]
+[[Basic.en#004. Headings with Hash Levels]]
+[[Basic.en#005. How to Make Text Bold in Obsidian]]
+[[Basic.en#006. How to Write Italic Text Fast]]
+[[Basic.en#007. Strikethrough Text Tutorial]]
+[[Basic.en#008. Highlight Important Text Easily]]
+[[Basic.en#009. Toolbar Quick Formatting Tips]]
+[[Basic.en#010. Horizontal Divider Line in Obsidian]]
+[[Basic.en#011. Block Quotes for Better Notes]]
+[[Basic.en#012. Bulleted Lists in Obsidian]]
+[[Basic.en#013. Numbered Lists Step by Step]]
+[[Basic.en#014. Indent and Outdent Lists]]
+[[Basic.en#015. Task Checkboxes in Obsidian]]
+[[Basic.en#016. Add External Links Correctly]]
+[[Basic.en#017. Simple Internal Links Wiki Style]]
+[[Basic.en#018. Aliased Internal Links]]
+[[Basic.en#019. Link to Headings Inside Note]]
+[[Basic.en#020. Embed Notes with Exclamation]]
+[[Basic.en#021. Code Blocks and Syntax Highlight]]
+[[Basic.en#022. Create Tables in Obsidian Fast]]
+[[Basic.en#023. Assets Folder Setup]]
+[[Basic.en#024. Embed Audio Files in Notes]]
+[[Basic.en#025. Embed Local Video Files Easily]]
+[[Basic.en#026. Embed PDF Documents in Obsidian]]
+[[Basic.en#027. Add and Embed Images Properly]]
+[[Basic.en#028. Embed Maps]]
+[[Basic.en#029. Callouts for Beautiful Notes]]
+[[Basic.en#030. Flowcharts and Diagrams Fast (Mermaid)]]
+[[Basic.en#031. Math in Obsidian | LaTeX]]
 
 > [!warning] Reminder:
 > #####  Below syntax examples are given. Some of them should be wrapped with two <b>```</b> backticks when using. They are marked as #InsideTripleBacktics in examples.

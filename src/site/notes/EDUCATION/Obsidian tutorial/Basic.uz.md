@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","noteIcon":"","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-26T00:11:40.151+05:00"}
+{"dg-publish":true,"permalink":"/education/obsidian-tutorial/basic-uz/","noteIcon":"global/original_logo.svg","created":"2025-11-25T18:04:41.755+05:00","updated":"2025-11-26T08:04:38.930+05:00"}
 ---
 
 
@@ -40,8 +40,6 @@
 [030. Mermaid Diagrammalar](#030-Mermaid-Diagrammalar)
 [031. Matematik Ifodalar | LaTeX](#031-Matematik-Ifodalar-|-LaTeX)
 
-```table-of-contents
-```
 > [!warning] Eslatma:
 > #####  Quyida sintaksis namunalari berilgan. Foydalanish vaqtida ulardan ba'zilari <b>```</b> (uchtalik tirnoq) bilan o'ralishi kerak. Bu kabilar #UchtalikTirnoqIchida tegi bilan belgilangan.
 ---
@@ -301,10 +299,10 @@ ___
 
 - [ ] *Syntax*:
 ```markdown
-[[Basic.en]]
+[[EDUCATION/Obsidian tutorial/Basic.en\|Basic.en]]
 ```
 - [x] *Result*:
-[[EDUCATION/Obsidian tutorial/Basic.uz\|Basic.uz]]
+[[Basic.uz]]
 
 ---
 # 018. Nomlangan Ichki Link
@@ -410,7 +408,7 @@ print("Salom dunyo!")
 
 - [ ] *Syntax*:
 ```markdown
-![[music.mp3]]
+![[music.mp3\|music.mp3]]
 yoki to‘g‘ridan hyperlink:
 [audio](music.mp3)
 ```
@@ -425,9 +423,9 @@ yoki to‘g‘ridan hyperlink:
 
 - [ ] *Syntax*:
 ```markdown
-![[video.mp4]]
+![[video.mp4\|video.mp4]]
 yoki YouTube:
-![[https://youtu.be/dQw4w9WgXcQ]]
+![[https://youtu.be/dQw4w9WgXcQ\|https://youtu.be/dQw4w9WgXcQ]]
 ```
 - [x] *Result*:
 
@@ -440,9 +438,9 @@ yoki YouTube:
 
 - [ ] *Syntax*:
 ```markdown
-![[kitob.pdf]]
+![[kitob.pdf\|kitob.pdf]]
 yoki faqat sahifani ko‘rsatish:
-![[kitob.pdf#page=15]]
+![[kitob.pdf#page=15\|kitob.pdf#page=15]]
 ```
 - [x] *Result*:
 
@@ -455,9 +453,9 @@ yoki faqat sahifani ko‘rsatish:
 
 - [ ] *Syntax*:
 ```markdown
-![[rasm.jpg]]
-![[rasm.png|300x400]] ← kenglik va balandlik
-![[rasm.webp|right|300]] ← o‘ng tomonda
+![[rasm.jpg\|rasm.jpg]]
+![[rasm.png\|300x400]] ← kenglik va balandlik
+![[rasm.webp\|right]] ← o‘ng tomonda
 ```
 - [x] *Result*:
 
@@ -470,7 +468,7 @@ yoki faqat sahifani ko‘rsatish:
 
 - [ ] *Syntax*:
 ```markdown
-![[xarita.png]]
+![[xarita.png\|xarita.png]]
 yoki onlayn xarita:
 [Google Maps](https://maps.app.goo.gl/...)
 ```

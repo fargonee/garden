@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/service/fiverr/obsidian-powered-website/welcome-to-online-en/","noteIcon":"","created":"2025-11-24T11:02:12.208+05:00","updated":"2025-11-24T13:01:11.047+05:00"}
+{"dg-publish":true,"permalink":"/service/fiverr/obsidian-powered-website/welcome-to-online-en/","noteIcon":"global/original_logo.svg","created":"2025-11-24T11:02:12.208+05:00","updated":"2025-11-24T13:01:11.047+05:00"}
 ---
 
 
