@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/service/services-en/","noteIcon":"global/original_logo.svg","created":"2025-12-09T15:11:58.550+05:00","updated":"2025-12-09T15:11:58.638+05:00"}
+{"dg-publish":true,"permalink":"/service/services-en/","noteIcon":"global/original_logo.svg","created":"2025-12-09T15:11:58.550+05:00","updated":"2025-12-09T16:43:49.954+05:00"}
 ---
 
 
@@ -89,7 +89,7 @@
   background: #ffffff;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   border: 1px solid #e9ecef;
   display: flex;
