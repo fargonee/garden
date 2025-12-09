@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/home-page-uz/","tags":["gardenEntry"],"noteIcon":"global/original_logo.svg","created":"2025-11-22T01:00:17.026+05:00","updated":"2025-12-09T15:02:31.506+05:00"}
+{"dg-publish":true,"permalink":"/home-page-uz/","noteIcon":"global/original_logo.svg","created":"2025-11-22T01:00:17.026+05:00","updated":"2025-12-09T15:22:52.160+05:00"}
 ---
 
 
