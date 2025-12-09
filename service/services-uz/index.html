@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Why you should choose me?.en</title>
+<title>Services.uz</title>
 <style>.lang-switcher{position:fixed;bottom:16px;right:24px;z-index:9999;display:flex;gap:10px;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);padding:8px 14px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);font:600 14px system-ui}.lang-switcher button{all:unset;padding:6px 12px;border-radius:8px;cursor:pointer;transition:all .2s ease;color:rgba(30,30,30,.94)!important;background-color:#fff!important;font-weight:700}.lang-switcher button.active{color:#fff!important;background:#06f!important;color:#fff}.lang-switcher button:hover:not(.active){background:#f0f0f0}@media (prefers-color-scheme:dark){.lang-switcher{background:rgba(30,30,30,.94)}.lang-switcher button:hover:not(.active){background:#404040}}</style>
 <script>document.addEventListener("DOMContentLoaded",(()=>{console.clear(),console.log("Dynamic Language Switcher v2025");const e=[...document.querySelectorAll("a.filename")].map((e=>e.getAttribute("href"))).filter((e=>e&&"/"!==e)).map((e=>{try{const t=new URL(e,location.origin),o=t.pathname.replace(/\/+$/,"").split("/").filter(Boolean);return o.length?o.pop():""}catch{return""}})).filter(Boolean),t={};for(const o of e){const e=o.match(/-([a-z]{2,3})$/);if(e){const o=e[1];t[o]=(t[o]||0)+1}}const o=Object.keys(t).filter((e=>t[e]>1)).sort().reduce(((e,t)=>(e[t]=t.toUpperCase(),e)),{});if(0===Object.keys(o).length)return void console.log("No language patterns detected.");console.log("Languages detected:",o);const n=location.pathname.replace(/\/+$/,"")||"/",c=n.split("/").filter(Boolean),a=c.length?c[c.length-1]:"",l=c.length>1?"/"+c.slice(0,-1).join("/")+"/":"/",r=a.match(/-([a-z]{2,3})$/)?.[1]||Object.keys(o)[0],s=a.replace(/-[a-z]{2,3}$/,"");console.log("Current:",{slug:a,baseDir:l,baseName:s,currentLang:r});const i=(()=>{const e=document.querySelector('a[href="/"].filename, a[href="./"].filename, a[href="/"] .filename');if(console.log("link textcontent",e.textContent),!e?.textContent)return"home";let t=e.textContent.trim().toLowerCase().replace(/\s+/g,"-").replace(/[^\w-]/g,"").replace(/-[a-z]{2,3}$/,"");for(const e of Object.keys(o)){const o=new RegExp(`${e}$`);if(o.test(t)){t=t.replace(o,"");break}}return t})();console.log("Home base:",i);const g=document.createElement("div");g.className="lang-switcher";for(const[e,t]of Object.entries(o)){const c=document.createElement("button");c.textContent=t,e===r&&c.classList.add("active"),c.onclick=async()=>{if(e===r)return;const t=(c=e,"/"===n||s===i?c===Object.keys(o)[0]?"/":"/"+i+"-"+c:l+s+"-"+c);var c;console.log(`Switch → ${r} → ${e}:`,t);try{(await fetch(t,{method:"HEAD"})).ok&&(location.href=t)}catch(e){console.log("Fetch error:",e)}},g.appendChild(c)}document.body.appendChild(g),console.log("Dynamic switcher initialized")}))</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -127,7 +127,7 @@ CTRL + K
 </div>
 </div>
 <div x-show="isOpen" style="display:none" class="filelist">
-<div @click.stop class="notelink active-note"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/service/fiverr/obsidian-powered-website/why-you-should-choose-me-en/">Why you should choose me?.en </a>
+<div @click.stop class="notelink"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/service/fiverr/obsidian-powered-website/why-you-should-choose-me-en/">Why you should choose me?.en </a>
 </div>
 </div>
 </div>
@@ -139,7 +139,7 @@ CTRL + K
 </div>
 </div>
 <div x-show="isOpen" style="display:none" class="filelist">
-<div @click.stop class="notelink"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/service/services-uz/">Services.uz </a>
+<div @click.stop class="notelink active-note"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/service/services-uz/">Services.uz </a>
 </div>
 </div>
 </div>
@@ -195,86 +195,76 @@ CTRL + K
 <script>document.addEventListener("DOMContentLoaded",init,!1),document.addEventListener("DOMContentLoaded",setCorrectShortcut,!1),window.toggleSearch=function(){document.getElementById("globalsearch").classList.contains("active")?document.getElementById("globalsearch").classList.remove("active"):(document.getElementById("globalsearch").classList.add("active"),document.getElementById("term").focus())},window.toggleTagSearch=function(e){console.log(e.textContent);const t=e.textContent;t&&(window.document.getElementById("term").value=t.trim(),window.toggleSearch(),window.search())};const loadingSvg='\n    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">\n      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="1.5s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="1.5s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="1.5s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="3s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="3s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="3s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="8">\n              <animate attributeName="r"\n                   begin="0s" dur="1.5s"\n                   values="6;1;2;3;4;5;6"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n      </g>\n  </svg>';function debounce(e,t,n){var a;return function(){var r=this,i=arguments,c=n&&!a;clearTimeout(a),a=setTimeout((function(){a=null,n||e.apply(r,i)}),t),c&&e.apply(r,i)}}function setCorrectShortcut(){navigator.platform.toUpperCase().indexOf("MAC")>=0&&document.querySelectorAll(".search-keys").forEach((e=>e.innerHTML="⌘ + K"))}function createIndex(e){const t=e=>e.toLowerCase().split(/([^a-z]|[^\x00-\x7F])/),n=new FlexSearch.Document({cache:!0,charset:"latin:extra",optimize:!0,index:[{field:"content",tokenize:"reverse",encode:t},{field:"title",tokenize:"forward",encode:t},{field:"tags",tokenize:"forward",encode:t}]});return e.forEach(((e,t)=>{n.add({id:t,title:e.title,content:e.content,tags:e.tags})})),n}async function init(){let e=!0;if(localStorage.getItem("searchIndex")){let{date:t,docs:n}=JSON.parse(localStorage.getItem("searchIndex"));if("2025-12-09T10:30:06.622Z"===t){e=!1;let t=createIndex(n);window.docs=n,window.index=t}}if(e){let e=await(await fetch("/searchIndex.json?v=2025-12-09T10:30:06.622Z")).json(),t=createIndex(e);localStorage.setItem("searchIndex",JSON.stringify({date:"2025-12-09T10:30:06.622Z",docs:e})),window.docs=e,window.index=t}document.addEventListener("keydown",(e=>{if((e.ctrlKey||e.metaKey)&&"k"===e.key&&(e.preventDefault(),toggleSearch()),"Escape"===e.key&&document.getElementById("globalsearch").classList.remove("active"),document.getElementById("globalsearch").classList.contains("active")){if("ArrowDown"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.nextElementSibling?t.nextElementSibling.classList.add("active"):document.querySelector(".searchresult").classList.add("active")):document.querySelector(".searchresult").classList.add("active");let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("ArrowUp"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.previousElementSibling?t.previousElementSibling.classList.add("active"):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling||e.classList.add("active")}))):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling&&e.classList.add("active")}));let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("Enter"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t&&(window.location.href=t.querySelector("a").href)}}}));const t=debounce(search,200,!1);field=document.querySelector("#term"),field.addEventListener("keydown",(e=>{"ArrowDown"!==e.key&&"ArrowUp"!==e.key&&t()})),resultsDiv=document.querySelector("#search-results");const n=new URL(location.href).searchParams;n.get("q")&&(field.setAttribute("value",n.get("q")),toggleSearch(),search())}async function search(){let e=field.value.trim();if(!e)return;if(e==lastSearch)return;console.log(`search for ${e}`),window.lastSearch=e,resultsDiv.innerHTML=loadingSvg;let t=offlineSearch(e),n="";if(!t.length){let t=document.createElement("p");return t.innerText=`No results for "${e}"`,resultsDiv.innerHTML="",void resultsDiv.appendChild(t)}n+='<div style="max-width:100%;">',t.forEach((e=>{e.tags&&e.tags.length>0?n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        <div class="header-meta">\n                            <div class="header-tags">\n                                ${e.tags.map((e=>'<a class="tag" href="JavaScript:Void(0);">#'+e+"</a>")).join("")}\n                            </div>\n                        </div>\n                        ${e.content}\n                    </div>\n                </div>`:n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        ${e.content}\n                    </div>\n                </div>`})),n+="</div>",resultsDiv.innerHTML=n}function truncate(e,t){return(e=e.replaceAll(/<[^>]*>/g,"")).length<t?e:e.substring(0,t-3)+"..."}function offlineSearch(e){let t=window.docs,n="#"===e[0]&&e.length>1?index.search(e.substring(1),[{field:"tags"}]):index.search(e,[{field:"title",limit:5},{field:"content",weight:10}]);const a=e=>{const t=n.filter((t=>t.field===e));return 0===t.length?[]:[...t[0].result]};return[...new Set([...a("title"),...a("content"),...a("tags")])].map((e=>{let n=t[e];return n.content=truncate(n.content,400),n.tags=n.tags.filter((e=>"gardenEntry"!=e&&"note"!=e)),n}))}window.lastSearch=""</script>
 <main class="content cm-s-obsidian">
 <header>
-<h1 data-note-icon="global/original_logo.svg">Why you should choose me?.en</h1>
+<h1 data-note-icon="global/original_logo.svg">Services.uz</h1>
 <div class="header-meta">
 <div class="header-tags">
 </div>
-<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2025-11-24T10:52:37.397+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2025-11-24T13:01:23.262+05:00"></span></div></div></div>
+<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2025-12-09T15:12:47.433+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2025-12-09T15:12:47.502+05:00"></span></div></div></div>
 </header>
-<h4 id="why-clients-will-choose-me-over-any-other-web-developer" tabindex="-1">Why Clients Will Choose ME Over Any Other Web Developer</h4>
-<ul>
-<li><strong>You wake up tomorrow with a real, live, public website already online</strong> – no waiting weeks, no back-and-forth, no “learning curve”. I deliver it 100 % ready in 24–48 hours.</li>
-<li><strong>Zero recurring costs forever</strong>: no hosting bills, no WordPress updates, no plugin subscriptions. GitHub Pages = free for life.</li>
-<li><strong>You keep 100 % ownership and control</strong> – everything lives in your own GitHub account (not mine, not some shady agency server).</li>
-<li><strong>I set it up so you never touch code again if you don’t want to</strong>. You just open Obsidian (the app you probably already love) → write or drag-and-drop → save → your site updates automatically in seconds.</li>
-</ul>
-<h4 id="why-obsidian-is-the-perfect-brain-for-your-website" tabindex="-1">Why Obsidian Is the Perfect Brain for Your Website</h4>
-<ul>
-<li>You already think in notes and links – Obsidian is <strong>the best tool on earth</strong> for that.</li>
-<li><strong>Write once, publish everywhere</strong>: the same vault becomes your personal knowledge base AND your public website.</li>
-<li><strong>Beautiful typography, instant search, tags, backlinks, graph view</strong> – all work on the live site with zero extra plugins.</li>
-<li>Works offline, syncs with your phone, <strong>supports folders, images, PDFs, embeds, everything</strong> you already use.</li>
-<li><strong>Future-proof</strong>: if you ever outgrow it, your content is just Markdown files – you can move anywhere tomorrow.</li>
-</ul>
-<h4 id="why-git-hub-git-hub-pages-beats-every-other-option" tabindex="-1">Why GitHub + GitHub Pages Beats Every Other Option</h4>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>What People Usually Pay For</th>
-<th>Monthly Cost</th>
-<th>Your Cost With My Service</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Shared hosting + WordPress</td>
-<td>$5–30/mo</td>
-<td><strong>$0 forever</strong></td>
-</tr>
-<tr>
-<td>Netlify / Vercel (free tier)</td>
-<td>$0–20/mo</td>
-<td><strong>$0 forever</strong></td>
-</tr>
-<tr>
-<td>Custom domain (you bring it)</td>
-<td>$12/year</td>
-<td>Same $12/year</td>
-</tr>
-<tr>
-<td>Security updates, backups, plugins</td>
-<td>Hours of work</td>
-<td>Handled automatically</td>
-</tr>
-</tbody>
-</table></div>
-<ul>
-<li>GitHub Pages is powered by the same infrastructure that runs millions of sites – <strong>rock-solid, globally fast, HTTPS by default.</strong></li>
-<li><strong>Automatic HTTPS certificate, automatic scaling, 99.99 % uptime</strong> – better than most paid hosts.</li>
-<li><strong>Built-in version history</strong>: break something? Just click “revert” in GitHub. No backups to manage.</li>
-</ul>
-<h4 id="why-so-incredibly-cheap-5-10-range" tabindex="-1">Why So Incredibly Cheap ($5–10 range)</h4>
-<p>Because I’m not selling you hosting, servers, or my time forever.<br>
-I’m selling you one afternoon of my expertise <strong>to save you 50+ hours of frustration and hundreds of dollars per year.</strong></p>
-<p>Most freelancers charge $300–$1500 for a custom static site.<br>
-I charge less than a dinner for two because:</p>
-<ul>
-<li>The entire stack is free (GitHub + Obsidian + open-source themes)</li>
-<li>I reuse the same bulletproof template (customized for you in minutes)</li>
-<li><em><mark><strong>My mission is to get as many people as possible publishing this way – the lower the price, the more lives I change.</strong></mark></em></li>
-</ul>
-<h4 id="who-this-is-perfect-for-make-them-see-themselves" tabindex="-1">Who This Is Perfect For (make them see themselves)</h4>
-<ul>
-<li><strong>Writers</strong> who are tired of Medium taking their traffic</li>
-<li><strong>Researchers &amp; students</strong> who want a beautiful public vault</li>
-<li>Indie hackers needing a landing page or documentation site</li>
-<li><strong>Consultants wanting a clean portfolio</strong> without the bloat</li>
-<li><strong>Anyone</strong> who believes their notes deserve to be seen by the world</li>
-</ul>
-<p>If you’ve ever thought “<strong>I wish my Obsidian notes could just be my website</strong>” – this gig turns that wish into reality tomorrow morning.</p>
-<p><strong>Ready</strong>? Send me your GitHub username (or say “create one for me”) and the site name you want.<br>
-I’ll handle everything else and hand you the keys to your new permanent corner of the internet.</p>
-<h1 id="click-order-now-and-tomorrow-you-ll-have-a-real-website-that-updates-every-time-you-click-a-button-in-obsidian" tabindex="-1">Click “Order Now” and tomorrow you’ll have a real website that updates every time you click a button in Obsidian.</h1>
+<h1 id="bizning-xizmatlarimiz" tabindex="-1">Bizning Xizmatlarimiz</h1>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+<line x1="8" y1="21" x2="16" y2="21"></line>
+<line x1="12" y1="17" x2="12" y2="21"></line>
+</svg>
+</div>
+<h3>Obsidian Asosidagi Veb-saytlar</h3>
+<p>Bilimingizni chiroyli va funksional veb-saytga aylantiring. Hujjatlar, vikilar va shaxsiy bilimlarni boshqarish uchun ajoyib yechim.</p>
+<a href="/SERVICES/obsidian-veb-saytlar" class="service-link">Batafsil →</a>
+</div>
+<div class="service-card">
+<div class="service-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+<line x1="8" y1="21" x2="16" y2="21"></line>
+<line x1="12" y1="17" x2="12" y2="21"></line>
+</svg>
+</div>
+<h3>To'liq Stack Dasturlash</h3>
+<p>G'oyadan tortib ishga tushirishgacha bo'lgan barcha bosqichlarni o'z ichiga olgan veb-dasturlash xizmatlari. Sizning ehtiyojlaringizga moslashtirilgan, moslashuvchan va yuqori samaradorlikdagi veb-ilovalar yaratamiz.</p>
+<a href="/SERVICES/toliq-stack-dasturlash" class="service-link">Batafsil →</a>
+</div>
+<div class="service-card">
+<div class="service-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+</svg>
+</div>
+<h3>Telegram Bot Yaratish</h3>
+<p>Ishlarni avtomatlashtirish, foydalanuvchilar bilan muloqotni osonlashtirish va biznes jarayonlarini takomillashtirish uchun moslashtirilgan Telegram botlari. Oddiy chatbotlardan tortib murakkab biznes yechimlarigacha.</p>
+<a href="/SERVICES/telegram-botlar" class="service-link">Batafsil →</a>
+</div>
+<div class="service-card">
+<div class="service-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+<path d="M16 17H7"></path>
+<path d="M15 14H8"></path>
+<path d="M12 14v8"></path>
+<path d="M9 18h6"></path>
+</svg>
+</div>
+<h3>Sun'iy Intellekt va Avtomatlashtirish</h3>
+<p>Biznesingiz samaradorligini oshirish uchun sun'iy intellekt va avtomatlashtirish kuchidan foydalaning. Biz eng yangi AI yechimlarini integratsiya qilamiz.</p>
+<a href="/SERVICES/suniy-intellekt" class="service-link">Batafsil →</a>
+</div>
+<div class="service-card">
+<div class="service-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="2" y1="12" x2="22" y2="12"></line>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+</div>
+<h3>Mikroservislar</h3>
+<p>Biznesingiz bilan birga rivojlanadigan mikroservislar arxitekturasi. Mustaqil ishlaydigan, mustahkam va o'zaro muvofiqlashgan xizmatlar yaratamiz.</p>
+<a href="/SERVICES/mikroservislar" class="service-link">Batafsil →</a>
+</div>
+</div>
+<style>.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem;margin:2rem 0}.service-card{background:<a class="tag" onclick="toggleTagSearch(this)" data-content="#ffffff">#fff</a>;border-radius:12px;padding:2rem;box-shadow:0 4px 6px rgba(0,0,0,.05);transition:all .3s ease;border:1px solid <a class="tag" onclick="toggleTagSearch(this)" data-content="#e9ecef">#e9ecef</a>;display:flex;flex-direction:column;height:100%}.service-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.1);border-color:<a class="tag" onclick="toggleTagSearch(this)" data-content="#8a63d2">#8a63d2</a>}.service-icon{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg, <a class="tag" onclick="toggleTagSearch(this)" data-content="#8a63d2">#8a63d2</a> 0, <a class="tag" onclick="toggleTagSearch(this)" data-content="#5e35b1">#5e35b1</a> 100%);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:#fff}.service-card h3{color:<a class="tag" onclick="toggleTagSearch(this)" data-content="#2d1b69">#2d1b69</a>;margin:0 0 1rem 0;font-size:1.5rem}.service-card p{color:<a class="tag" onclick="toggleTagSearch(this)" data-content="#495057">#495057</a>;line-height:1.6;margin-bottom:1.5rem;flex-grow:1}.service-link{color:<a class="tag" onclick="toggleTagSearch(this)" data-content="#8a63d2">#8a63d2</a>;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;transition:all .3s ease}.service-link:hover{color:<a class="tag" onclick="toggleTagSearch(this)" data-content="#5e35b1">#5e35b1</a>;transform:translateX(5px)}.service-link::after{content:'→';margin-left:.5rem;transition:transform .3s ease}.service-link:hover::after{transform:translateX(5px)}@media (max-width:768px){.services-grid{grid-template-columns:1fr}.service-card{padding:1.5rem}}</style>
 </main>
 <aside>
 <div class="sidebar">
@@ -316,17 +306,7 @@ On this page
 <div class="toc-container">
 <nav class="toc">
 <ol>
-<li><a href="#why-clients-will-choose-me-over-any-other-web-developer">Why Clients Will Choose ME Over Any Other Web Developer</a>
-</li>
-<li><a href="#why-obsidian-is-the-perfect-brain-for-your-website">Why Obsidian Is the Perfect Brain for Your Website</a>
-</li>
-<li><a href="#why-git-hub-git-hub-pages-beats-every-other-option">Why GitHub + GitHub Pages Beats Every Other Option</a>
-</li>
-<li><a href="#why-so-incredibly-cheap-5-10-range">Why So Incredibly Cheap ($5–10 range)</a>
-</li>
-<li><a href="#who-this-is-perfect-for-make-them-see-themselves">Who This Is Perfect For (make them see themselves)</a>
-</li>
-<li><a href="#click-order-now-and-tomorrow-you-ll-have-a-real-website-that-updates-every-time-you-click-a-button-in-obsidian">Click “Order Now” and tomorrow you’ll have a real website that updates every time you click a button in Obsidian.</a>
+<li><a href="#bizning-xizmatlarimiz">Bizning Xizmatlarimiz</a>
 </li>
 </ol>
 </nav>
@@ -334,7 +314,8 @@ On this page
 </div>
 <div class="backlinks">
 <div class="backlink-title" style="margin:4px 0!important">Pages mentioning this page</div>
-<div class="backlink-list"><div class="backlink-card"><a href="/service/fiverr/obsidian-powered-website/welcome-to-online-en/" data-note-icon="global/original_logo.svg" class="backlink">Welcome to online!.en</a>
+<div class="backlink-list"><div class="backlink-card">
+<span class="no-backlinks-message">No other pages mentions this page</span>
 </div></div>
 </div>
 </div>
