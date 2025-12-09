@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/home-page-en/","tags":["gardenEntry"],"noteIcon":"global/original_logo.svg","created":"2025-11-22T00:50:58.336+05:00","updated":"2025-12-09T15:22:56.906+05:00"}
+{"dg-publish":true,"permalink":"/home-page-en/","tags":["gardenEntry"],"noteIcon":"global/original_logo.svg","created":"2025-11-22T00:50:58.336+05:00","updated":"2025-12-09T15:33:49.532+05:00"}
 ---
 
 **
@@ -7,7 +7,7 @@
 
 <div class="hero">
   <div class="hero-content">
-    <img src="/global/original_logo.jpg" alt="FarGoneE Logo" class="hero-logo">
+    <img src="./global/original_logo.jpg" alt="FarGoneE Logo" class="hero-logo">
     <p class="tagline">Engineering Innovation, Educational Excellence</p>
     <div class="cta-buttons">
       <a href="/SERVICES" class="btn btn-primary">Our Services</a>

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/home-page-uz/","noteIcon":"global/original_logo.svg","created":"2025-11-22T01:00:17.026+05:00","updated":"2025-12-09T15:22:52.160+05:00"}
+{"dg-publish":true,"permalink":"/home-page-uz/","noteIcon":"global/original_logo.svg","created":"2025-11-22T01:00:17.026+05:00","updated":"2025-12-09T15:33:43.685+05:00"}
 ---
 
 
@@ -7,7 +7,7 @@
 
 <div class="hero">
   <div class="hero-content">
-    <img src="/global/original_logo.jpg" alt="FarGoneE Logotipi" class="hero-logo">
+    <img src="./global/original_logo.jpg" alt="FarGoneE Logotipi" class="hero-logo">
     <p class="tagline">Innovatsion Muhandislik, Ta'limda Mukammallik</p>
     <div class="cta-buttons">
       <a href="/SERVICES" class="btn btn-primary">Xizmatlarimiz</a>
