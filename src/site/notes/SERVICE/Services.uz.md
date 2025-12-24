@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/service/services-uz/","noteIcon":"global/original_logo.svg","created":"2025-12-09T15:12:47.433+05:00","updated":"2025-12-09T16:44:00.186+05:00"}
+{"dg-publish":true,"permalink":"/service/services-uz/","noteIcon":"global/original_logo.svg","created":"2025-12-09T15:12:47.433+05:00","updated":"2025-12-24T17:20:42.187+05:00"}
 ---
 
 
