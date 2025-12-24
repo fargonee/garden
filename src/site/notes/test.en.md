@@ -1,4 +1,4 @@
 ---
-{"dg-publish":true,"permalink":"/test-en/","title":{"en":"English Name","uz":"Inglizcha Nomi","ru":"Английское название"},"noteIcon":"global/original_logo.svg","created":"2025-12-24T17:21:08.344+05:00","updated":"2025-12-24T17:30:21.234+05:00"}
+{"dg-publish":true,"permalink":"/test-en/","title":{"en":"English Name","uz":"Inglizcha Nomi","ru":"Английское название","test":"Test"},"noteIcon":"global/original_logo.svg","created":"2025-12-24T17:21:08.344+05:00","updated":"2025-12-24T17:32:38.056+05:00"}
 ---
 
