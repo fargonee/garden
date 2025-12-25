@@ -1,0 +1,23 @@
+name: Maintain CNAME
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  add-cname:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: gh_pages
+
+      - run: echo "www.fargonee.space" > CNAME
+
+      - run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git commit -am "Ensure CNAME persists"
+          git push origin gh_pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
