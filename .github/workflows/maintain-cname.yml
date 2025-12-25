@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0  # fetch full history, required for branch operations
 
       # 2. Ensure gh_pages branch exists
-      - name: Checkout or create gh_pages branch
+      - name: Checkout or create gh-pages branch
         run: |
           git fetch origin gh-pages || true
           if git show-ref --verify --quiet refs/heads/gh-pages; then
