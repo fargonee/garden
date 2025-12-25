@@ -20,23 +20,23 @@ jobs:
       - name: Checkout or create gh_pages branch
         run: |
           git fetch origin gh_pages || true
-          if git show-ref --verify --quiet refs/heads/gh_pages; then
-            git checkout gh_pages
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
           else
-            git checkout --orphan gh_pages
+            git checkout --orphan gh-pages
             git rm -rf .
           fi
 
       # 3. Restore the CNAME file
       - name: Add or update CNAME
         run: |
-          echo "www.fargonee.space" > CNAME
+          echo "garden.fargonee.space" > CNAME
           git add CNAME
           git commit -m "Restore CNAME for GitHub Pages" || echo "No changes to commit"
 
       # 4. Push changes back to gh_pages
-      - name: Push to gh_pages
+      - name: Push to gh-pages
         run: |
-          git push origin gh_pages --force
+          git push origin gh-pages --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
