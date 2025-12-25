@@ -10,13 +10,11 @@ jobs:
   restore-cname:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 2. Checkout or create gh-pages branch
       - name: Ensure gh-pages branch exists
         run: |
           git fetch origin gh-pages || echo "gh-pages not found"
@@ -28,14 +26,17 @@ jobs:
             git commit --allow-empty -m "Initial commit for gh-pages"
           fi
 
-      # 3. Add or update CNAME
+      - name: Set Git identity
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
       - name: Add CNAME
         run: |
           echo "garden.fargonee.space" > CNAME
           git add CNAME
           git commit -m "Restore CNAME for GitHub Pages" || echo "No changes to commit"
 
-      # 4. Push gh-pages branch
       - name: Push gh-pages
         run: git push origin gh-pages --force
         env:
