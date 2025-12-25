@@ -1,23 +1,42 @@
-name: Maintain CNAME
+name: Restore CNAME for Digital Garden
+
 on:
+  workflow_dispatch: # Manual trigger
   push:
     branches:
-      - main
+      - main # or your source branch
 
 jobs:
-  add-cname:
+  restore-cname:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          ref: gh_pages
+          fetch-depth: 0  # fetch full history, required for branch operations
 
-      - run: echo "www.fargonee.space" > CNAME
+      # 2. Ensure gh_pages branch exists
+      - name: Checkout or create gh_pages branch
+        run: |
+          git fetch origin gh_pages || true
+          if git show-ref --verify --quiet refs/heads/gh_pages; then
+            git checkout gh_pages
+          else
+            git checkout --orphan gh_pages
+            git rm -rf .
+          fi
 
-      - run: |
-          git config user.name "GitHub Action"
-          git config user.email "actions@github.com"
-          git commit -am "Ensure CNAME persists"
-          git push origin gh_pages
+      # 3. Restore the CNAME file
+      - name: Add or update CNAME
+        run: |
+          echo "www.fargonee.space" > CNAME
+          git add CNAME
+          git commit -m "Restore CNAME for GitHub Pages" || echo "No changes to commit"
+
+      # 4. Push changes back to gh_pages
+      - name: Push to gh_pages
+        run: |
+          git push origin gh_pages --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
