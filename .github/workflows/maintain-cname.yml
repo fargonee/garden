@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0  # fetch full history, required for branch operations
 
-      # 2. Ensure gh_pages branch exists
+      # 2. Ensure gh-pages branch exists
       - name: Checkout or create gh-pages branch
         run: |
           git fetch origin gh-pages || true
@@ -34,7 +34,7 @@ jobs:
           git add CNAME
           git commit -m "Restore CNAME for GitHub Pages" || echo "No changes to commit"
 
-      # 4. Push changes back to gh_pages
+      # 4. Push changes back to gh-pages
       - name: Push to gh-pages
         run: |
           git push origin gh-pages --force
