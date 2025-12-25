@@ -19,7 +19,7 @@ jobs:
       # 2. Ensure gh_pages branch exists
       - name: Checkout or create gh_pages branch
         run: |
-          git fetch origin gh_pages || true
+          git fetch origin gh-pages || true
           if git show-ref --verify --quiet refs/heads/gh-pages; then
             git checkout gh-pages
           else
