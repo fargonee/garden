@@ -3,36 +3,33 @@
     <title>FarGoneE</title>
     <link href="https://www.garden.fargonee.space/feed.xml" rel="self" />
     <link href="https://www.garden.fargonee.space" />
-    <updated>2025-12-29T23:37:34Z</updated>
+    <updated>2025-12-29T23:39:22Z</updated>
     <id>https://www.garden.fargonee.space</id>
         <entry>
             <title>
                 background
                 
             </title>
-            <updated>2025-12-29T23:36:53.499Z</updated>
+            <updated>2025-12-29T23:38:52.582Z</updated>
             <id>https://www.garden.fargonee.space/global/background/</id>
             <content type="html">
-                &lt;script&gt;
-  // Your canvas HTML string
-  const canvasString = `
-&lt;canvas
-  id=&quot;space&quot;
-  style=&quot;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-  box-sizing: border-box;
-  overflow: hidden;
-  /* background: #000; */
-    background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 70%);
-  &quot;
-&gt;
+                &lt;p&gt;&amp;lt;canvas&lt;br /&gt;
+id=&amp;quot;space&amp;quot;&lt;br /&gt;
+style=&amp;quot;&lt;br /&gt;
+position: fixed;&lt;br /&gt;
+top: 0;&lt;br /&gt;
+left: 0;&lt;br /&gt;
+width: 100vw;&lt;br /&gt;
+height: 100vh;&lt;br /&gt;
+margin: 0;&lt;br /&gt;
+padding: 0;&lt;br /&gt;
+z-index: -1;&lt;br /&gt;
+box-sizing: border-box;&lt;br /&gt;
+overflow: hidden;&lt;br /&gt;
+/_ background: &lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-content=&quot;#000&quot;&gt;#000&lt;/a&gt;; _/&lt;br /&gt;
+background: radial-gradient(ellipse at center, &lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-content=&quot;#0a0a1a&quot;&gt;#0a0a1a&lt;/a&gt; 0%, &lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-content=&quot;#000000&quot;&gt;#000000&lt;/a&gt; 70%);&lt;br /&gt;
+&amp;quot;&lt;/p&gt;
+&lt;blockquote&gt;&lt;/blockquote&gt;
   &lt;script&gt;
     const canvas = document.getElementById(&quot;space&quot;);
     const ctx = canvas.getContext(&quot;2d&quot;);
@@ -448,30 +445,6 @@
     };
   &lt;/script&gt;
 
-  `;
-&lt;p&gt;// Create a container div&lt;br /&gt;
-const container = document.createElement(&#39;div&#39;);&lt;/p&gt;
-&lt;p&gt;// Optional: give it an ID or class for styling&lt;br /&gt;
-&lt;a href=&quot;http://container.id/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;container.id&lt;/a&gt; = &#39;canvas-container&#39;;&lt;br /&gt;
-container.style.position = &#39;absolute&#39;; // or &#39;fixed&#39;, depending on your layout&lt;br /&gt;
-container.style.top = &#39;0&#39;;&lt;br /&gt;
-container.style.left = &#39;0&#39;;&lt;br /&gt;
-container.style.width = &#39;100%&#39;;&lt;br /&gt;
-container.style.height = &#39;100%&#39;;&lt;br /&gt;
-container.style.pointerEvents = &#39;none&#39;; // lets clicks pass through if you want&lt;/p&gt;
-&lt;p&gt;// Insert your canvas string into the div&lt;br /&gt;
-container.innerHTML = canvasString;&lt;/p&gt;
-&lt;p&gt;// Attach the div to the body&lt;br /&gt;
-document.body.appendChild(container);&lt;/p&gt;
-&lt;p&gt;// Optional: initialize the canvas context if needed&lt;br /&gt;
-const canvas = document.getElementById(&#39;myCanvas&#39;);&lt;br /&gt;
-if (canvas) {&lt;br /&gt;
-const ctx = canvas.getContext(&#39;2d&#39;);&lt;br /&gt;
-// Example: draw a red rectangle&lt;br /&gt;
-ctx.fillStyle = &#39;red&#39;;&lt;br /&gt;
-ctx.fillRect(50, 50, 200, 100);&lt;br /&gt;
-}&lt;br /&gt;
-&lt;/p&gt;
 
             </content>
             <link href="https://www.garden.fargonee.space/global/background/" />
