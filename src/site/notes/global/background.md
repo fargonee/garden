@@ -1,28 +1,27 @@
 ---
-{"dg-publish":true,"permalink":"/global/background/","noteIcon":"global/original_logo.svg","created":"2025-12-30T04:32:54.122+05:00","updated":"2025-12-30T04:36:53.499+05:00"}
+{"dg-publish":true,"permalink":"/global/background/","noteIcon":"global/original_logo.svg","created":"2025-12-30T04:32:54.122+05:00","updated":"2025-12-30T04:38:52.582+05:00"}
 ---
 
 
-<script>
-  // Your canvas HTML string
-  const canvasString = `
 <canvas
-  id="space"
-  style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-  box-sizing: border-box;
-  overflow: hidden;
-  /* background: #000; */
-    background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 70%);
-  "
+id="space"
+style="
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+margin: 0;
+padding: 0;
+z-index: -1;
+box-sizing: border-box;
+overflow: hidden;
+/_ background: #000; _/
+background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 70%);
+"
+
 >
+
   <script>
     const canvas = document.getElementById("space");
     const ctx = canvas.getContext("2d");
@@ -438,32 +437,3 @@
     };
   </script>
 </canvas>
-  `;
-
-// Create a container div
-const container = document.createElement('div');
-
-// Optional: give it an ID or class for styling
-container.id = 'canvas-container';
-container.style.position = 'absolute'; // or 'fixed', depending on your layout
-container.style.top = '0';
-container.style.left = '0';
-container.style.width = '100%';
-container.style.height = '100%';
-container.style.pointerEvents = 'none'; // lets clicks pass through if you want
-
-// Insert your canvas string into the div
-container.innerHTML = canvasString;
-
-// Attach the div to the body
-document.body.appendChild(container);
-
-// Optional: initialize the canvas context if needed
-const canvas = document.getElementById('myCanvas');
-if (canvas) {
-const ctx = canvas.getContext('2d');
-// Example: draw a red rectangle
-ctx.fillStyle = 'red';
-ctx.fillRect(50, 50, 200, 100);
-}
-</script>
