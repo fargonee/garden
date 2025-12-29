@@ -1,27 +1,26 @@
 ---
-{"dg-publish":true,"permalink":"/global/background/","noteIcon":"global/original_logo.svg","created":"2025-12-30T04:32:54.122+05:00","updated":"2025-12-30T04:38:52.582+05:00"}
+{"dg-publish":true,"permalink":"/global/background/","noteIcon":"global/original_logo.svg","created":"2025-12-30T04:32:54.122+05:00","updated":"2025-12-30T04:42:57.210+05:00"}
 ---
 
 
-<canvas
-id="space"
-style="
-position: fixed;
-top: 0;
-left: 0;
-width: 100vw;
-height: 100vh;
-margin: 0;
-padding: 0;
-z-index: -1;
-box-sizing: border-box;
-overflow: hidden;
-/_ background: #000; _/
-background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 70%);
-"
-
+<script>
+document.body.innerHTML += `<canvas
+  id="space"
+  style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* background: #000; */
+    background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 70%);
+  "
 >
-
   <script>
     const canvas = document.getElementById("space");
     const ctx = canvas.getContext("2d");
@@ -436,4 +435,6 @@ background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 70%);
       if (STAR_MODES[mode]) currentStarMode = mode;
     };
   </script>
-</canvas>
+
+</canvas>`;
+</script>
