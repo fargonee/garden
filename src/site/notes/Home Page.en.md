@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/home-page-en/","title":"🇬🇧 Home page","tags":["gardenEntry"],"noteIcon":"global/original_logo.svg","created":"2025-11-22T00:50:58.336+05:00","updated":"2025-12-26T19:42:10.660+05:00"}
+{"dg-publish":true,"permalink":"/home-page-en/","title":"🇬🇧 Home page","tags":["gardenEntry"],"noteIcon":"global/original_logo.svg","created":"2025-11-22T00:50:58.336+05:00","updated":"2025-12-30T05:38:07.907+05:00"}
 ---
-
 
 # Welcome to FarGoneE
 
