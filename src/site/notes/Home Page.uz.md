@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/home-page-uz/","title":"🇺🇿 Bosh sahifa","noteIcon":"global/original_logo.svg","created":"2025-11-22T01:00:17.026+05:00","updated":"2025-12-25T22:15:29.846+05:00"}
+{"dg-publish":true,"permalink":"/home-page-uz/","title":"🇺🇿 Bosh sahifa","noteIcon":"global/original_logo.svg","created":"2025-11-22T01:00:17.026+05:00","updated":"2025-12-30T05:38:22.183+05:00"}
 ---
-
 
 # FarGoneE'ga Xush Kelibsiz
 
