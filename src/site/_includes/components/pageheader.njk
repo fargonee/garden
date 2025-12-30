@@ -1,236 +1,3 @@
-<style>
-.lang-switcher {
-  position: fixed;
-  bottom: 16px;
-  right: 24px;
-  z-index: 9999;
-  display: flex;
-  gap: 10px;
-  background: rgba(255,255,255,0.94);
-  backdrop-filter: blur(16px);
-  padding: 8px 14px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  font: 600 14px system-ui;
-}
-.lang-switcher button {
-  all: unset;
-  padding: 6px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: rgba(30, 30, 30, 0.94) !important;
-  background-color: white !important;
-  font-weight: bold
-}
-.lang-switcher button.active {
-  color: white !important;
-  background: #0066ff !important;
-  color: white;
-}
-.lang-switcher button:hover:not(.active) {
-  background: #f0f0f0;
-}
-@media (prefers-color-scheme: dark) {
-  .lang-switcher { background: rgba(30,30,30,0.94); }
-  .lang-switcher button:hover:not(.active) { background: #404040; }
-}
-</style>
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  console.clear();
-  console.log("Dynamic Language Switcher v2025");
-
-  // ---------------------------------------------------------
-  // Utility: extract slug from href (no trailing slash)
-  // ---------------------------------------------------------
-  const getSlugFromHref = (href) => {
-    try {
-      const url = new URL(href, location.origin);
-      const clean = url.pathname.replace(/\/+$/, "");
-      const parts = clean.split("/").filter(Boolean);
-      return parts.length ? parts.pop() : "";
-    } catch {
-      return "";
-    }
-  };
-
-  // ---------------------------------------------------------
-  // STEP 1: Collect all candidate slugs from sidebar
-  // ---------------------------------------------------------
-  const anchors = [...document.querySelectorAll("a.filename")];
-  const slugs = anchors
-    .map(a => a.getAttribute("href"))
-    .filter(href => href && href !== "/")
-    .map(getSlugFromHref)
-    .filter(Boolean);
-
-  // ---------------------------------------------------------
-  // STEP 2: Infer languages by detecting repeated suffixes
-  // ---------------------------------------------------------
-  const langCounts = {};
-
-  for (const slug of slugs) {
-    const match = slug.match(/-([a-z]{2,3})$/);
-    if (match) {
-      const lang = match[1];
-      langCounts[lang] = (langCounts[lang] || 0) + 1;
-    }
-  }
-
-  const LANGS = Object.keys(langCounts)
-    .filter(lang => langCounts[lang] > 1) // avoid accidental singletons
-    .sort()                               // stable order
-    .reduce((acc, lang) => {
-      acc[lang] = lang.toUpperCase();
-      return acc;
-    }, {});
-
-  if (Object.keys(LANGS).length === 0) {
-    console.log("No language patterns detected.");
-    return;
-  }
-
-  console.log("Languages detected:", LANGS);
-
-  // ---------------------------------------------------------
-  // STEP 3: Detect current slug, baseDir, current language
-  // ---------------------------------------------------------
-  const rawPath = location.pathname.replace(/\/+$/, "") || "/";
-  const parts = rawPath.split("/").filter(Boolean);
-  const slug = parts.length ? parts[parts.length - 1] : "";
-  const baseDir = parts.length > 1
-    ? "/" + parts.slice(0, -1).join("/") + "/"
-    : "/";
-
-  const currentLang =
-    slug.match(/-([a-z]{2,3})$/)?.[1] || Object.keys(LANGS)[0];
-
-  const baseName = slug.replace(/-[a-z]{2,3}$/, "");
-
-  console.log("Current:", { slug, baseDir, baseName, currentLang });
-
-  // ---------------------------------------------------------
-  // STEP 4: Detect home page base name from sidebar link
-  // ---------------------------------------------------------
-  const getHomeBaseName = () => {
-    const link = document.querySelector(
-      'a[href="/"].filename, a[href="./"].filename, a[href="/"] .filename'
-    );
-    console.log("link textcontent", link.textContent)
-    if (!link?.textContent) return "home";
-
-    let name =  link.textContent
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w-]/g, "")
-      .replace(/-[a-z]{2,3}$/, "");
-    // Remove any detected language suffix at the very end
-    for (const suffix of Object.keys(LANGS)) {
-      const regex = new RegExp(`${suffix}$`);
-      if (regex.test(name)) {
-        name = name.replace(regex, "");
-        break;
-      }
-    }
-    return name;
-  };
-  
-
-  const homeBase = getHomeBaseName();
-  console.log("Home base:", homeBase);
-
-  // ---------------------------------------------------------
-  // STEP 5: Build target URLs
-  // ---------------------------------------------------------
-  const buildTargetUrl = (targetLang) => {
-    const isRoot = rawPath === "/";
-    const isHomePage = baseName === homeBase;
-
-    if (isRoot) {
-      return targetLang === Object.keys(LANGS)[0]
-        ? "/"
-        : "/" + homeBase + "-" + targetLang;
-    }
-
-    if (isHomePage) {
-      return targetLang === Object.keys(LANGS)[0]
-        ? "/"
-        : "/" + homeBase + "-" + targetLang;
-    }
-
-    return baseDir + baseName + "-" + targetLang;
-  };
-
-  // ---------------------------------------------------------
-  // STEP 6: Create language switcher
-  // ---------------------------------------------------------
-  const switcher = document.createElement("div");
-  switcher.className = "lang-switcher";
-
-  for (const [code, label] of Object.entries(LANGS)) {
-    const btn = document.createElement("button");
-    btn.textContent = label;
-
-    if (code === currentLang) {
-      btn.classList.add("active");
-    }
-
-    btn.onclick = async () => {
-      if (code === currentLang) return;
-
-      const targetUrl = buildTargetUrl(code);
-      console.log(`Switch → ${currentLang} → ${code}:`, targetUrl);
-
-      try {
-        const res = await fetch(targetUrl, { method: "HEAD" });
-        if (res.ok) location.href = targetUrl;
-      } catch (err) {
-        console.log("Fetch error:", err);
-      }
-    };
-
-    switcher.appendChild(btn);
-  }
-
-  document.body.appendChild(switcher);
-  console.log("Dynamic switcher initialized");
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -653,7 +420,7 @@ document.addEventListener("DOMContentLoaded", () => {
           p.y > canvas.height + buffer ||
           comet.z < CAMERA.zNear
         ) {
-          console.log("Recycling comet", i);
+          // console.log("Recycling comet", i);
           comets[i] = createComet();
         }
       });
@@ -671,6 +438,272 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   </script>
 </canvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.lang-switcher {
+  position: fixed;
+  bottom: 16px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  gap: 10px;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(16px);
+  padding: 8px 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font: 600 14px system-ui;
+}
+.lang-switcher button {
+  all: unset;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: rgba(30, 30, 30, 0.94) !important;
+  background-color: white !important;
+  font-weight: bold
+}
+.lang-switcher button.active {
+  color: white !important;
+  background: #0066ff !important;
+  color: white;
+}
+.lang-switcher button:hover:not(.active) {
+  background: #f0f0f0;
+}
+@media (prefers-color-scheme: dark) {
+  .lang-switcher { background: rgba(30,30,30,0.94); }
+  .lang-switcher button:hover:not(.active) { background: #404040; }
+}
+</style>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  console.clear();
+  console.log("Dynamic Language Switcher v2025");
+
+  // ---------------------------------------------------------
+  // Utility: extract slug from href (no trailing slash)
+  // ---------------------------------------------------------
+  const getSlugFromHref = (href) => {
+    try {
+      const url = new URL(href, location.origin);
+      const clean = url.pathname.replace(/\/+$/, "");
+      const parts = clean.split("/").filter(Boolean);
+      return parts.length ? parts.pop() : "";
+    } catch {
+      return "";
+    }
+  };
+
+  // ---------------------------------------------------------
+  // STEP 1: Collect all candidate slugs from sidebar
+  // ---------------------------------------------------------
+  const anchors = [...document.querySelectorAll("a.filename")];
+  const slugs = anchors
+    .map(a => a.getAttribute("href"))
+    .filter(href => href && href !== "/")
+    .map(getSlugFromHref)
+    .filter(Boolean);
+
+  // ---------------------------------------------------------
+  // STEP 2: Infer languages by detecting repeated suffixes
+  // ---------------------------------------------------------
+  const langCounts = {};
+
+  for (const slug of slugs) {
+    const match = slug.match(/-([a-z]{2,3})$/);
+    if (match) {
+      const lang = match[1];
+      langCounts[lang] = (langCounts[lang] || 0) + 1;
+    }
+  }
+
+  const LANGS = Object.keys(langCounts)
+    .filter(lang => langCounts[lang] > 1) // avoid accidental singletons
+    .sort()                               // stable order
+    .reduce((acc, lang) => {
+      acc[lang] = lang.toUpperCase();
+      return acc;
+    }, {});
+
+  if (Object.keys(LANGS).length === 0) {
+    console.log("No language patterns detected.");
+    return;
+  }
+
+  console.log("Languages detected:", LANGS);
+
+  // ---------------------------------------------------------
+  // STEP 3: Detect current slug, baseDir, current language
+  // ---------------------------------------------------------
+  const rawPath = location.pathname.replace(/\/+$/, "") || "/";
+  const parts = rawPath.split("/").filter(Boolean);
+  const slug = parts.length ? parts[parts.length - 1] : "";
+  const baseDir = parts.length > 1
+    ? "/" + parts.slice(0, -1).join("/") + "/"
+    : "/";
+
+  const currentLang =
+    slug.match(/-([a-z]{2,3})$/)?.[1] || Object.keys(LANGS)[0];
+
+  const baseName = slug.replace(/-[a-z]{2,3}$/, "");
+
+  console.log("Current:", { slug, baseDir, baseName, currentLang });
+
+  // ---------------------------------------------------------
+  // STEP 4: Detect home page base name from sidebar link
+  // ---------------------------------------------------------
+  const getHomeBaseName = () => {
+    const link = document.querySelector(
+      'a[href="/"].filename, a[href="./"].filename, a[href="/"] .filename'
+    );
+    console.log("link textcontent", link.textContent)
+    if (!link?.textContent) return "home";
+
+    let name =  link.textContent
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]/g, "")
+      .replace(/-[a-z]{2,3}$/, "");
+    // Remove any detected language suffix at the very end
+    for (const suffix of Object.keys(LANGS)) {
+      const regex = new RegExp(`${suffix}$`);
+      if (regex.test(name)) {
+        name = name.replace(regex, "");
+        break;
+      }
+    }
+    return name;
+  };
+  
+
+  const homeBase = getHomeBaseName();
+  console.log("Home base:", homeBase);
+
+  // ---------------------------------------------------------
+  // STEP 5: Build target URLs
+  // ---------------------------------------------------------
+  const buildTargetUrl = (targetLang) => {
+    const isRoot = rawPath === "/";
+    const isHomePage = baseName === homeBase;
+
+    if (isRoot) {
+      return targetLang === Object.keys(LANGS)[0]
+        ? "/"
+        : "/" + homeBase + "-" + targetLang;
+    }
+
+    if (isHomePage) {
+      return targetLang === Object.keys(LANGS)[0]
+        ? "/"
+        : "/" + homeBase + "-" + targetLang;
+    }
+
+    return baseDir + baseName + "-" + targetLang;
+  };
+
+  // ---------------------------------------------------------
+  // STEP 6: Create language switcher
+  // ---------------------------------------------------------
+  const switcher = document.createElement("div");
+  switcher.className = "lang-switcher";
+
+  for (const [code, label] of Object.entries(LANGS)) {
+    const btn = document.createElement("button");
+    btn.textContent = label;
+
+    if (code === currentLang) {
+      btn.classList.add("active");
+    }
+
+    btn.onclick = async () => {
+      if (code === currentLang) return;
+
+      const targetUrl = buildTargetUrl(code);
+      console.log(`Switch → ${currentLang} → ${code}:`, targetUrl);
+
+      try {
+        const res = await fetch(targetUrl, { method: "HEAD" });
+        if (res.ok) location.href = targetUrl;
+      } catch (err) {
+        console.log("Fetch error:", err);
+      }
+    };
+
+    switcher.appendChild(btn);
+  }
+
+  document.body.appendChild(switcher);
+  console.log("Dynamic switcher initialized");
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
