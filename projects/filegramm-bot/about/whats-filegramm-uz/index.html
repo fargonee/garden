@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>🇺🇿 Umumiy tavsif</title>
+<title>Filegramm Nima?</title>
 <canvas id="space" style="position:fixed;top:0;left:0;width:100vw;height:100vh;margin:0;padding:0;z-index:-1;box-sizing:border-box;overflow:hidden;background:radial-gradient(ellipse at center,#0a0a1a 0,#000 70%)">
 <script>const canvas=document.getElementById("space"),ctx=canvas.getContext("2d");function resizeCanvas(){canvas.width=canvas.offsetWidth,canvas.height=canvas.offsetHeight}resizeCanvas(),window.addEventListener("resize",resizeCanvas);const stars=[],maxStars=80,STAR_DRAMA={minSize:.3,maxSize:1.8,minOpacity:.08,maxOpacity:.85,slowFade:.0015,fastFade:.01,minLife:300,maxLife:900,brightChance:.06,giantChance:.025},STAR_MODES={calm:{driftSpeed:6e-4,driftStrength:.015,pulseChance:0,fadeMultiplier:.5},cinematic:{driftSpeed:.001,driftStrength:.03,pulseChance:.015,fadeMultiplier:1},epic:{driftSpeed:.0014,driftStrength:.06,pulseChance:.04,fadeMultiplier:1.3}};let currentStarMode="cinematic";function createStar(t="fadein"){const a=Math.random()<STAR_DRAMA.brightChance,e=Math.random()<STAR_DRAMA.giantChance?2*Math.random()+2:Math.pow(Math.random(),2)*(STAR_DRAMA.maxSize-STAR_DRAMA.minSize)+STAR_DRAMA.minSize,i=a?.5*Math.random()+.4:Math.pow(Math.random(),2)*(STAR_DRAMA.maxOpacity-STAR_DRAMA.minOpacity)+STAR_DRAMA.minOpacity,n=Math.random()*(STAR_DRAMA.fastFade-STAR_DRAMA.slowFade)+STAR_DRAMA.slowFade;return{x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:e,opacity:"fadein"===t?0:i,targetOpacity:i,fadeSpeed:n,lifespan:Math.random()*(STAR_DRAMA.maxLife-STAR_DRAMA.minLife)+STAR_DRAMA.minLife,age:0,phase:t,twinkle:Math.random()*Math.PI*2,drift:Math.random()*Math.PI*2,pulse:0}}function updateStar(t){const a=STAR_MODES[currentStarMode];t.age++,t.drift+=a.driftSpeed;const e=Math.sin(t.drift)*a.driftStrength*t.targetOpacity;Math.random()<a.pulseChance&&t.targetOpacity>.5&&(t.pulse=.15*t.targetOpacity),t.pulse*=.92,"fadein"===t.phase&&(t.opacity+=t.fadeSpeed*a.fadeMultiplier,t.opacity>=t.targetOpacity&&(t.opacity=t.targetOpacity,t.phase="stable")),"fadeout"===t.phase&&(t.opacity-=t.fadeSpeed*a.fadeMultiplier),t.age>t.lifespan&&(t.phase="fadeout"),t.opacity=Math.max(0,Math.min(t.targetOpacity,t.opacity+e+t.pulse))}function drawStars(){for(const t of stars){const a=t.opacity;if(a<=0)continue;const e=.6*t.size,i=2.5*t.size,n=ctx.createRadialGradient(t.x,t.y,0,t.x,t.y,i);if(n.addColorStop(0,`rgba(255,255,255,${.4*a})`),n.addColorStop(.4,`rgba(255,255,255,${.15*a})`),n.addColorStop(1,"rgba(255,255,255,0)"),ctx.fillStyle=n,ctx.beginPath(),ctx.arc(t.x,t.y,i,0,2*Math.PI),ctx.fill(),ctx.fillStyle=`rgba(255,255,255,${a})`,ctx.beginPath(),ctx.arc(t.x,t.y,e,0,2*Math.PI),ctx.fill(),t.targetOpacity>.5){ctx.strokeStyle=`rgba(255,255,255,${.35*a})`,ctx.lineWidth=.6;const e=3*t.size;ctx.beginPath(),ctx.moveTo(t.x-e,t.y),ctx.lineTo(t.x+e,t.y),ctx.moveTo(t.x,t.y-e),ctx.lineTo(t.x,t.y+e),ctx.stroke()}}}for(let t=0;t<80;t++){const t=createStar("fadein");t.age=Math.random()*t.lifespan,stars.push(t)}const CAMERA={fov:1,zNear:0,zFar:2},SPAWN_DISTANCE=Math.max(canvas.width,canvas.height),SPAWN_ANGLE_JITTER=-Math.random()*Math.PI*10,TARGET_JITTER=1e4*-Math.random(),BASE_SPEED_MIN=.008,BASE_SPEED_MAX=.015,TRAIL_LENGTH_MIN=150,TRAIL_LENGTH_MAX=600,COMET_OPACITY_MIN=.3,COMET_OPACITY_MAX=5,COMET_SIZE_MIN=.4,COMET_SIZE_MAX=3,COMET_COLOR_CHANCE=.6,OFFSCREEN_BUFFER=2,comets=[],cometCount=4,SPAWN_Z_NEAR=CAMERA.zNear,SPAWN_Z_FAR=CAMERA.zFar;function createComet(){Math.max(canvas.width,canvas.height);const t=(Math.random()-5*Math.random())*Math.random()*1e3,a=Math.cos(t)*SPAWN_DISTANCE,e=Math.sin(t)*SPAWN_DISTANCE,i=Math.random()*(SPAWN_Z_FAR-SPAWN_Z_NEAR)+SPAWN_Z_NEAR,n=0+(Math.random()-.5)*TARGET_JITTER-a,r=0+(Math.random()-.5)*TARGET_JITTER-e,c=-20*Math.random()*(SPAWN_Z_NEAR-SPAWN_Z_FAR)-SPAWN_Z_NEAR-i,o=Math.sqrt(n*n+r*r+c*c);return{x:a,y:e,z:i,vx:n/o*4,vy:r/o*4,vz:c/o*4,length:Math.random()*(TRAIL_LENGTH_MAX-TRAIL_LENGTH_MIN)+TRAIL_LENGTH_MIN,opacity:Math.random()*(COMET_OPACITY_MAX-COMET_OPACITY_MIN)+COMET_OPACITY_MIN,size:Math.random()*(COMET_SIZE_MAX-COMET_SIZE_MIN)+COMET_SIZE_MIN,color:Math.random()>.6?"rgba(255,0,255,":"rgba(0,255,255,",trail:[]}}function project3D(t,a,e){const i=CAMERA.fov/e;return{x:canvas.width/2+t*i,y:canvas.height/2+a*i,scale:i}}for(let t=0;t<4;t++)comets.push(createComet());function animate(){ctx.fillStyle="rgba(0,0,0,0.35)",ctx.fillRect(0,0,canvas.width,canvas.height),stars.forEach(updateStar),drawStars(),comets.forEach(((t,a)=>{if(t.x+=t.vx,t.y+=t.vy,t.z-=t.vz,t.z<CAMERA.zNear)return void(comets[a]=createComet());const e=project3D(t.x,t.y,t.z),i=t.trail[t.trail.length-1];if(i){const a=e.x-i.x,n=e.y-i.y,r=Math.sqrt(a*a+n*n),c=Math.ceil(r/2);for(let r=1;r<=c;r++){const o=r/c;t.trail.push({x:i.x+a*o,y:i.y+n*o,s:i.s+(e.scale-i.s)*o})}}else t.trail.push({x:e.x,y:e.y,s:e.scale});const n=Math.max(20,Math.min(120,t.length*(t.z/CAMERA.zFar)));for(;t.trail.length>n;)t.trail.shift();for(let a=0;a<t.trail.length;a++){const e=t.trail[a],i=a/t.trail.length;ctx.fillStyle=t.color+i*t.opacity+")",ctx.beginPath(),ctx.arc(e.x,e.y,t.size*i*e.s,0,2*Math.PI),ctx.fill()}ctx.fillStyle=t.color+t.opacity+")",ctx.beginPath(),ctx.arc(e.x,e.y,1.6*t.size*e.scale,0,2*Math.PI),ctx.fill();(e.x<-25||e.x>canvas.width+25||e.y<-25||e.y>canvas.height+25||t.z<CAMERA.zNear)&&(comets[a]=createComet())})),requestAnimationFrame(animate)}animate(),window.setStarMode=t=>{STAR_MODES[t]&&(currentStarMode=t)}</script>
 </canvas>
@@ -125,7 +125,7 @@ CTRL + K
 </div>
 </div>
 <div x-show="isOpen" style="display:none" class="filelist">
-<div @click.stop class="notelink active-note"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/projects/ai-tutor/overview-uz/">🇺🇿 Umumiy tavsif </a>
+<div @click.stop class="notelink"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/projects/ai-tutor/overview-uz/">🇺🇿 Umumiy tavsif </a>
 </div>
 </div>
 </div>
@@ -153,7 +153,7 @@ CTRL + K
 </div>
 </div>
 <div x-show="isOpen" style="display:none" class="filelist">
-<div @click.stop class="notelink"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/projects/filegramm-bot/about/whats-filegramm-uz/">Filegramm Nima? </a>
+<div @click.stop class="notelink active-note"><a data-note-icon="global/original_logo.svg" style="text-decoration:none" class="filename" href="/projects/filegramm-bot/about/whats-filegramm-uz/">Filegramm Nima? </a>
 </div>
 </div>
 </div>
@@ -277,13 +277,411 @@ CTRL + K
 <script>document.addEventListener("DOMContentLoaded",init,!1),document.addEventListener("DOMContentLoaded",setCorrectShortcut,!1),window.toggleSearch=function(){document.getElementById("globalsearch").classList.contains("active")?document.getElementById("globalsearch").classList.remove("active"):(document.getElementById("globalsearch").classList.add("active"),document.getElementById("term").focus())},window.toggleTagSearch=function(e){console.log(e.textContent);const t=e.textContent;t&&(window.document.getElementById("term").value=t.trim(),window.toggleSearch(),window.search())};const loadingSvg='\n    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">\n      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="1.5s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="1.5s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="1.5s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="6" stroke-opacity="0">\n              <animate attributeName="r"\n                   begin="3s" dur="3s"\n                   values="6;22"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-opacity"\n                   begin="3s" dur="3s"\n                   values="1;0" calcMode="linear"\n                   repeatCount="indefinite" />\n              <animate attributeName="stroke-width"\n                   begin="3s" dur="3s"\n                   values="2;0" calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n          <circle cx="22" cy="22" r="8">\n              <animate attributeName="r"\n                   begin="0s" dur="1.5s"\n                   values="6;1;2;3;4;5;6"\n                   calcMode="linear"\n                   repeatCount="indefinite" />\n          </circle>\n      </g>\n  </svg>';function debounce(e,t,n){var a;return function(){var r=this,i=arguments,c=n&&!a;clearTimeout(a),a=setTimeout((function(){a=null,n||e.apply(r,i)}),t),c&&e.apply(r,i)}}function setCorrectShortcut(){navigator.platform.toUpperCase().indexOf("MAC")>=0&&document.querySelectorAll(".search-keys").forEach((e=>e.innerHTML="⌘ + K"))}function createIndex(e){const t=e=>e.toLowerCase().split(/([^a-z]|[^\x00-\x7F])/),n=new FlexSearch.Document({cache:!0,charset:"latin:extra",optimize:!0,index:[{field:"content",tokenize:"reverse",encode:t},{field:"title",tokenize:"forward",encode:t},{field:"tags",tokenize:"forward",encode:t}]});return e.forEach(((e,t)=>{n.add({id:t,title:e.title,content:e.content,tags:e.tags})})),n}async function init(){let e=!0;if(localStorage.getItem("searchIndex")){let{date:t,docs:n}=JSON.parse(localStorage.getItem("searchIndex"));if("2026-03-11T18:05:46.549Z"===t){e=!1;let t=createIndex(n);window.docs=n,window.index=t}}if(e){let e=await(await fetch("/searchIndex.json?v=2026-03-11T18:05:46.549Z")).json(),t=createIndex(e);localStorage.setItem("searchIndex",JSON.stringify({date:"2026-03-11T18:05:46.549Z",docs:e})),window.docs=e,window.index=t}document.addEventListener("keydown",(e=>{if((e.ctrlKey||e.metaKey)&&"k"===e.key&&(e.preventDefault(),toggleSearch()),"Escape"===e.key&&document.getElementById("globalsearch").classList.remove("active"),document.getElementById("globalsearch").classList.contains("active")){if("ArrowDown"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.nextElementSibling?t.nextElementSibling.classList.add("active"):document.querySelector(".searchresult").classList.add("active")):document.querySelector(".searchresult").classList.add("active");let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("ArrowUp"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t?(t.classList.remove("active"),t.previousElementSibling?t.previousElementSibling.classList.add("active"):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling||e.classList.add("active")}))):document.querySelectorAll(".searchresult").forEach((e=>{e.nextElementSibling&&e.classList.add("active")}));let n=document.querySelector(".searchresult.active");n&&n.scrollIntoView({behavior:"smooth",block:"nearest",inline:"start"})}if("Enter"===e.key){e.preventDefault();let t=document.querySelector(".searchresult.active");t&&(window.location.href=t.querySelector("a").href)}}}));const t=debounce(search,200,!1);field=document.querySelector("#term"),field.addEventListener("keydown",(e=>{"ArrowDown"!==e.key&&"ArrowUp"!==e.key&&t()})),resultsDiv=document.querySelector("#search-results");const n=new URL(location.href).searchParams;n.get("q")&&(field.setAttribute("value",n.get("q")),toggleSearch(),search())}async function search(){let e=field.value.trim();if(!e)return;if(e==lastSearch)return;console.log(`search for ${e}`),window.lastSearch=e,resultsDiv.innerHTML=loadingSvg;let t=offlineSearch(e),n="";if(!t.length){let t=document.createElement("p");return t.innerText=`No results for "${e}"`,resultsDiv.innerHTML="",void resultsDiv.appendChild(t)}n+='<div style="max-width:100%;">',t.forEach((e=>{e.tags&&e.tags.length>0?n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        <div class="header-meta">\n                            <div class="header-tags">\n                                ${e.tags.map((e=>'<a class="tag" href="JavaScript:Void(0);">#'+e+"</a>")).join("")}\n                            </div>\n                        </div>\n                        ${e.content}\n                    </div>\n                </div>`:n+=`<div class="searchresult">\n                    <a class="search-link" href="${e.url}">${e.title}</a>\n                    <div onclick="window.location='${e.url}'">\n                        ${e.content}\n                    </div>\n                </div>`})),n+="</div>",resultsDiv.innerHTML=n}function truncate(e,t){return(e=e.replaceAll(/<[^>]*>/g,"")).length<t?e:e.substring(0,t-3)+"..."}function offlineSearch(e){let t=window.docs,n="#"===e[0]&&e.length>1?index.search(e.substring(1),[{field:"tags"}]):index.search(e,[{field:"title",limit:5},{field:"content",weight:10}]);const a=e=>{const t=n.filter((t=>t.field===e));return 0===t.length?[]:[...t[0].result]};return[...new Set([...a("title"),...a("content"),...a("tags")])].map((e=>{let n=t[e];return n.content=truncate(n.content,400),n.tags=n.tags.filter((e=>"gardenEntry"!=e&&"note"!=e)),n}))}window.lastSearch=""</script>
 <main class="content cm-s-obsidian">
 <header>
-<h1 data-note-icon="global/original_logo.svg">🇺🇿 Umumiy tavsif</h1>
+<h1 data-note-icon="global/original_logo.svg">Filegramm Nima?</h1>
 <div class="header-meta">
 <div class="header-tags">
 </div>
-<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2025-12-30T02:46:18.452+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2025-12-30T03:17:43.637+05:00"></span></div></div></div>
+<div class="timestamps"><div><i icon-name="calendar-plus"></i> <span class="human-date" data-date="2026-03-11T22:56:03.483+05:00"></span></div><div><i icon-name="calendar-clock"></i> <span class="human-date" data-date="2026-03-11T23:04:54.751+05:00"></span></div></div></div>
 </header>
-<p>SI tutor har bir o'quvchi bilan individual shug'ullana oladi</p>
+<p><img src="/img/user/global/filegramm/image%202.png" alt="image 2.png"></p>
+<p><strong>Filegramm</strong> — bu Telegram ichida ishlaydigan bot bo‘lib, Telegram fayllarini <strong>tartiblash, saqlash va ulashish</strong> uchun qulay tizim yaratadi.</p>
+<p>Telegram xabar almashish uchun juda yaxshi, lekin uzoq muddatli fayl saqlash va tartiblash uchun unchalik qulay emas. Fayllar chat tarixida yo‘qolib ketadi, albomlar ajralib ketadi va eski fayllarni topish qiyinlashadi.</p>
+<p>Filegramm shu muammoni hal qiladi. U Telegram ustiga <strong>papkalar tizimi, fayl boshqaruvi va ulashish imkoniyatlarini</strong> qo‘shadi.</p>
+<p>Shunday qilib Telegram oddiy chat bo‘lib qolmaydi, balki <strong>shaxsiy fayl arxivi va galereya platformasiga</strong> aylanadi.</p>
+<hr>
+<h1 id="asosiy-g-oya" tabindex="-1">Asosiy g‘oya</h1>
+<p>Filegramm Telegramni <strong>tartibli fayl kutubxonasiga</strong> aylantiradi.</p>
+<p>Oddiy Telegramda:</p>
+<p>Telegram → chat tarixlari → cheksiz skroll</p>
+<p>Filegramm bilan:</p>
+<p>Telegram → papkalar → tartibli arxiv → ulashiladigan galereyalar</p>
+<p>Bot Telegram ichida ishlaydigan <strong>interaktiv navigatsiya interfeysini</strong> taqdim etadi. Bu foydalanuvchilarga o‘z fayllarini xuddi fayl menejeri kabi boshqarish imkonini beradi.</p>
+<hr>
+<h1 id="qanday-muammoni-hal-qiladi" tabindex="-1">Qanday muammoni hal qiladi</h1>
+<p>Telegramni fayl saqlash sifatida ishlatganda bir nechta muammo paydo bo‘ladi:</p>
+<ul>
+<li>
+<p>fayllar chat tarixida yo‘qolib ketadi</p>
+</li>
+<li>
+<p>papkalar tizimi yo‘q</p>
+</li>
+<li>
+<p>albomlar tartibsiz bo‘ladi</p>
+</li>
+<li>
+<p>fayl ulashish noqulay</p>
+</li>
+<li>
+<p>eski fayllarni topish qiyin</p>
+</li>
+<li>
+<p>galereya yoki sahifa tizimi yo‘q</p>
+</li>
+</ul>
+<p>Filegramm quyidagilarni qo‘shadi:</p>
+<ul>
+<li>
+<p>papkalar iyerarxiyasi</p>
+</li>
+<li>
+<p>fayl navigatsiyasi</p>
+</li>
+<li>
+<p>tartibli saqlash</p>
+</li>
+<li>
+<p>tez ko‘rish</p>
+</li>
+<li>
+<p>ulashish havolalari</p>
+</li>
+<li>
+<p>ochiq galereyalar</p>
+</li>
+</ul>
+<hr>
+<h1 id="asosiy-imkoniyatlar" tabindex="-1">Asosiy imkoniyatlar</h1>
+<h2 id="1-fayllarni-tartiblash" tabindex="-1">1. Fayllarni tartiblash</h2>
+<p>Foydalanuvchilar Telegram fayllarini <strong>papkalar tizimi</strong> orqali tartiblashlari mumkin.</p>
+<p>Imkoniyatlar:</p>
+<ul>
+<li>
+<p>ichma-ich papkalar yaratish</p>
+</li>
+<li>
+<p>papkalarni qayta nomlash</p>
+</li>
+<li>
+<p>papkalarni ko‘chirish</p>
+</li>
+<li>
+<p>avtomatik nom to‘qnashuvini hal qilish</p>
+</li>
+<li>
+<p>papkalarni o‘chirish</p>
+</li>
+<li>
+<p>breadcrumb navigatsiya</p>
+</li>
+</ul>
+<p>Bu Telegramni oddiy chat emas, balki <strong>fayl daraxtiga</strong> aylantiradi.</p>
+<hr>
+<h2 id="2-fayllarni-boshqarish" tabindex="-1">2. Fayllarni boshqarish</h2>
+<p>Filegramm fayllar bilan to‘liq ishlash imkonini beradi.</p>
+<p>Amallar:</p>
+<ul>
+<li>
+<p>fayl nomini o‘zgartirish</p>
+</li>
+<li>
+<p>papkalar o‘rtasida ko‘chirish</p>
+</li>
+<li>
+<p>faylni o‘chirish</p>
+</li>
+<li>
+<p>ochiq yoki yopiq qilish</p>
+</li>
+<li>
+<p>faylni ochish yoki ko‘rish</p>
+</li>
+</ul>
+<p>Qo‘llab-quvvatlanadigan kontent:</p>
+<ul>
+<li>
+<p>rasmlar</p>
+</li>
+<li>
+<p>videolar</p>
+</li>
+<li>
+<p>hujjatlar</p>
+</li>
+<li>
+<p>matn xabarlari</p>
+</li>
+<li>
+<p>media albomlar</p>
+</li>
+<li>
+<p>Telegramdan forward qilingan fayllar</p>
+</li>
+</ul>
+<hr>
+<h2 id="3-media-albomlarni-qo-llab-quvvatlash" tabindex="-1">3. Media albomlarni qo‘llab-quvvatlash</h2>
+<p>Telegramdagi media albomlar <strong>bitta fayl sifatida</strong> ko‘riladi.</p>
+<p>Bot quyidagilarni saqlaydi:</p>
+<ul>
+<li>
+<p>bitta mantiqiy fayl yozuvi</p>
+</li>
+<li>
+<p>bir nechta Telegram message ID</p>
+</li>
+</ul>
+<p>Albomini ochganda barcha rasmlar yoki videolar birgalikda ko‘rsatiladi.</p>
+<p>Bu asl Telegram albom tajribasini saqlab qoladi.</p>
+<hr>
+<h2 id="4-xavfsiz-saqlash" tabindex="-1">4. Xavfsiz saqlash</h2>
+<p>Filegramm Telegram kanallarini <strong>saqlash infratuzilmasi</strong> sifatida ishlatadi.</p>
+<p>Bu quyidagilarni ta'minlaydi:</p>
+<ul>
+<li>
+<p>ishonchli Telegram hosting</p>
+</li>
+<li>
+<p>katta hajmdagi saqlash</p>
+</li>
+<li>
+<p>tez ochilish</p>
+</li>
+<li>
+<p>barqaror ishlash</p>
+</li>
+</ul>
+<p>Ikki xil saqlash rejimi mavjud.</p>
+<h3 id="standart-saqlash" tabindex="-1">Standart saqlash</h3>
+<p>Bu rejimda:</p>
+<ul>
+<li>
+<p>fayllar bot tomonidan boshqariladigan infratuzilmada saqlanadi</p>
+</li>
+<li>
+<p>uchinchi shaxslar foydalanuvchi ma'lumotlariga kira olmaydi</p>
+</li>
+<li>
+<p>administratorlar moderatsiya yoki texnik xizmat uchun kirishlari mumkin</p>
+</li>
+</ul>
+<h3 id="shaxsiy-saqlash-pro" tabindex="-1">Shaxsiy saqlash (PRO)</h3>
+<p>Premium foydalanuvchilar o‘z <strong>Telegram kanalini saqlash joyi sifatida</strong> ulashlari mumkin.</p>
+<p>Afzalliklari:</p>
+<ul>
+<li>
+<p>to‘liq nazorat</p>
+</li>
+<li>
+<p>shaxsiy infratuzilma</p>
+</li>
+<li>
+<p>markaziy saqlashdan mustaqillik</p>
+</li>
+</ul>
+<hr>
+<h2 id="5-aqlli-navigatsiya-interfeysi" tabindex="-1">5. Aqlli navigatsiya interfeysi</h2>
+<p>Filegramm Telegram ichida ishlaydigan <strong>interaktiv fayl brauzer</strong> taqdim etadi.</p>
+<p>Imkoniyatlar:</p>
+<ul>
+<li>
+<p>papkalar bo‘yicha ko‘rish</p>
+</li>
+<li>
+<p>fayllarni sahifalash</p>
+</li>
+<li>
+<p>saralash</p>
+</li>
+<li>
+<p>filtrlash</p>
+</li>
+<li>
+<p>grid ko‘rinishi</p>
+</li>
+<li>
+<p>breadcrumb navigatsiya</p>
+</li>
+</ul>
+<p>Navigatsiya elementlari:</p>
+<ul>
+<li>
+<p>sahifa tugmalari</p>
+</li>
+<li>
+<p>ko‘rinish filtrlari</p>
+</li>
+<li>
+<p>element turi filtrlari</p>
+</li>
+<li>
+<p>saralash parametrlari</p>
+</li>
+<li>
+<p>ustunlar sonini o‘zgartirish</p>
+</li>
+</ul>
+<hr>
+<h2 id="6-ochiq-ulashish" tabindex="-1">6. Ochiq ulashish</h2>
+<p>Foydalanuvchilar fayllar yoki papkalarni ochiq ulashlari mumkin.</p>
+<p>Ulashish imkoniyatlari:</p>
+<ul>
+<li>
+<p>fayl havolalari</p>
+</li>
+<li>
+<p>papka galereyalari</p>
+</li>
+<li>
+<p>ochiq ko‘rish</p>
+</li>
+<li>
+<p>tashrif hisoblagichi</p>
+</li>
+<li>
+<p>like va follow funksiyalari</p>
+</li>
+</ul>
+<p>Bu Telegram fayllaridan <strong>shaxsiy galereyalar yaratish imkonini beradi</strong>.</p>
+<hr>
+<h2 id="7-ochiq-galereyalar" tabindex="-1">7. Ochiq galereyalar</h2>
+<p>Papkalar <strong>ochiq galereya sahifasiga</strong> aylantirilishi mumkin.</p>
+<p>Tashrifchilar:</p>
+<ul>
+<li>
+<p>papka tarkibini ko‘rishi</p>
+</li>
+<li>
+<p>fayllarni ochishi</p>
+</li>
+<li>
+<p>foydalanuvchini kuzatishi</p>
+</li>
+<li>
+<p>fayllarga like bosishi mumkin</p>
+</li>
+</ul>
+<p>Bu yengil <strong>kontent nashr platformasi</strong> vazifasini bajaradi.</p>
+<hr>
+<h2 id="8-kirish-nazorati" tabindex="-1">8. Kirish nazorati</h2>
+<p>Har bir fayl uchun ko‘rinish darajasi sozlanishi mumkin.</p>
+<p>Fayllar quyidagi holatda bo‘lishi mumkin:</p>
+<ul>
+<li>
+<p><strong>Private</strong> — faqat egasi ko‘ra oladi</p>
+</li>
+<li>
+<p><strong>Public</strong> — havola orqali ochiladi</p>
+</li>
+</ul>
+<hr>
+<h2 id="9-referral-tizimi" tabindex="-1">9. Referral tizimi</h2>
+<p>Filegramm foydalanuvchilar uchun <strong>taklif tizimini</strong> qo‘llab-quvvatlaydi.</p>
+<p>Foydalanuvchilar do‘stlarini taklif qilishlari mumkin.</p>
+<p>Mukofotlar quyidagilar bo‘lishi mumkin:</p>
+<ul>
+<li>
+<p>qo‘shimcha foydalanish kunlari</p>
+</li>
+<li>
+<p>premium imkoniyatlar</p>
+</li>
+<li>
+<p>boshqa bonuslar</p>
+</li>
+</ul>
+<hr>
+<h2 id="10-premium-imkoniyatlar" tabindex="-1">10. Premium imkoniyatlar</h2>
+<p>Ba'zi imkoniyatlar <strong>PRO rejim</strong> orqali ochiladi.</p>
+<p>Masalan:</p>
+<ul>
+<li>
+<p>shaxsiy saqlash kanali</p>
+</li>
+<li>
+<p>cheksiz yuklash</p>
+</li>
+<li>
+<p>kengaytirilgan ulashish</p>
+</li>
+<li>
+<p>yuqori limitlar</p>
+</li>
+</ul>
+<p>Premium funksiyalar loyiha rivojlanishini qo‘llab-quvvatlaydi.</p>
+<hr>
+<h1 id="texnik-umumiy-ko-rinish" tabindex="-1">Texnik umumiy ko‘rinish</h1>
+<p>Filegramm modulli arxitekturaga ega.</p>
+<p>Asosiy texnologiyalar:</p>
+<ul>
+<li>
+<p>Telegram Bot API</p>
+</li>
+<li>
+<p>aiogram</p>
+</li>
+<li>
+<p>SQL ma'lumotlar bazasi</p>
+</li>
+<li>
+<p>Redis sessiya tizimi</p>
+</li>
+<li>
+<p>UI render tizimi</p>
+</li>
+<li>
+<p>message diff yangilash mexanizmi</p>
+</li>
+</ul>
+<p>Tizim quyidagi qatlamlarga ajratilgan:</p>
+<ul>
+<li>
+<p>biznes logika</p>
+</li>
+<li>
+<p>saqlash logikasi</p>
+</li>
+<li>
+<p>UI generatsiyasi</p>
+</li>
+<li>
+<p>Telegram update qayta ishlash</p>
+</li>
+</ul>
+<p>Bu loyiha rivojlanishini osonlashtiradi.</p>
+<hr>
+<h1 id="filegramm-nima-uchun-yaratilgan" tabindex="-1">Filegramm nima uchun yaratilgan</h1>
+<p>Telegram juda ko‘p kontent saqlaydi, lekin uni boshqarish qiyin.</p>
+<p>Filegramm quyidagilarni qo‘shadi:</p>
+<ul>
+<li>
+<p>tartib</p>
+</li>
+<li>
+<p>tuzilma</p>
+</li>
+<li>
+<p>qulay ko‘rish</p>
+</li>
+<li>
+<p>nazoratli ulashish</p>
+</li>
+</ul>
+<p>Maqsad oddiy:</p>
+<p><strong>Telegramni uzoq muddatli kontent arxiviga aylantirish.</strong></p>
+<hr>
+<h1 id="xulosa" tabindex="-1">Xulosa</h1>
+<p>Filegramm quyidagilarni taqdim etadi:</p>
+<ul>
+<li>
+<p>papkalar asosidagi fayl boshqaruvi</p>
+</li>
+<li>
+<p>Telegram ichida navigatsiya</p>
+</li>
+<li>
+<p>Telegram orqali saqlash</p>
+</li>
+<li>
+<p>ochiq galereyalar</p>
+</li>
+<li>
+<p>shaxsiy arxiv</p>
+</li>
+<li>
+<p>premium imkoniyatlar</p>
+</li>
+</ul>
+<p>Natijada Telegram oddiy chat emas, balki <strong>shaxsiy raqamli kutubxonaga</strong> aylanadi.</p>
 </main>
 <aside>
 <div class="sidebar">
@@ -314,6 +712,59 @@ CTRL + K
 <div x-effect="window.graph = renderLocalGraph(graphData, depth, fullScreen)" id="link-graph"></div>
 <div x-show="showFullGraph" id="full-graph" class="show" style="display:none">
 <span id="full-graph-close" x-on:click="fullGraph = closefullGraph(fullGraph); showFullGraph = false;"><i icon-name="x" aria-hidden="true"></i></span><div id="full-graph-container"></div>
+</div>
+</div>
+<div class="toc">
+<div class="toc-title-container">
+<div class="toc-title">
+On this page
+</div>
+</div>
+<div class="toc-container">
+<nav class="toc">
+<ol>
+<li><a href="#asosiy-g-oya">Asosiy g‘oya</a>
+</li>
+<li><a href="#qanday-muammoni-hal-qiladi">Qanday muammoni hal qiladi</a>
+</li>
+<li><a href="#asosiy-imkoniyatlar">Asosiy imkoniyatlar</a>
+<ol>
+<li><a href="#1-fayllarni-tartiblash">1. Fayllarni tartiblash</a>
+</li>
+<li><a href="#2-fayllarni-boshqarish">2. Fayllarni boshqarish</a>
+</li>
+<li><a href="#3-media-albomlarni-qo-llab-quvvatlash">3. Media albomlarni qo‘llab-quvvatlash</a>
+</li>
+<li><a href="#4-xavfsiz-saqlash">4. Xavfsiz saqlash</a>
+<ol>
+<li><a href="#standart-saqlash">Standart saqlash</a>
+</li>
+<li><a href="#shaxsiy-saqlash-pro">Shaxsiy saqlash (PRO)</a>
+</li>
+</ol>
+</li>
+<li><a href="#5-aqlli-navigatsiya-interfeysi">5. Aqlli navigatsiya interfeysi</a>
+</li>
+<li><a href="#6-ochiq-ulashish">6. Ochiq ulashish</a>
+</li>
+<li><a href="#7-ochiq-galereyalar">7. Ochiq galereyalar</a>
+</li>
+<li><a href="#8-kirish-nazorati">8. Kirish nazorati</a>
+</li>
+<li><a href="#9-referral-tizimi">9. Referral tizimi</a>
+</li>
+<li><a href="#10-premium-imkoniyatlar">10. Premium imkoniyatlar</a>
+</li>
+</ol>
+</li>
+<li><a href="#texnik-umumiy-ko-rinish">Texnik umumiy ko‘rinish</a>
+</li>
+<li><a href="#filegramm-nima-uchun-yaratilgan">Filegramm nima uchun yaratilgan</a>
+</li>
+<li><a href="#xulosa">Xulosa</a>
+</li>
+</ol>
+</nav>
 </div>
 </div>
 <div class="backlinks">
